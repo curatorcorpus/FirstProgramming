@@ -1,0 +1,64 @@
+package Books;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class TextBooks extends Books{
+    // data field specific for textbooks
+    private array authorsl
+    private String category;
+    private int edition;
+    
+    // constructor method
+    public TextBooks(String textType, String category, String title, Arrays authors,
+	    	String publisher, String publicationDate, int pageNum, int edition){
+	super(textType, title, publisher, publicationDate, pageNum);
+	this.author = authors;
+	this.category = category;
+	this.edition = edition;
+	
+	System.out.println();
+    } // constructor ends
+    
+    public void getAuthors(){
+       for(String author : authors){
+	   System.out.println(author);
+       }
+    }
+   
+    // manually set category of textbook
+    public void setCategory(String category){
+	this.category = category;
+    } // method end
+    
+    // returns category of textbook as a string
+    public String getCategory(){
+	return category;
+    } // method ends
+    
+    // method manually sets edition of textbook
+    public void setEdition(int edition){
+	this.edition = edition;
+    } // method ends
+    
+    // returns edition of textbook as a int
+    public int getEdition(){
+	return edition;
+    } // method ends
+    
+    // return detailed information of the textbook in string
+    public String toString(){
+	String newLine = "\n";
+	return "Text Type: " + textType + newLine +
+		"Category: " + category + newLine +
+		"Title: " + title + newLine + 
+		"Authors: " + author + newLine + 
+		"Edition: " + edition + "th" + newLine +
+		"Publisher: " + publisher + newLine + 
+		"Publication Date: " + dateOfPublication + newLine + 
+		"Total Page Numbers:  " + pageNum +
+		newLine;
+    }
+}
+
+

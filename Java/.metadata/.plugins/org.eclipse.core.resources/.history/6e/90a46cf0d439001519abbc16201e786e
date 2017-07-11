@@ -1,0 +1,13 @@
+package Hospital;
+
+public class Doctor extends Hospital{
+	protected String profession;
+	
+	protected Doctor(String occupation){
+		profession = occupation;
+	}
+	
+	public String getProfession(){
+		return "This Doctor is a: " + profession;
+	}
+}

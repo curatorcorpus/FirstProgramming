@@ -1,0 +1,8 @@
+package Books;
+
+public class BooksApp {
+    public static void main(String[] args){
+	Books aBook = new Books("Book", "example", "me", "me", "6/09/2015", 100);
+	System.out.println(aBook.toString());
+    }
+}

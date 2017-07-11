@@ -1,0 +1,15 @@
+/** 
+ * ShapePanel.java
+ * Lab 23 Abstract
+ * COMP160, 23rd July 2015
+ * Jung Woo Park
+ * 
+ * class that represents circle objects
+ */
+package shapes;
+
+import java.awt.*;
+
+public class Circle extends Shape {
+
+}

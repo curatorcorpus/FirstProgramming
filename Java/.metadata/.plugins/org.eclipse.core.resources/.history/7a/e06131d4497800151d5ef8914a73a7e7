@@ -1,0 +1,8 @@
+import javax.swing.*;
+
+public class CounterPanelApp {
+    /** main method */
+    public static void main(String[] args){
+	
+    }
+}

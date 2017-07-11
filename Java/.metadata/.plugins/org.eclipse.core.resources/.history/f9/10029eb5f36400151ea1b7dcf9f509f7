@@ -1,0 +1,164 @@
+package bsns106Lectures;
+
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+
+public class Lecture20 extends JPanel{
+    // create listener object
+    private Listener listen = new Listener();
+    
+    // create components
+    private JButton back = new JButton("Back");
+    private JButton next = new JButton("Next");
+    private JTextArea textArea = new JTextArea("", 26, 40);
+    private JLabel lectureTitle;
+    private JScrollPane scroll = new JScrollPane(textArea);
+    
+    /** constructor method */
+    public Lecture20(String lectureName, int lectureNum){
+	lectureTitle = new JLabel("Lecture "+lectureNum+": "+lectureName);
+	
+	// main panel settings
+	setPreferredSize(new Dimension(500, 500));
+	
+	// add listener objects
+	back.addActionListener(listen);
+	next.addActionListener(listen);
+	
+	// component settings
+	textArea.setEditable(false);
+	textArea.setText(point1());
+		
+	lectureTitle.setFont(new Font("SansSerif", Font.BOLD,16));
+	
+	// add components
+	add(lectureTitle);
+	add(scroll);
+	add(back);
+	add(next);
+    }
+    
+    /** method that returns main point 1 */
+    private String point1(){
+	return "00. Summary\n\n"+
+		"> [No. 1]: The need for computer networks\n\n"+
+		"> [No. 2]: Three types of infrastructure\n\n"+
+		"> [No. 3]: Four types of architecture of DS\n\n";
+    }	
+    
+    /** method that returns main point 2 */
+    private String point2(){
+	return "01. The need for computers";
+    }
+    
+    /** method that returns main point 3 */
+    private String point3(){
+	return "02. Why decision making can be difficult? [No. 2]\n\n"+
+		"> Information can be scarce\n\n"+
+		"> There might be too much information\n\n"+
+		"> Hard constraints: rules that cannot be broken under and circumstances\n"+
+		" when making a decision\n\n"+
+		"> Soft constraints: rules should not be broken where possible\n\n"+
+		"> Peer Pressure\n\n"+
+		"> Conflicting opinions\n\n"+
+		"> Time pressures\n\n"+
+		"> Difficult to see big picture\n\n";
+    }
+    
+    /** method that returns main point 4 */
+    private String point4(){
+	return "03. Decision requirements:\n\n"+
+		"> Source of data\n\n"+
+		"> A Model\n\n"+
+		"> User interface\n\n";
+    }
+    
+    /** method that returns main point 5 */
+    private String point5(){
+	return "04. Online Transaction Processing-OLTP (Fine grain information) [No. 3]:\n\n"+
+		"> Collects all individual transactions\n\n"+
+		"> Support day to day operations\n\n"+
+		"> Continuously updated\n\n";
+    }
+    
+    /** method that returns main point 6 */
+    private String point6(){
+	return "05. Online Analytical Processing-OLAP (Coarse grain inforamtion) [No. 3]:\n\n"+
+		"> Constructed from processing summary information\n\n"+
+		"> Assists the decision making process\n\n"+
+		"> Frequently updated\n\n"+
+		"> Used for data mining\n\n"+
+		"> Requirements:\n"+
+		" 	- Query and reporting tools\n\n"+
+		" 	- Intelligence agents (identifies correlation)\n\n"+
+		"	- Multidimensional analysis tools\n\n"+
+		"	- Statistical tools\n\n";
+    }
+    
+    /** method that return point 7 */
+    private String point7(){
+	return "06. Types of decisions [No. 3]:\n\n"+
+		"> Structured: everything is known\n\n"+
+		"> Non-structured: Nothing is known\n\n"+
+		"> Recurring: periodical\n\n"+
+		"> Non-recurring: one time, no partner, once in a while\n\n"+
+		"> In reality it is semi-structured\n\n"+
+		"> Can be simple systems or complex\n\n";
+    }
+    
+    /** method that return point 8 */
+    private String point8(){
+	return "07. Benefits of DSS [No. 3]:\n\n"+
+		"> Increased productivity\n\n"+
+		"> Increased understanding\n\n"+
+		"> Increased speed\n\n"+
+		"> Increased flexibility\n\n"+
+		"> Reduced problem complexity\n\n"+
+		"> Reduced costs\n\n";
+    }
+    
+    private class Listener implements ActionListener{
+	// array of points
+	private String[] mainPoints = {point1(), point2(), point3(), point4(), point5(), point6(),
+					point7(), point8()};
+	
+	// index
+	private int index = 0;
+	
+	public void actionPerformed(ActionEvent e){
+	    // if back button is pressed then move back to previous point
+	    if(e.getSource() == back){
+		// if index is zero then stay zero
+		if(index == 0){
+		    index = 0;
+		}
+		
+		// if index is not zero
+		else{
+		    index--; 
+		}
+		
+		// update text area
+		textArea.setText(mainPoints[index]);
+	    }
+	    
+	    // if forward button is pressed then move forward to next point
+	    if(e.getSource() == next){
+		// if index reached max size of mainpoint array
+		if(index == (mainPoints.length-1)){
+		    index = mainPoints.length-1;
+		}
+		
+		// if index is not max index
+		else{
+		    index++;
+		}
+		
+		// update text area
+		textArea.setText(mainPoints[index]);
+	    }
+	}
+    }
+}

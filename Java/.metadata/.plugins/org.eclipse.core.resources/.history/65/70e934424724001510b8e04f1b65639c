@@ -1,0 +1,18 @@
+
+public class Strings {
+	public static void main(String args[]){
+		String firstName, middleName, lastName;
+		char firstInitial, middleInitial, lastInitial;
+		
+		firstName = "Noel ";
+		middleName = "Jung Woo ";
+		lastName = "Park";
+		
+		firstInitial = 'N';
+		middleInitial = 'J';
+		lastInitial = 'P';
+		
+		System.out.println(firstName + middleName + lastName);
+		System.out.println(firstInitial + middleInitial + lastInitial);
+	}
+}

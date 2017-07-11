@@ -1,0 +1,114 @@
+
+/**
+ * StopWatchPanel2.java
+ * 
+ * 6th August 2015, 0342
+ * 
+ * Author: Jung-Woo (Noel) Park
+ * "박정우"
+ */
+package StopWatchApp3;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.text.DecimalFormat;
+
+public class StopWatchPanel3 extends JPanel {
+	/** component data fields */
+	private JPanel displayPanel = new JPanel();
+	private JButton startButton = new JButton("Start");
+	private JButton stopButton = new JButton("Stop");
+	private JButton resetButton = new JButton("Reset");
+	private JLabel display = new JLabel("00:00:00:00", SwingConstants.CENTER);
+	
+	/** listener instance variables */
+	private StartListener startEvent = new StartListener();
+	private StopListener stopEvent = new StopListener();
+	private ResetListener resetEvent = new ResetListener();
+	
+	/** timer creates repetition in events after startListener event occurs */
+	private Timer delay = new Timer(0, startEvent);
+	
+	/** display formating instance objects */
+	private DecimalFormat format = new DecimalFormat("00"); // min/hr format
+	
+	/** constructor method */
+	public StopWatchPanel3(){
+		// set initial delay
+		delay.setInitialDelay(0);
+		
+		// display panel settings
+		displayPanel.setPreferredSize(new Dimension(300, 100));
+		
+		// add component listeners
+		startButton.addActionListener(startEvent);
+		stopButton.addActionListener(stopEvent);
+		resetButton.addActionListener(resetEvent);
+		
+		// component settings
+		display.setFont(new Font("Serif", Font.BOLD, 45));
+		display.setPreferredSize(new Dimension(300, 50));
+		
+		// add components
+		displayPanel.add(display);
+		displayPanel.add(startButton);
+		displayPanel.add(stopButton);
+		displayPanel.add(resetButton);
+		
+		// add to main panel
+		add(displayPanel);
+	} // constructor ends
+	
+	/** class listener checks for action events */
+	private class StartListener implements ActionListener{
+		/** time value data fields */
+		private long referenceTime, mins, hrs, milsec, secs, estimate;
+		
+		/** method that keeps track of elapsed (current process) time */
+		private void elapsedTime(){
+			// convert to milliseconds
+			estimate = System.nanoTime()/1000000 - referenceTime;
+			
+			// milliseconds only
+			milsec = estimate/10 - estimate/10/100*100;
+			secs = (estimate/1000)%60;
+			mins = (estimate/60000)%60;
+			hrs = (System.nanoTime() - referenceTime)/1000000000/60/60; // computes hr using reference time
+			
+			// displays time
+			display.setText(format.format(hrs)+":"+
+							format.format(mins)+":"+
+							format.format(secs)+":"+
+							format.format(milsec));
+			
+		} // method ends
+		
+		/** action performed method automatically called */
+		public void actionPerformed(ActionEvent e){
+			if(e.getSource().equals(startButton)){
+				delay.start();
+				referenceTime = System.nanoTime()/1000000;
+			}
+			
+			if(e.getSource().equals(delay)){
+				elapsedTime();
+			}
+		} // method ends
+	} // class startListener ends
+	
+	/** stop action event listener class */
+	private class StopListener implements ActionListener{
+		public void actionPerformed(ActionEvent e){
+			delay.stop();
+		}
+	} // class ends
+	
+	/** reset action event listener class */
+	private class ResetListener implements ActionListener{
+		public void actionPerformed(ActionEvent e){
+			delay.stop();
+			display.setText("00:00:00:00");
+		}
+	} // class ends
+} // fin.

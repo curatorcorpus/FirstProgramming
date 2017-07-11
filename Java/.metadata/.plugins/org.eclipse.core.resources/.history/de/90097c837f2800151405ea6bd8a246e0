@@ -1,0 +1,25 @@
+import java.lang.Math;
+import java.util.Scanner;
+
+public class PP43EvenSums {
+	public static void main(String args[]) {
+		// variable declaration
+		int value, count;
+		
+		// scanner input instantiation
+		Scanner input = new Scanner(System.in);
+		
+		// input
+		System.out.println("Enter a number to sum: ");
+		value = input.nextInt();
+		
+		// sum
+		for (count = 2; count < value; count+++)
+		
+		// condition
+		if (value < 0)
+			System.out.println("Error Invalid Integer!");
+		
+		
+	}
+}

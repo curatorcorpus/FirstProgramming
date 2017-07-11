@@ -1,0 +1,46 @@
+import java.util.*;
+
+public class SelectionSortApp {
+    public static void main(String[] args){
+	int[] ordered = new int[10];
+	
+	Random numGen = new Random();
+	    
+	for(int i = 0; i < 10; i++){
+	    ordered[i] = numGen.nextInt(5);
+	}
+	
+	for(int i : ordered){
+	    System.out.print(i+" ");
+	}
+	System.out.println();
+	
+	selectionSort(ordered);
+	
+	for(int i : ordered){
+	    System.out.print(i+" ");
+	}
+    }
+    
+    public static void selectionSort(int[] array){
+	for(int i = 0; i < array.length; i++){
+	    for(int innerIndex = i; innerIndex < array.length; innerIndex++){
+		int assumedLowNum = array[i];
+		if(array[innerIndex] < assumedLowNum){
+		    swap(array, i, innerIndex);
+		}
+	    }
+	}
+    }
+    
+    public static void swap(int[] array, int outerIndex, int innerIndex){
+	int currentNum = array[outerIndex];
+	
+	// swap
+	array[outerIndex] = array[innerIndex];
+	array[innerIndex] = currentNum;
+	
+	System.out.println(array[outerIndex]);
+	System.out.println(array[innerIndex]+"\n");
+    }
+}

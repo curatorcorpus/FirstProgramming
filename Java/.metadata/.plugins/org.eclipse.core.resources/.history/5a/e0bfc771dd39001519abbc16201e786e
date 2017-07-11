@@ -1,0 +1,16 @@
+package catchme;
+import java.awt.*;
+import java.util.Random;
+
+public class Monster extends JPanel {
+	private double x, y, width, height;
+	private Random generator = new Random();
+	
+	/** constructor method */
+	public Monster(double x, double y, double width, double height){
+		this.x = x;
+		this.y = y;
+		this.width = width;
+		this.height = height;
+	}
+}

@@ -1,0 +1,11 @@
+import java.awt.*;
+import javax.swing.*;
+
+public class TableDrawApp {
+
+	public static void main(String args[]){
+		TablePanel table = new TablePanel();
+		table.setSize(300, 300);
+		table.setVisible(true);
+	}
+}

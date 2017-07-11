@@ -1,0 +1,135 @@
+import javax.swing.*;
+import java.awt.*;
+import java.io.*;
+import java.awt.event.*;
+
+public class Priorities extends JPanel{
+    // instantiate components for file menu
+    private JMenuItem open = new JMenuItem("Open");
+    private JMenuItem saveAs = new JMenuItem("Save As");
+    private JMenuItem close = new JMenuItem("Close");
+    
+    // instantiate components for preferences
+    private JMenuItem settings = new JMenuItem("Settings");
+    
+    // checked or unchecked
+    private boolean check = false;
+    
+    public Priorities(JFrame mainWindow){
+	// main window initialise
+	JPanel window = new JPanel();
+	
+	// listener instance
+	Listener listen = new Listener();
+	
+	// menu bar components
+	JMenuBar menuBar = new JMenuBar();
+	JMenu fileMenu = new JMenu("Files");
+	JMenu preferencesMenu =  new JMenu("Preferences");
+	
+	// create components
+	JCheckBox comp160 = new JCheckBox("Comp160");
+	
+	// panel settings
+	window.setPreferredSize(new Dimension(300, 300));
+	
+	// add menus to mainBar
+	menuBar.add(fileMenu);
+	menuBar.add(preferencesMenu);
+	
+	// add menu items to menu
+	fileMenu.add(open);
+	fileMenu.add(saveAs);
+	fileMenu.add(close);
+	
+	preferencesMenu.add(settings);
+	
+	// menu settings 
+	open.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, Event.CTRL_MASK));
+	saveAs.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, Event.CTRL_MASK));
+	close.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X, Event.CTRL_MASK));
+	
+	// add Actionlisteners
+	open.addActionListener(listen);
+	saveAs.addActionListener(listen);
+	close.addActionListener(listen);
+	
+	settings.addActionListener(listen);
+
+	// add components
+	window.add(menuBar);
+	window.add(comp160);
+	
+	// set menuBar
+	mainWindow.setJMenuBar(menuBar);
+	
+	// add to main window
+	add(window);
+    }
+    
+    /** listener class */
+    private class Listener implements ActionListener, KeyListener, ItemListener{
+	// file manipulator
+	private JFileChooser fileChooser = new JFileChooser();
+
+	public void actionPerformed(ActionEvent e){
+	    // fileChooser return value
+	    int returnVal = 0;
+	    
+	    // captures choosen file
+	    File file = null;
+	    
+	    // buffer reader
+	    BufferedReader bReader = null;
+	    
+	    // current line
+	    String currentLine = null;
+	    
+	    // if open was pressed
+	    if(e.getSource().equals(open)){
+		returnVal = fileChooser.showOpenDialog(Priorities.this);
+		
+		if(returnVal == JFileChooser.APPROVE_OPTION){
+		    file = fileChooser.getSelectedFile();
+		    
+		    // read file
+		    try{
+			bReader = new BufferedReader(new FileReader(file));
+			
+			// process
+			while((currentLine = bReader.readLine()) != null){
+			    System.out.println(currentLine);
+			}
+		    } catch(Exception error){
+			error.printStackTrace();
+		    }
+		}
+	    }
+	    
+	    // if save as was pressed
+	    if(e.getSource().equals(saveAs)){
+		fileChooser.showSaveDialog(Priorities.this);
+	    }
+	    
+	    // if close was pressed
+	    if(e.getSource().equals(close)){
+		System.exit(0);
+	    }
+	    
+	    // if settings was pressed
+	    if(e.getSource().equals(settings)){
+	    }
+	}
+	
+	public void itemStateChange(ItemEvent e){
+	    
+	}
+	
+	public void keyPressed(KeyEvent e){
+	}
+	
+	// dormant methods
+	public void keyTyped(KeyEvent e){}
+	public void keyReleased(KeyEvent e){}
+    }
+}

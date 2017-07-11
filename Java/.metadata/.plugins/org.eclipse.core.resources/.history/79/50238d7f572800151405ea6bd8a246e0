@@ -1,0 +1,9 @@
+import java.util.Scanner;
+
+public class GradeReport {
+	public static void main(String args[]){
+		// variable declaration
+		int grade, category;
+		
+	}
+}

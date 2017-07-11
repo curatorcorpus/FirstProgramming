@@ -1,0 +1,6 @@
+
+public class Printf {
+	public static void main(String){
+		int id = 1162424;
+	}
+}

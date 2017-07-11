@@ -1,0 +1,14 @@
+package StopWatchApp3;
+
+import javax.swing.*;
+import java.awt.*;
+
+public class StopWatchApp {
+	/** main method */
+	public static void main(String args[]){
+		// JFrame instantiation
+		JFrame frame = new JFrame("Stop Watch Application");
+		
+		frame.setVisible(true)l
+	}
+}

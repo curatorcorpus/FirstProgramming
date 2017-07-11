@@ -1,0 +1,22 @@
+package Sample2;
+
+public class Practice {
+    public static void main(String[] args){
+	
+    }
+    
+    public static int maximum(int i, int j, int k){
+	int max = i;
+	if(i < j){
+	    max = j;
+	}
+	
+	else if(i < k){
+	    max = k;
+	}
+	
+	else if(j < k){
+	    max = k;
+	}
+    }
+}

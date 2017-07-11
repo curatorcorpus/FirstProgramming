@@ -1,0 +1,13 @@
+
+public class PuppyRegistration {
+	
+	int puppyAge;
+	
+	public Puppy(String name){
+		//This constructor has one parameter, name.
+		System.out.println("Passed Name Is: " + name);
+	}
+	public void setAge(int age){
+		puppyAge = age;
+	}
+}

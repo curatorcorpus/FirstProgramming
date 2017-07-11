@@ -1,0 +1,15 @@
+package arrayStoring;
+
+import java.util.Scanner;
+
+public class ArrayStoring {
+	/** main method */
+	public static void main(String args[]){
+		int[] list = new int[10];
+		
+		// instantiation of scanner object
+		Scanner get = new Scanner(System.in);
+		
+		System.out.println("Enter a number: ")
+	}
+}

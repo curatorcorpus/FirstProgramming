@@ -1,0 +1,9 @@
+
+public class Enumerate {
+    enum Flowers {daffodil, rose, tulips, daisy};
+    
+    /** main method */
+    public static void main(String[] args){
+	Flowers f1 = Flowers.daffodil;
+    }
+}

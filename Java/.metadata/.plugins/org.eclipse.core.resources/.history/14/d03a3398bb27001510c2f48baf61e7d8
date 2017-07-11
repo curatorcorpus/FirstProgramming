@@ -1,0 +1,25 @@
+import java.util.Random;
+import java.text.DecimalFormat;
+
+public class PProject3 {
+	
+	public static void main(String args[]){
+		// variable declaration
+		int test0, test1, test2;
+		
+		// object instantiation
+		Random numGen = new Random();
+		DecimalFormat set1 = new DecimalFormat("000");
+		DecimalFormat set2 = new DecimalFormat("000");
+		DecimalFormat set3 = new DecimalFormat("0000");
+		
+		// phone number values
+		test0 = numGen.nextInt(778);
+		test1 = numGen.nextInt(743);
+		test2 = numGen.nextInt(1000);
+		
+		System.out.println(set1.format(test0) +
+						"-" +set2.format(test1) + 
+						"-" + set3.format(test2));
+	}
+}

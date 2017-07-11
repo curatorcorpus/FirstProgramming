@@ -1,0 +1,6 @@
+package Coin;
+
+public class Coin {
+	protected final int HEADS = 0; 
+	private int face;
+}

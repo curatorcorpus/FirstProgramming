@@ -1,0 +1,11 @@
+import java.lang.Math;
+import java.util.Scanner;
+
+public class QuadraticFormula {
+	public static void main(String args[]){
+		// variable declaration
+		int a, b, c;
+		
+		
+	}
+}

@@ -1,0 +1,55 @@
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class CreateAccountPanel extends JPanel{
+	/** instantiate JPanel */
+	private JPanel accountPanel = new JPanel();
+	
+	/** instantiate components */
+	private JLabel name = new JLabel("Account Name:", SwingConstants.RIGHT);
+	private JLabel password = new JLabel("New Password:", SwingConstants.RIGHT);
+	private JLabel passConfirm = new JLabel("Confirm Password:", SwingConstants.RIGHT);
+	private JLabel address = new JLabel("Address:", SwingConstants.RIGHT);
+	private JLabel suburb = new JLabel("Suburb:", SwingConstants.RIGHT);
+	private JLabel city = new JLabel("City/Town:", SwingConstants.RIGHT);
+	
+	/** define constant value of textfield length */
+	private final int LENGTH = 20;
+	
+	/** panel layout */
+	private GridLayout layout = new GridLayout(6, 2);
+	
+	/** instantiate textfields */
+	private TextField accountName = new TextField(LENGTH);
+	private TextField accountPass = new TextField(LENGTH);
+	private TextField accountConfirmPass = new TextField(LENGTH);
+	private TextField accountAddress = new TextField(LENGTH);
+	private TextField accountSuburb = new TextField(LENGTH);
+	private TextField accountCity = new TextField(LENGTH);
+	
+	public CreateAccountPanel(){
+		// new window settings
+		accountPanel.setPreferredSize(new Dimension(500,300));
+		accountPanel.setLayout(layout);
+		
+		// add components
+		accountPanel.add(name);
+		accountPanel.add(accountName);
+		accountPanel.add(password);
+		accountPanel.add(accountPass);
+		accountPanel.add(passConfirm);
+		accountPanel.add(accountConfirmPass);
+		accountPanel.add(address);
+		accountPanel.add(accountAddress);
+		accountPanel.add(suburb);
+		accountPanel.add(accountSuburb);
+		accountPanel.add(city);
+		accountPanel.add(accountCity);
+		
+		// add to main frame
+		add(accountPanel);
+	}
+	
+}

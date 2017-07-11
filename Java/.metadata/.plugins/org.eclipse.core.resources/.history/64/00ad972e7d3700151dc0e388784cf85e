@@ -1,0 +1,132 @@
+/** Move.java
+ * 30th July 2015, 1415
+ * @author Jung Woo Park
+ * using key events and key bindings
+ */
+import java.awt.*;
+import java.awt.event.*;
+import java.awt.geom.*;
+
+import javax.swing.*;
+
+public class MovePanel extends JPanel{
+	/** data fields */
+	private double x =275.0, y = 275.0, up, down, left, right;
+	private double speed = 5.0;
+	private int width = 50;
+	private int height = 50;
+	private Timer refreshRate = new Timer(5, new KeyboardListener());
+	
+	/** constructor method */
+	public MovePanel(){
+		// panel settings 
+		setBackground(Color.black);
+		setPreferredSize(new Dimension(1920, 1080));
+		
+		// add key listener
+		refreshRate.start();
+		addKeyListener(new KeyboardListener());
+		setFocusable(true);
+		setFocusTraversalKeysEnabled(false);
+	}
+	
+	public void paintComponent(Graphics page){
+		super.paintComponent(page);
+		Graphics2D g1 = (Graphics2D) page;
+		g1.setColor(Color.white);
+		g1.fill(new Ellipse2D.Double(x, y, width, height));
+	}
+	
+	// method that makes coordinate transitions
+	public void move(){
+		x += left;
+		x += right;
+		y += up;
+		y += down;
+	}
+	
+	//==================================================================
+	// movement in direction
+	
+	// moves up
+	public void up(){
+		up = -speed;
+	}
+	
+	// move down
+	public void down(){
+		down = speed;
+	}
+	
+	// move left
+	public void left(){
+		left = -speed;
+	}
+	
+	// move right
+	public void right(){
+		right = speed;
+	}
+	//==================================================================
+	
+	// class that listens for key input
+	private class KeyboardListener implements KeyListener, ActionListener{
+		// object refresh
+		public void actionPerformed(ActionEvent e){
+			repaint();
+			move();
+		}
+		
+		public void keyPressed(KeyEvent event){
+			// if up key was pressed
+			if(event.getKeyCode() == KeyEvent.VK_UP){
+				up();
+			}
+			
+			// if down key was pressed
+			if(event.getKeyCode() == KeyEvent.VK_DOWN){
+				down();
+			}
+			
+			// if left key was pressed
+			if(event.getKeyCode() == KeyEvent.VK_LEFT){
+				left();
+			}
+			
+			// if right key was pressed
+			if(event.getKeyCode() == KeyEvent.VK_RIGHT){
+				right();
+			}
+		} // end of method
+		
+		// hibernating method
+		public void keyTyped(KeyEvent event){}
+		
+		// method if key was released
+		public void keyReleased(KeyEvent event){
+			// key event local variables
+			int keyInput = event.getKeyCode();
+			
+			// if key released was up
+			if(keyInput == KeyEvent.VK_UP){
+				up = 0;
+			}
+			
+			// if key released was down
+			if(keyInput == KeyEvent.VK_DOWN){
+				down = 0;
+			}
+			
+			// if key released was left
+			if(keyInput == KeyEvent.VK_LEFT){
+				left = 0;
+			}
+			
+			// if key released was right
+			if(keyInput == KeyEvent.VK_RIGHT){
+				right = 0;
+			}
+			
+		}
+	}
+}

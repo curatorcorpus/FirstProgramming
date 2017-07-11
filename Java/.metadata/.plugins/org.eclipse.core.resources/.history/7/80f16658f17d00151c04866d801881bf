@@ -1,0 +1,26 @@
+package Sample2;
+
+import javax.swing.*;
+import java.awt.*;
+
+public class Practice extends JPanel{
+    
+    public void paint(Graphics g){
+	int top = 50, left = 50, width = 10, height = 200;
+	
+	for(int i = 1; i <= 4; i++){
+	    g.drawRect(top, left, width, height);
+	    g.drawRect(top+20, left+20, width, height/2);
+	    g.drawRect(top+40, left+40, width, height/4);
+	    g.drawRect(top+60, left+60, width, height/6);
+	}
+    }
+    
+    public static void main(String[] args){
+	JFrame main = new JFrame();
+	main.add(new Practice());
+	main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	main.pack();
+	main.setVisible(true);
+    }
+}

@@ -1,0 +1,102 @@
+package StopWatchApp2;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.text.DecimalFormat;
+
+public class StopWatchPanel2 extends JPanel {
+	private JPanel displayPanel = new JPanel();
+	private JButton startButton = new JButton("Start");
+	private JButton stopButton = new JButton("Stop");
+	private JButton resetButton = new JButton("Reset");
+	private JLabel display = new JLabel("00:00:00", SwingConstants.CENTER);
+	private StartListener startEvent = new StartListener();
+	private StopListener stopEvent = new StopListener();
+	private ResetListener resetEvent = new ResetListener();
+	private Timer delay = new Timer(0, startEvent);
+	private DecimalFormat zeros = new DecimalFormat("00.00");
+	private DecimalFormat minuteFormat = new DecimalFormat("00");
+	private long begin, minGenerate, referenceTime;
+	private double time;
+	
+	/** constructor method */
+	public StopWatchPanel2(){
+		// set initial delay
+		delay.setInitialDelay(0);
+		
+		// display panel settings
+		displayPanel.setPreferredSize(new Dimension(300, 100));
+		
+		// add component listeners
+		startButton.addActionListener(startEvent);
+		stopButton.addActionListener(stopEvent);
+		resetButton.addActionListener(resetEvent);
+		
+		// component settings
+		display.setFont(new Font("Serif", Font.BOLD, 45));
+		display.setPreferredSize(new Dimension(300, 50));
+		
+		// add components
+		displayPanel.add(display);
+		displayPanel.add(startButton);
+		displayPanel.add(stopButton);
+		displayPanel.add(resetButton);
+		
+		// add to main panel
+		add(displayPanel);
+	} // constructor ends
+	
+	/** class listener checks for action events */
+	private class StartListener implements ActionListener{
+		
+		/** method that starts records initiation time */
+		private void startTime(){
+			begin = System.nanoTime();
+		} // method ends
+		
+		/** method that keeps track of elapsed (current process) time */
+		private double elapsedTime(){
+			minGenerate = (referenceTime - begin)/1000000000;
+			System.out.println(minGenerate);
+			time = (System.nanoTime() - begin)/1000000000.00;
+			
+			// return current time in doubles
+			return time;
+		} // method ends
+		
+		/** action performed method automatically called */
+		public void actionPerformed(ActionEvent e){
+			if(e.getSource().equals(startButton)){
+				delay.start();
+				startTime();
+				referenceTime = System.nanoTime();
+			}
+			
+			if(e.getSource().equals(delay)){
+				display.setText(minuteFormat.format(minGenerate)+":"+
+						zeros.format(elapsedTime()).replace(".", ":"));
+				if(59.99<elapsedTime() && elapsedTime()<60.00){
+					startTime();
+				}
+			}
+		} // method ends
+	} // class startListener ends
+	
+	/** stop action event listener class */
+	private class StopListener implements ActionListener{
+		public void actionPerformed(ActionEvent e){
+			delay.stop();
+		}
+	} // class ends
+	
+	/** reset action event listener class */
+	private class ResetListener implements ActionListener{
+		public void actionPerformed(ActionEvent e){
+			delay.stop();
+			time = 0;
+			minGenerate = 0;
+			display.setText("00:00:00");
+		}
+	} // class ends
+} // fin.

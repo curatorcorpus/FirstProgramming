@@ -1,0 +1,34 @@
+/**Lab 4 COMP160 2015
+ * Starting code*/
+
+import java.util.Scanner;
+public class FahrenheitToCelsius{
+	/** main method */
+  public static void main(String[]args){
+    convertFToC();
+    convertFToC();
+    convertFToC();
+    // ends
+  }
+
+  /**gets input from user representing fahrenheit and displays celsius equivalent*/
+  public static void convertFToC(){
+	// scanner object constrc/instnt
+    Scanner scan = new Scanner(System.in);
+    System.out.println("Enter Fahrenheit temperature");
+    double fahrenheit = scan.nextDouble();
+    System.out.println(fahrenheit + " degrees Fahrenheit is "
+    					+ toCelsius(fahrenheit) + " degrees Celsius"); //Step 4
+    
+  }
+
+
+  /**calculates and returns the celsius equivalent of a double input parameter called fahrenheit*/
+  public static double toCelsius(double fahr){
+    int BASE = 32;
+    double CONVERSION_FACTOR = 9.0/ 5.0, celsius;
+    //Step 3
+    celsius = (fahr - BASE)/CONVERSION_FACTOR;
+    return celsius;
+  }
+}

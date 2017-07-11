@@ -1,0 +1,14 @@
+package Sample2;
+
+import javax.swing.*;
+import java.awt.*;
+
+public class Practice extends JPanel{
+    
+    public void paint(Graphics g){
+	int top = 50, left = 50, width = 10, height = 200;
+    }
+    
+    public static void main(String[] args){
+    }
+}

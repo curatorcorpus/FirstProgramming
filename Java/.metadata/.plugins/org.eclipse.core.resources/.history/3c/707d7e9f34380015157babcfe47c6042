@@ -1,0 +1,19 @@
+package StopWatch;
+import javax.swing.*;
+
+public class StopWatchApp {
+	protected long now = System.currentTimeMillis();
+	protected long estimate;
+	/** main method */
+	public static void main(String args[]){
+		// instantiate JFrame 
+		JFrame frame = new JFrame("Stop Watch");
+		
+		// frame settings 
+		frame.setLocation(500, 200);
+		frame.setContentPane(new StopWatchPanel());
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.pack();
+		frame.setVisible(true);
+	}
+}

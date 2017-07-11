@@ -1,0 +1,9 @@
+
+public class AlarmApp {
+	/** main method */
+	public static void main(String args[]){
+		while(true){
+			System.out.println(System.nanoTime();)
+		}
+	}
+}

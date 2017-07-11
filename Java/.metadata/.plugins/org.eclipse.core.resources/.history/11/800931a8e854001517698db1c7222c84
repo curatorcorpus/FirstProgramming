@@ -1,0 +1,32 @@
+package Books;
+
+public class TextBooks extends Books{
+    // data field specific for textbooks
+    private String category;
+    private int edition;
+    
+    // constructor method
+    public TextBooks(String textType, String category, String title, String author,
+	    	String publisher, String publicationDate, int pageNum, int edition){
+	super(textType, title, author, publisher, publicationDate, pageNum);
+	this.category = category;
+	this.edition = edition;
+    } // constructor ends
+    
+    // manually set category of textbook
+    public void setCategory(String category){
+	this.category = category;
+    } // method end
+    
+    // returns category of textbook as a string
+    public String getCategory(){
+	return category;
+    } // method ends
+    
+    // method manually sets edition of textbook
+    public void setEdition(int edition){
+	this.edition = edition;
+    } // method ends
+    
+}
+

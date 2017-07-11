@@ -1,0 +1,5 @@
+import java.lang.Math;
+import java.util.Scanner;
+public class PP43EvenSums {
+
+}

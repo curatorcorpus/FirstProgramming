@@ -1,0 +1,13 @@
+package Hospital;
+
+public class Nurse extends Hospital{
+	protected String profession;
+	
+	public Nurse(String field){
+		super(field);
+	}
+	
+	public String getProfession(){
+		return "This is a " + profession + " nurse.";
+	}
+}

@@ -1,0 +1,49 @@
+/**
+ * AnagramApp
+ * 
+ * Lab 13 Repetition 2
+ * 
+ * COMP 160 July 17th 2015
+ * 
+ * @author Jung Woo Park
+ *
+ * class that arranges characters used in alphabetical order
+ * 
+ */
+import java.util.Scanner;
+
+public class AnagramApp {
+	/** main method */
+	public static void main(String args[]){
+		// variable declaration
+		String firstPhrase, secondPhrase;
+		
+		// scanner object instantiation
+		Scanner input = new Scanner(System.in);
+		
+		// user input 1
+		System.out.println("Enter first phrase: ");
+		firstPhrase = input.nextLine();
+		
+		// anagram object word1 instantiation
+		Anagram word1 = new Anagram(firstPhrase);
+						
+		// user input 2
+		System.out.println("Enter second phrase: ");
+		secondPhrase = input.nextLine();
+		
+		// anagram object word2 instantiation
+		Anagram word2 = new Anagram(secondPhrase);
+		
+		// compare two strings
+		if (word1.alphabetical().equals(word2.alphabetical())){
+			System.out.println(word1.alphabetical() + " are the letters of " 
+												+ firstPhrase + " in order");
+			System.out.println(word2.alphabetical() + " are the letters of " 
+												+ secondPhrase + " in order");
+		}
+		else {
+			
+		}
+	}
+}

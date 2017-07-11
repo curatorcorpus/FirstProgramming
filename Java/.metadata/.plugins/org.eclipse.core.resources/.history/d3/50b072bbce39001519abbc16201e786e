@@ -1,0 +1,8 @@
+package Coin;
+
+public class MonetaryCoinApp {
+	/** main method */
+	public static void main(String args[]){
+		
+	}
+}

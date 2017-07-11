@@ -1,0 +1,294 @@
+import bsns106Lectures.*;
+
+import java.awt.*;
+import javax.swing.*;
+import java.awt.event.*;
+
+public class BSBS106Paper extends JPanel{
+    // data field of paper name
+    private String paperName;
+    
+    // data field lecture buttons
+    private JButton lecture1 = new JButton("Lecture 1");
+    private JButton lecture2 = new JButton("Lecture 2");
+    private JButton lecture3 = new JButton("Lecture 3");
+    private JButton lecture4 = new JButton("Lecture 4");
+    private JButton lecture5 = new JButton("Lecture 5");
+    private JButton lecture6 = new JButton("Lecture 6");
+    private JButton lecture7 = new JButton("Lecture 7");
+    private JButton lecture8 = new JButton("Lecture 8");
+    private JButton lecture9 = new JButton("Lecture 9");
+    private JButton lecture10 = new JButton("Lecture 10");
+    private JButton lecture11 = new JButton("Lecture 11");
+    private JButton lecture12 = new JButton("Lecture 12");
+    private JButton lecture13 = new JButton("Lecture 13");
+    private JButton lecture14 = new JButton("Lecture 14");
+    private JButton lecture15 = new JButton("Lecture 15");
+    private JButton lecture16 = new JButton("Lecture 16");
+    private JButton lecture17 = new JButton("Lecture 17");
+    private JButton lecture18 = new JButton("Lecture 18");
+    private JButton lecture19 = new JButton("Lecture 19");
+    private JButton lecture20 = new JButton("Lecture 20");
+    private JButton lecture21 = new JButton("Lecture 21");
+    private JButton lecture22 = new JButton("Lecture 22");
+    private JButton lecture23 = new JButton("Lecture 23");
+    private JButton lecture24 = new JButton("Lecture 24");
+    private JButton lecture25 = new JButton("Lecture 25");
+    
+    private JButton[] lectures = {lecture1,lecture2,lecture3,lecture4,lecture5,lecture6,
+	    			lecture7,lecture8,lecture9,lecture10,lecture11,lecture12,
+	    			lecture13,lecture14,lecture15,lecture16,lecture17,lecture18,
+	    			lecture19,lecture20,lecture21,lecture22,lecture23,lecture24,
+	    			lecture25};
+    
+    // create components
+    private JLabel note = new JLabel("Note: Each of these windows cannot be resized");
+    
+    // data field listener object
+    private Listener listen = new Listener();
+    
+    /** constructor method */
+    public BSBS106Paper(String name){
+	name = paperName;
+	
+	setPreferredSize(new Dimension(300, 320));
+	
+	// add listeners 
+	for(JButton eachLecture : lectures){
+	    eachLecture.addActionListener(listen);
+	}
+	
+	// add components
+	add(note);
+	for(JButton eachLecture : lectures){
+	    add(eachLecture);
+	}
+    }
+    
+    /** listener class */
+    private class Listener implements ActionListener{
+	/** method that creates new window */
+	public void createWindow(Component lecture, String lectureName){
+	    	JFrame lectureWindow = new JFrame(lectureName);
+		
+		// lecture window settings
+		lectureWindow.getContentPane().add(lecture);
+		lectureWindow.pack();
+		lectureWindow.setResizable(false);
+		lectureWindow.setLocation(800, 400);
+		lectureWindow.setVisible(true);
+	} // method ends
+	
+	public void actionPerformed(ActionEvent e){
+	    if(e.getSource() == lecture1){
+		createWindow(new Lecture1("Introduction", 1),"Lecture 1");
+	    }
+	    
+	    if(e.getSource() == lecture2){
+		createWindow(new Lecture2("What is ICT?", 2),"Lecture 2");
+	    }
+	    
+	    if(e.getSource() == lecture3){
+		createWindow(new Lecture3("Business Intelligence and Decisions", 3),"Lecture 3");
+	    }
+	    
+	    if(e.getSource() == lecture4){
+		//createWindow(new Lecture4("What is information Science?", 4),"Lecture 3");
+	    }
+	    
+	    if(e.getSource() == lecture5){
+		//lectureWindow.getContentPane().add(new Lectures("Visual Communciation", 5));
+	    }
+	    
+	    if(e.getSource() == lecture6){
+		JFrame lectureWindow = new JFrame("Lecture 6");
+
+		// lecture window settings
+		lectureWindow.getContentPane().add(new Lectures("Written Communication", 6));
+		lectureWindow.pack();
+		lectureWindow.setLocation(800, 400);
+		lectureWindow.setVisible(true);
+	    }
+	    
+	    if(e.getSource() == lecture7){
+		JFrame lectureWindow = new JFrame("Lecture 7");
+
+		// lecture window settings
+		lectureWindow.getContentPane().add(new Lectures("Forms of Written Communication", 7));
+		lectureWindow.pack();
+		lectureWindow.setLocation(800, 400);
+		lectureWindow.setVisible(true);
+	    }
+	    
+	    if(e.getSource() == lecture8){
+		JFrame lectureWindow = new JFrame("Lecture 8");
+
+		// lecture window settings
+		lectureWindow.getContentPane().add(new Lectures("Information Sources and Evidence", 8));
+		lectureWindow.pack();
+		lectureWindow.setLocation(800, 400);
+		lectureWindow.setVisible(true);
+	    }
+	    
+	    if(e.getSource() == lecture9){
+		JFrame lectureWindow = new JFrame("Lecture 9");
+
+		// lecture window settings
+		lectureWindow.getContentPane().add(new Lectures("The Web and Cloud Computing", 9));
+		lectureWindow.pack();
+		lectureWindow.setLocation(800, 400);
+		lectureWindow.setVisible(true);
+	    }
+	    
+	    if(e.getSource() == lecture10){
+		JFrame lectureWindow = new JFrame("Lecture 10");
+
+		// lecture window settings
+		lectureWindow.getContentPane().add(new Lectures("Information Collection", 10));
+		lectureWindow.pack();
+		lectureWindow.setLocation(800, 400);
+		lectureWindow.setVisible(true);
+	    }
+	    
+	    if(e.getSource() == lecture11){
+		JFrame lectureWindow = new JFrame("Lecture 11");
+
+		// lecture window settings
+		lectureWindow.getContentPane().add(new Lectures("Structing Information", 11));
+		lectureWindow.pack();
+		lectureWindow.setLocation(800, 400);
+		lectureWindow.setVisible(true);
+	    }
+	    
+	    if(e.getSource() == lecture12){
+		JFrame lectureWindow = new JFrame("Lecture 12");
+
+		// lecture window settings
+		lectureWindow.getContentPane().add(new Lectures("Database Part 1", 12));
+		lectureWindow.pack();
+		lectureWindow.setLocation(800, 400);
+		lectureWindow.setVisible(true);
+	    }
+	    
+	    if(e.getSource() == lecture13){
+		JFrame lectureWindow = new JFrame("Lecture 13");
+
+		// lecture window settings
+		lectureWindow.getContentPane().add(new Lectures("Database Part 2", 13));
+		lectureWindow.pack();
+		lectureWindow.setLocation(800, 400);
+		lectureWindow.setVisible(true);
+	    }
+	    
+	    if(e.getSource() == lecture14){
+		JFrame lectureWindow = new JFrame("Lecture 14");
+
+		// lecture window settings
+		lectureWindow.getContentPane().add(new Lectures("Information System Development", 14));
+		lectureWindow.pack();
+		lectureWindow.setLocation(800, 400);
+		lectureWindow.setVisible(true);
+	    }
+	    
+	    if(e.getSource() == lecture15){
+		JFrame lectureWindow = new JFrame("Lecture 15 & 16");
+
+		// lecture window settings
+		lectureWindow.getContentPane().add(new Lectures("", 15016));
+		lectureWindow.pack();
+		lectureWindow.setLocation(800, 400);
+		lectureWindow.setVisible(true);
+	    }
+	    
+	    if(e.getSource() == lecture17){
+		JFrame lectureWindow = new JFrame("Lecture 17");
+
+		// lecture window settings
+		lectureWindow.getContentPane().add(new Lectures("Supply chain and Customer Relationship Management", 17));
+		lectureWindow.pack();
+		lectureWindow.setLocation(800, 400);
+		lectureWindow.setVisible(true);
+	    }
+	    
+	    if(e.getSource() == lecture18){
+		JFrame lectureWindow = new JFrame("Lecture 18");
+
+		// lecture window settings
+		lectureWindow.getContentPane().add(new Lectures("Enterprise Systems", 18));
+		lectureWindow.pack();
+		lectureWindow.setLocation(800, 400);
+		lectureWindow.setVisible(true);
+	    }
+	    
+	    if(e.getSource() == lecture19){
+		JFrame lectureWindow = new JFrame("Lecture 19");
+
+		// lecture window settings
+		lectureWindow.getContentPane().add(new Lectures("Decision Support", 19));
+		lectureWindow.pack();
+		lectureWindow.setLocation(800, 400);
+		lectureWindow.setVisible(true);
+	    }
+	    
+	    if(e.getSource() == lecture20){
+		JFrame lectureWindow = new JFrame("Lecture 20");
+
+		// lecture window settings
+		lectureWindow.getContentPane().add(new Lectures("Distributed Information Systems", 20));
+		lectureWindow.pack();
+		lectureWindow.setLocation(800, 400);
+		lectureWindow.setVisible(true);
+	    }
+	    
+	    if(e.getSource() == lecture21){
+		JFrame lectureWindow = new JFrame("Lecture 21");
+
+		// lecture window settings
+		lectureWindow.getContentPane().add(new Lectures("Introduction", 21));
+		lectureWindow.pack();
+		lectureWindow.setLocation(800, 400);
+		lectureWindow.setVisible(true);
+	    }
+	    
+	    if(e.getSource() == lecture22){
+		JFrame lectureWindow = new JFrame("Lecture 22");
+
+		// lecture window settings
+		lectureWindow.getContentPane().add(new Lectures("Introduction", 22));
+		lectureWindow.pack();
+		lectureWindow.setLocation(800, 400);
+		lectureWindow.setVisible(true);
+	    }
+	    
+	    if(e.getSource() == lecture23){
+		JFrame lectureWindow = new JFrame("Lecture 23");
+
+		// lecture window settings
+		lectureWindow.getContentPane().add(new Lectures("Introduction", 23));
+		lectureWindow.pack();
+		lectureWindow.setLocation(800, 400);
+		lectureWindow.setVisible(true);
+	    }
+	    
+	    if(e.getSource() == lecture24){
+		JFrame lectureWindow = new JFrame("Lecture 24");
+
+		// lecture window settings
+		lectureWindow.getContentPane().add(new Lectures("Introduction", 24));
+		lectureWindow.pack();
+		lectureWindow.setLocation(800, 400);
+		lectureWindow.setVisible(true);
+	    }
+	    
+	    if(e.getSource() == lecture25){
+		JFrame lectureWindow = new JFrame("Lecture 25");
+
+		// lecture window settings
+		lectureWindow.getContentPane().add(new Lectures("Introduction", 25));
+		lectureWindow.pack();
+		lectureWindow.setLocation(800, 400);
+		lectureWindow.setVisible(true);
+	    }
+	}
+    }
+}

@@ -1,0 +1,15 @@
+public class Nanotime{
+  public static void main(String args[]){
+    int second = 0;
+    long start, stop, estimate;
+    
+    start = System.nanoTime()/1000000000;
+    
+    while(true){
+    	stop = System.nanoTime()/100000000;
+    	estimate = (stop - start);
+    	second++;
+    	System.out.println(estimate);
+    }
+  }
+}

@@ -1,0 +1,26 @@
+package Coin;
+
+public class Coin {
+	protected final int HEADS = 0; 
+	protected int face;
+	
+	/** constructor method */
+	public Coin(){
+		flip();
+	} // constructor ends
+	
+	/** method to flip a coin */
+	public void flip(){
+		face = (int) (Math.random() * 2);
+	} // method ends
+	
+	/** returns if flipped coin is heads */
+	public boolean isHeads(){
+		return (face == HEADS);
+	} // method ends
+	
+	/** returns string tail or heads */
+	public String toString(){
+		return (face == HEADS) ? "Heads" : "Tails";
+	}
+}

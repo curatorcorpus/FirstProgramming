@@ -1,0 +1,148 @@
+package bsns106Lectures;
+
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+
+public class Lecture20 extends JPanel{
+    // create listener object
+    private Listener listen = new Listener();
+    
+    // create components
+    private JButton back = new JButton("Back");
+    private JButton next = new JButton("Next");
+    private JTextArea textArea = new JTextArea("", 26, 40);
+    private JLabel lectureTitle;
+    private JScrollPane scroll = new JScrollPane(textArea);
+    
+    /** constructor method */
+    public Lecture20(String lectureName, int lectureNum){
+	lectureTitle = new JLabel("Lecture "+lectureNum+": "+lectureName);
+	
+	// main panel settings
+	setPreferredSize(new Dimension(500, 500));
+	
+	// add listener objects
+	back.addActionListener(listen);
+	next.addActionListener(listen);
+	
+	// component settings
+	textArea.setEditable(false);
+	textArea.setText(point1());
+		
+	lectureTitle.setFont(new Font("SansSerif", Font.BOLD,16));
+	
+	// add components
+	add(lectureTitle);
+	add(scroll);
+	add(back);
+	add(next);
+    }
+    
+    /** method that returns main point 1 */
+    private String point1(){
+	return "00. Summary\n\n"+
+		"> [No. 1]: The need for computer networks\n\n"+
+		"> [No. 2]: Three types of infrastructure\n\n"+
+		"> [No. 3]: Four types of architecture of DS\n\n";
+    }	
+    
+    /** method that returns main point 2 */
+    private String point2(){
+	return "01. The need for computers [No. 1]:\n\n"+
+		"> Motivation:\n"+
+		"	- Organisations are spread across multiple locations\n\n"+
+		"	- Computation is spread across different locations\n\n"+
+		"> ";
+    }
+    
+    /** method that returns main point 3 */
+    private String point3(){
+	return "02. Why we need computer networks?\n\n"+
+		"> Finite Resources\n\n"+
+		"> Information processing\n\n"+
+		"> Information sharing (connectivity and communciation)\n\n";
+    }
+    
+    /** method that returns main point 4 */
+    private String point4(){
+	return "03. Types of Infrastructure [No. 2]:\n\n"+
+		"> Centralised\n\n"+
+		"> Decentralised\n\n"+
+		"> Distributed\n\n";
+    }
+    
+    /** method that returns main point 5 */
+    private String point5(){
+	return "04. Layers of Distributed Information Systems [No. 3]:\n\n"+
+		"> Layers:\n"+
+		" 	- Client: users\n\n"+
+		"	- Presentation layer: interface\n\n"+
+		" 	- Application logic: algorithm\n\n"+
+		"	- Resource manager: database\n\n";
+    }
+    
+    /** method that returns main point 6 */
+    private String point6(){
+	return "05. Tiers of Distributed Information Systems [No. 3]:\n\n"+
+		"> 1-Tier:\n"+
+		"	- Legacy systems\n"+
+		"	- Mainframe terminal - contains call processes\n"+
+		"	- Stand-alone desktop application\n"+
+		"	- Central processing: easy to manage, but poor scalability\n\n"+
+		"> 2-Tier:\n"+
+		"	- Data from server\n"+
+		"	- Client presents data - processing at both layers\n"+
+		"	- High network load\n"+
+		"	- Limited scalability\n"+
+		"	- Had another layer that handles network queries from database server\n\n"+
+		"> 3-Tier:\n"+
+		"	- Additional server to handle requests\n"+
+		"	- Client presents data\n"+
+		"	- Application logic shared via web\n"+
+		" 	- Balance load across servers: bottlenecks is still present\n";
+    }
+    
+    private class Listener implements ActionListener{
+	// array of points
+	private String[] mainPoints = {point1(), point2(), point3(), point4(), point5(), point6()};
+	
+	// index
+	private int index = 0;
+	
+	public void actionPerformed(ActionEvent e){
+	    // if back button is pressed then move back to previous point
+	    if(e.getSource() == back){
+		// if index is zero then stay zero
+		if(index == 0){
+		    index = 0;
+		}
+		
+		// if index is not zero
+		else{
+		    index--; 
+		}
+		
+		// update text area
+		textArea.setText(mainPoints[index]);
+	    }
+	    
+	    // if forward button is pressed then move forward to next point
+	    if(e.getSource() == next){
+		// if index reached max size of mainpoint array
+		if(index == (mainPoints.length-1)){
+		    index = mainPoints.length-1;
+		}
+		
+		// if index is not max index
+		else{
+		    index++;
+		}
+		
+		// update text area
+		textArea.setText(mainPoints[index]);
+	    }
+	}
+    }
+}

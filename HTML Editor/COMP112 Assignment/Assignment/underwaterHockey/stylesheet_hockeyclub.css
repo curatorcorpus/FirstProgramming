@@ -1,0 +1,503 @@
+/* <!-- Student: Jupark, Filename: stylesheet_hockeyclub.css */
+
+/* color scheme:
+
+black shades: 
+#E8E8E8 
+#A8A8A8 
+
+yellow: 
+FFFFCC
+
+blue hues:
+#A9DAFF
+#CDE6F4
+#9AD3F5
+#79C5FF
+#1097FF
+#004F8B
+#003D6B */
+
+
+html {
+	color: black;
+	background-color: #003D6B;
+	font-size: 80%;
+	font-family: arial, "Roman Times", sans-Serif;
+	text-align: justify;
+	height: 1400px;
+	width: 980px;
+	margin: auto;
+}
+
+body {
+	color: black;
+	background-color: white;
+	height: 1400px;
+	width: 980px;
+	box-shadow: 5px 5px 5px black;
+}
+
+/* header1 settings */
+#header1 h1 {
+	color: white;
+	background-color: transparent;
+	text-align: center;
+	text-shadow: 0 0 5px #FFFFCC;
+	width: 980px;
+	position: absolute;
+	top: 50px;
+}
+/* header1 settings end */
+
+
+/* header2 settings  */
+#page_first_join_us_html {
+	width: 600px;
+}
+
+#page_first_join_us_html h2 {
+	text-align: center;
+	width: 600px;
+	position: absolute;
+	top: 215px;
+}
+
+#page_first_join_us_html p {
+	margin-left: 15px;
+}
+
+#page_first_join_us_html img {
+	margin-top: 20px;
+	margin-left: 20px;;
+	border-radius: 20px;
+	box-shadow: 5px 5px 5px #A8A8A8;
+}
+
+.page_first_header2 {
+	width: 600px;
+}
+
+.page_first_header2 h2 {
+	text-align: center;
+	width: 600px;
+	position: absolute;
+	top: 272px;
+}
+
+.page_first_header2 img {
+	margin-top: 20px;
+	margin-left: 20px;;
+	border-radius: 20px;
+	box-shadow: 5px 5px 5px #A8A8A8;
+}
+
+#header2_second h2 {
+	text-align: center;
+	width: 600px;
+	position: absolute;
+	top: 570px;
+}
+
+#header2_second img {
+	box-shadow: 5px 5px 5px #A8A8A8;
+	margin-left: 20px;
+	border-radius: 20px;
+}
+
+#page2_header2 h2 {
+	text-align: center;
+	width: 600px;
+	position: absolute;
+	top: 225px;
+}
+
+#page2_header2 img {
+	margin-top: 20px;
+	margin-left: 20px;
+	border-radius: 20px;
+	box-shadow: 5px 5px 5px #A8A8A8;
+}
+/* header setting ends */
+
+
+/* nav menu settings */
+#navigation_bar ul {
+	width: 940px;
+	position: absolute;
+	top: 130px;
+}
+
+#navigation_bar #currentLink img {
+	color: inherit;
+	background-color: white;
+	box-shadow: 0 20px 0 white;
+	border-radius: 10px 10px 0 0; /* top-left,top-right,bot-right,bot-left */
+}
+#navigation_bar li {
+	display: inline-block;
+	width: 164px;
+	margin-right: 20px;
+}
+
+#navigation_bar img {
+	border-radius: 10px;
+}
+
+#navigation_bar a:hover {
+	color: inherit;
+	background-color: #FFFF99;
+	border-radius: 0 0 10px 10px;
+}
+/* nav menu settings ends */
+
+
+/* search_bar settings */
+#search_bar_and_join_us {
+	height: 40px;
+	width: 945px;
+	margin: 20px 0 0 15px;  /* top,right,bot,left */
+}
+
+#search_bar_and_join_us input {
+	font-size: 150%;
+	height: 28px;
+	width: 493px;
+	margin: 0;
+	border: 5px ridge #9AD3F5;
+	padding-left: 5px;
+}
+
+#search_bar_and_join_us button {
+	color: white;
+	background-color: #1097FF;
+	float: left;
+	height: 40px;
+	width: 100px;
+	margin: 0;
+	border: 5px outset #9AD3F5;
+}
+
+#search_bar_and_join_us figure {
+	float: right;
+	margin: 0;
+}
+
+#search_bar_and_join_us a:hover {
+	color: inherit;
+	background-color: #FFFF99;
+	border-radius: 0 0 10px 10px;
+}
+
+/* search_bar settings ending */
+
+
+#right_column {
+	clear:both;
+	width: 290px; 
+	float: right;
+	margin-top: 20px;
+	margin-right: 20px;
+	margin-left: 10px;
+	border: 1px solid #79C5FF;
+	padding: 0 10px;
+}
+
+
+/* news settings */
+#news_heading {
+	width: 290px; 
+	margin-top: 10px;
+}
+
+#news_heading h2 {
+	text-align: center;
+	width: 290px;
+	position: absolute;
+	top: 284px;
+}
+
+#news_heading img {
+	margin-bottom: 10px;
+	border-radius: 20px;
+	box-shadow: 5px 5px 5px #A8A8A8;
+}
+
+#news1 {
+	color: inherit;
+	background-color: #A9DAFF;
+	margin-bottom: 10px;
+	border: 1px solid #1097FF;
+}
+
+#news1 h3 {
+	text-align: center;
+}
+
+#news1 p {
+	text-align: center;
+	margin: 5px 5px;
+}
+
+#news2 {
+	color: inherit;
+	background-color: #A9DAFF;
+	margin-bottom: 10px;
+	border: 1px solid #1097FF;
+}
+
+#news2 h3 {
+	text-align: center;
+}
+
+#news2 p {
+	text-align: center;
+	margin: 5px 5px;
+}
+
+#news3 {
+	color: inherit;
+	background-color: #A9DAFF;
+	margin-bottom: 10px;
+	border: 1px solid #1097FF;
+}
+
+#news3 h3 {
+	text-align: center;
+}
+
+#news3 p {
+	text-align: center;
+	margin: 5px 5px;
+}
+/* news settings ends */
+
+
+/* playing_times_and_venue */
+#playing_times_and_venue {
+	text-align: center;
+	width: 290px;
+	margin: 10px 0;
+	border: 1px solid #1097FF;
+}
+
+#playing_times_and_venue table {
+	border-collapse: collapse;
+}
+
+#playing_times_and_venue th {
+	border: 1px solid #1097FF;
+}
+
+#playing_times_and_venue td {
+	border: 1px solid #1097FF;
+}
+/* playing_times_and_venue ends */
+
+
+/* contact_us setting */
+#contact_us {
+	width: 290px; 
+	text-align: center;
+	margin: 10px 0;
+	border: 1px solid #1097FF;
+}
+
+#contact_us table {
+	border-collapse: collapse;
+}
+
+#contact_us th {
+	border: 1px solid #1097FF;
+}
+
+#contact_us td {
+	border: 1px solid #1097FF;
+}
+/* contact_us settings end */
+
+
+#content1 {
+	width: 620px;
+
+}
+
+#second_paragraph_index_html p {
+	margin-left: 20px;
+}
+
+#index_image {
+	text-align: center;
+	float: left;
+	width: 260px;
+	margin: 20px;
+}
+
+#content2 {
+	width: 620px;
+}
+
+#content2 figure {
+	text-align: center;
+	float: left;
+	width: 260px;
+	margin: 20px;
+}
+
+#how_is_it_played_html_paragraph_one p {
+	margin-left: 20px;
+}
+
+#content3 {
+	width: 620px;
+}
+
+#content3 nav {
+	text-align: center;
+	margin-left: 20px;
+}
+
+#content3 figure {
+	text-align: center;
+	float: left;
+	width: 260px;
+	margin: 20px;
+}
+
+#rules_list {
+	font-size: 120%;
+}
+
+#rules_list li {
+	margin: 20px 0;
+}
+
+#first_equipment_image {
+	float: left;
+}
+
+#content5 {
+	width: 620px;
+}
+
+#content5 p {
+	margin: 20px;
+}
+
+#club_ranking_table {
+	text-align: center;
+	margin: 0 20px;
+}
+
+#club_ranking_table table {
+	width: 600px;
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+#club_ranking_table th {
+	border: 1px solid black;
+	border-collapse: collapse;
+	padding: 20px;
+}
+
+#club_ranking_table td {
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+/* join_us_html_page settings */
+#join_us_page {
+	color: black;
+	background-color: #004F8B;
+	height: 710px;
+	width: 600px;
+	margin-left: 15px;
+	border: 1px solid black;
+}
+
+fieldset {
+	color: inherit;
+	background-color: #A9DAFF;
+	width: 500px;
+	margin: 15px auto; /* top,right,bot,left */
+	border: 5px ridge #1097FF;
+}
+
+legend {
+	color: inherit;
+	background-color: #79C5FF;
+	border: 1px solid #1097FF;
+	border-radius: 8px;
+	padding: 2px;
+}
+
+option {
+	border: 1px solid #1097FF;
+}
+
+#join_us_page div {
+	float: right;
+	width: 302px;
+}
+
+#join_us_page ul {
+	width: 500px;
+}
+
+#join_us_page li {
+	list-style: none;
+}
+
+#contact_details li {
+	width: 480px;
+	margin: 10px;
+}
+
+#contact_details input {
+	float: right;
+	width: 300px;
+	border: 1px solid #1097FF;
+}
+
+#options select {
+	height: 20px;
+	width: 60px;
+	border: 1px solid #1097FF;
+}
+
+#options input {
+	width: 230px;
+}
+
+#comments {
+	width: 540px;
+}
+
+#submission_buttons {
+	width: 550px;
+}
+
+#submission_buttons input {
+	color: inherit;
+	background-color: #E8E8E8  ;
+	float: right;
+	margin-left: 10px;
+	border: 1px outset #1097FF;
+}
+
+textarea {
+	border: 1px solid #1097FF;
+}
+/* join_us_html_page setting ends */
+
+#all_footer {
+	color: white;
+	background-color: #004F8B;
+	text-align: center;
+	height: 100px;
+	width: 980px;
+	position: absolute;
+	top: 1300px;
+	margin-top: 20px;
+}

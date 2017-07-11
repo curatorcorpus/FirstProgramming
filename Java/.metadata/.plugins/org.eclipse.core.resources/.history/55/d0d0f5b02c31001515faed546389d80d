@@ -1,0 +1,84 @@
+/** 
+ * Shape.java
+ * Lab 21 Shapes 1 Building the Structure
+ * COMP160, 23rd July 2015
+ * Jung Woo Park
+ * 
+ * abstract class for all shapes
+ */
+
+package shapes;
+import java.awt.*; // for color and graphics
+import java.util.Random;
+import javax.swing.*;
+
+public abstract class Shape {
+	/** data fields */
+	protected int x;
+	protected int y;
+	protected int width;
+	protected int height;
+	protected Color color;
+	protected int moveX = 1;
+	protected int moveY = 1;
+	
+	// constructor
+	public Shape(){
+		// random instantiation
+		Random generator = new Random();
+		
+		// set data fields
+		width = randomRange(10, 30);
+		height = width;
+		x = generator.nextInt(400-width);
+		y = generator.nextInt(400-height);
+		color = new Color(generator.nextInt(256),
+							generator.nextInt(256), generator.nextInt(256));
+	} // constructor ends
+	
+	/** moves circle shape objects */
+	public void move(){
+		// timer instantiation
+//		timer = new Timer(DELAY);
+		
+		// general motion
+		x += moveX;
+		y += moveY;
+		
+		// collision check if circle reaches right border
+		if(x > (400 - width)){
+			moveX = -moveX;
+		}
+
+		// collision check if circle reaches left border
+		else if(x < 0){
+			moveX = -moveX;
+		}
+		
+		// collision check if circle reaches bottom border
+		if(y > (400 - height)){
+			moveY = -moveY;
+		}
+		
+		// collision check if circle reaches top border
+		else if(y < 0){
+			moveY = -moveY;
+		}
+	}
+	
+	public int showIndex(Graphics index){
+		
+	}
+	
+	// set range method
+	public int randomRange(int low, int high){
+		// random instantiation
+		Random generator = new Random();
+		
+		// return random value
+		return generator.nextInt(high-low+1) + low;
+	} // method ends
+	
+	// display method draws circle
+	public abstract void display(Graphics page); // method ends	
+}

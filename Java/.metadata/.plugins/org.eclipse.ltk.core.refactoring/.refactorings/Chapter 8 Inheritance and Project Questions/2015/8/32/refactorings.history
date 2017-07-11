@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename compilation unit &apos;Hospital.Hosptial.java&apos; to &apos;Hospital.java&apos;&#x0D;&#x0A;- Original project: &apos;Chapter 8 Inheritance and Project Questions&apos;&#x0D;&#x0A;- Original element: &apos;Hospital.Hosptial.java&apos;&#x0D;&#x0A;- Renamed element: &apos;Hospital.Hospital.java&apos;" description="Rename compilation unit &apos;Hosptial.java&apos;" flags="2" id="org.eclipse.jdt.ui.rename.compilationunit" input="/src&lt;Hospital{Hosptial.java" name="Hospital.java" references="false" stamp="1438601630813" version="1.0"/>
+</session>

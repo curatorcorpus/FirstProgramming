@@ -1,0 +1,119 @@
+/** 
+ * ShapePanel.java
+ * Lab 21 Shapes 1 Building the Structure
+ * COMP160, 23rd July 2015
+ * Jung Woo Park
+ * 
+ * class that creates panel to display Shape class
+ * objects, also contains components, events, and 
+ * listener objects
+ */
+package shapes;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class ShapePanel extends JPanel {
+	/** data fields for JPanel Components */
+	// array declaration and instantiation
+	private DrawingPanel drawPanel = new DrawingPanel();
+	private Shape[] shapes = new Shape[20];
+	private JButton addShapeButton = new JButton("Add Shape");
+	private JButton startButton = new JButton("Start");
+	private JButton stopButton = new JButton("Stop");
+	private JTextField showNum = new JTextField(2);
+	private JLabel countLabel = new JLabel("Count");
+	private Timer timer;
+	private int count;
+	private final int DELAY = 0;
+	
+	/** ShapePanel constructor */
+	public ShapePanel(){
+		// JPanel for shapePanel instantiaiton
+		JPanel controlPanel = new JPanel();
+		
+		// event listener instantiation
+		ButtonListener eventListener = new ButtonListener();
+		
+		// assign listeners to buttons
+		addShapeButton.addActionListener(eventListener);
+		startButton.addActionListener(eventListener);
+		stopButton.addActionListener(eventListener);
+
+		// timer instantiation
+		timer = new Timer(DELAY, eventListener);
+		// controlPanel settings and add components
+		controlPanel.setPreferredSize(new Dimension(100, 400));
+		controlPanel.add(startButton);
+		controlPanel.add(stopButton);
+		controlPanel.add(addShapeButton);
+		controlPanel.add(countLabel);
+		controlPanel.add(showNum);
+
+		// add to main Panel (Shape Panel)
+		add(controlPanel);
+		add(drawPanel);
+	}
+	
+	public static void main(String args[]){
+		JFrame frame = new JFrame("Lab 21 Qwerky Objects");
+		
+		frame.setContentPane(new ShapePanel());
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.pack();
+		frame.setVisible(true);
+	}
+	
+	/** drawing panel actually draws the circles */
+	public class DrawingPanel extends JPanel {
+		public DrawingPanel(){
+			setPreferredSize(new Dimension(400, 400)); // set dimensions of drawing panel
+			setBackground(Color.pink);
+		} // constructor ends
+		
+		/** paints all the circles */
+		public void paintComponent(Graphics g){
+			super.paintComponents(g);
+			
+			// access circle object in array
+			for(int index = 0; index < count; index++){
+				shapes[index].display(g);
+			}
+		} // paintComponent method ends
+	}
+	
+	
+	/** action listener class */
+	private class ButtonListener implements ActionListener {
+		/** when button is pressed action listen */
+		public void actionPerformed(ActionEvent e){
+			// if button is pressed and number of objects are below
+			// array limit
+			if(e.getSource().equals(addShapeButton) &&
+								(count < shapes.length)){
+				shapes[count] = new Shape();
+				count++;
+			}
+			
+			if(e.getSource().equals(timer)){
+				for(int index = 0; index < count; index++){
+					shapes[index].move();
+				}
+			}
+			
+			if(e.getSource().equals(startButton)){
+				timer.start();
+			}
+			
+			if(e.getSource().equals(stopButton)){
+				timer.stop();
+			}
+			
+			// set text field
+			showNum.setText(Integer.toString(count));
+			
+			// update panel
+			repaint();
+		}
+	}
+}

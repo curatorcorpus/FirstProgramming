@@ -1,0 +1,10 @@
+package StopWatch;
+import javax.swing.*;
+
+public class StopWatchApp {
+	/** main method */
+	public static void main(String args[]){
+		// instantiate JFrame 
+		JFrame frame = new JFrame("Stop Watch");
+	}
+}

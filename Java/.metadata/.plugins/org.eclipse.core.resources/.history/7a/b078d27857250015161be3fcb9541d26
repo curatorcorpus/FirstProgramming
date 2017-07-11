@@ -1,0 +1,25 @@
+// Noel Park, 8/07/2015 9:46pm
+//GuessNumber.java
+
+import java.util.Scanner;
+
+public class GuessNumber {
+	public static void main(String args[]){
+		// variable declaration
+		int answer;
+		
+		Scanner inputAnswer = new Scanner(System.in);
+		
+		System.out.println("Guess a number between 0 and 10: ");
+		
+		answer = inputAnswer.nextInt();
+		
+		if ((3 < answer < 5) || (5 < answer < 8) ){
+			System.out.println("Man you are so close to getting the number!")
+		}
+		else if (answer.equals(5))
+		else {
+			System.out.println("You are so cold!);
+		}
+	}
+}

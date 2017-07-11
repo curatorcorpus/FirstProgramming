@@ -1,0 +1,33 @@
+import java.io.File;
+
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.swing.*;
+
+public class AlarmApp {
+	/** main method */
+	public static void main(String args[]){
+	    JFrame mainWindow = new JFrame("Alarm App");
+	    
+	    // main window settings
+	    mainWindow.getContentPane().add(new AlarmPanel());
+	    mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	    mainWindow.setLocationRelativeTo(null);
+	    mainWindow.pack();
+	    mainWindow.setVisible(true);
+	    File file = new File("alarmMusic.wav");
+	    Thread t = new Thread(new Runnable() {
+		    public void run(){
+		try{
+		    Clip clip = AudioSystem.getClip();
+		    clip.open(AudioSystem.getAudioInputStream(file));
+		    clip.start();
+		    Thread.sleep(clip.getFrameLength());
+		} catch(Exception error){
+		    System.err.println(error.getMessage());
+		}
+		}    
+	    });
+		t.start();
+	}
+}

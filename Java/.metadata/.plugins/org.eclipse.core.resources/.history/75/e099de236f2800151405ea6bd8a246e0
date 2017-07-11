@@ -1,0 +1,24 @@
+import java.util.Scanner;
+
+public class Question1 {
+	
+	public static void main(String args[]){
+		// variable declaration
+		double x1, y1, x2, y2;
+		
+		// object instantiation
+		Scanner input = new Scanner(System.in);
+		
+		// ask for coordinates
+		System.out.println("x1: ");
+		x1 = input.nextDouble();
+		
+		System.out.println("y1: ");
+		y1 = input.nextDouble();
+		
+		System.out.println("x2: ");
+		x2 = input.nextDouble();
+		
+		System.out.println("y2: :);
+	}
+}

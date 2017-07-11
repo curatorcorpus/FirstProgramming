@@ -1,0 +1,21 @@
+import java.util.Scanner;
+
+public class GradeReport {
+	public static void main(String args[]){
+		// variable declaration
+		int grade, category;
+		
+		// new object instantiation
+		Scanner scan = new Scanner(System.in);
+		
+		// grade input
+		System.out.println("Enter a numeric grade (0 to 100): ");
+		
+		grade = scan.nextInt();
+		
+		// switch boolean data
+		category = grade/10;
+		
+		System.out.println("That grade is ")
+	}
+}

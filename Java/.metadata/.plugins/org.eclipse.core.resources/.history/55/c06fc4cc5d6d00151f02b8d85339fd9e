@@ -1,0 +1,51 @@
+import javax.swing.*;
+import java.awt.*;
+import java.util.Random;
+import java.util.ArrayList;
+
+public class QuickSortApp {
+    public static void main(String[] args){
+	int[] unordered = {5,1,4,3,2,9,10,8,7,6};
+	System.out.println(leftMatchingIndex(unordered, 5, 0));
+    }
+    
+    public static ArrayList partition(int[] array, int pivot){
+	ArrayList<Integer> ordered = new ArrayList<Integer>();
+	int pivotNum = medianFinder(array);
+	ordered.add(pivotNum);
+	
+	return ordered;
+    }
+    public static int leftMatchingIndex(int[] array, int pivot, int startingIndex){
+	int index = startingIndex;
+	int leftMatchingIndex = 0;
+	boolean match = false;
+	while(match){
+	    if(array[index] <= pivot){
+		leftMatchingIndex =  array[index];
+	    }
+	    index++;
+	}
+	return leftMatchingIndex;
+	
+    }
+    
+    public static int medianFinder(int[] array){
+	int maxNum = 0;
+	int minNum = array[0];
+	for(int num : array){
+	    if(num > maxNum){
+		maxNum = num;
+	    }
+	    
+	    else if(num < minNum){
+		minNum = num;
+	    }
+	}
+	
+	return (maxNum + minNum) / 2;
+    }
+    public static void swap(){
+	
+    }
+}

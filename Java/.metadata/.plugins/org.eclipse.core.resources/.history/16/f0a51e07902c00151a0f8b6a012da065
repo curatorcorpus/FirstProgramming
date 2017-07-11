@@ -1,0 +1,6 @@
+import javaw.swing.*;
+import java.awt.*;
+
+public class TablePanel extends JPanel {
+	
+}

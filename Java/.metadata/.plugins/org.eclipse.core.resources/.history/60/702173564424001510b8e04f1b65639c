@@ -1,0 +1,9 @@
+
+public class primitiveOperators {
+	public static void main(String args[]){
+		int girls, boys, people;
+		boys = 100;
+		girls = 150;
+		people = boys + girls;
+	}
+}

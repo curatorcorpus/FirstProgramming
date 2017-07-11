@@ -1,0 +1,11 @@
+package Hospital;
+
+public class Doctor extends Hospital{
+	public Doctor(String occupation){
+		super.profession = occupation;
+	}
+	
+	public String getProfession(){
+		
+	}
+}

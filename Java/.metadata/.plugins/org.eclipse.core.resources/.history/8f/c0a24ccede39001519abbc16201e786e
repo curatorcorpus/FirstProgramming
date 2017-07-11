@@ -1,0 +1,16 @@
+package catchme;
+import javax.swing.*;
+
+public class MonsterApp extends JFrame{
+	/** main method */
+	public static void main(String arg[]){
+		// instantiation of jframe
+		JFrame frame = new JFrame("Catch The Monster Game");
+		
+		// jframe settings
+		frame.setPaneContent().add(new GamePanel());
+		frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
+		frame.pack();
+		frame.setVisible(true);
+	}
+}

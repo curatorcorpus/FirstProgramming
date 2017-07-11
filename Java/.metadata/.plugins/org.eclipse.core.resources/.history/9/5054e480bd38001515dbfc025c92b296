@@ -1,0 +1,11 @@
+
+public class Testing {
+	public static void main(String args[]){
+		boolean b;
+		int i = 10;
+		
+		b = (i>90||i<50);
+		
+		System.out.println(b);
+	}
+}

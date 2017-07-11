@@ -1,0 +1,43 @@
+import java.util.Scanner;
+
+public class PP45EvensOddsZeros {
+	
+	public static void main(String args[]){
+		// variable declaration
+		char numbers;
+		int count = 0, evens = 0, odds = 0, zeros = 0;
+		int num;
+		String inputValue;  
+		
+		// scanner instantiation
+		Scanner input = new Scanner(System.in);
+		
+		// input
+		System.out.println("Enter an integer that I can process: ");
+		inputValue = input.nextLine();
+	
+		// find evens, odds, and zeros
+		while (count < inputValue.length()) {
+			// conditions
+			numbers = inputValue.charAt(count);
+			num = Character.getNumericValue(numbers);
+			if ((num != 0) && (num%2 == 0))
+				evens += 1;
+			
+			else if (num == 0)
+				zeros += 1;
+			
+			else
+				odds += 1;
+			
+			count++;
+		}
+		
+		// results
+		System.out.println("Number of zeros: " + zeros);
+		System.out.println("Number of odds: " + odds);
+		System.out.println("Number of evens: " + evens);
+		
+		input.close();
+	}
+}

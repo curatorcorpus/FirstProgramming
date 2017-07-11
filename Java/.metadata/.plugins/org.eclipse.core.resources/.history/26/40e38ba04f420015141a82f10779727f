@@ -1,0 +1,16 @@
+package Main;
+import javax.swing.*;
+import java.awt.*;
+
+public class Main {
+    public static void main(String[] args) {
+	for(int i = 0; i< 10; i++){
+	    for(int index = 0; index < 10; index++)
+	    if(i == 0){
+		continue;
+	    }
+	System.out.println(i);
+	}
+    }
+
+}

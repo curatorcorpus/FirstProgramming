@@ -1,0 +1,27 @@
+
+public class MainMethod {
+    public static void main(String[] args){
+	
+    }
+    
+    public class Book{
+	private String title;
+	private int pages;
+	
+	public Book(String title, int pages){
+	    this.title = title;
+	    this.pages = pages;
+	}
+	
+	public Book(){
+	}
+    }
+    
+    public class TextBook extends Book {
+	private double cost;
+	
+	public TextBook(String title, int pages, double cost){
+	    
+	}
+    }
+}

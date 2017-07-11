@@ -1,0 +1,24 @@
+import java.util.Scanner;
+
+public class GuessMyNumber {
+	public static void main(String args[]){
+		// variable declaration
+		int guess;
+		
+		// object instantiation
+		Scanner input = new Scanner(System.in);
+		
+		// input
+		System.out.println("Do you think you can guess my number?" + 
+						"prove me wrong: ");
+		guess = input.nextInt();
+		
+		// conditions
+		if (guess == 5)
+			System.out.println("You a so correct!");
+		
+		else if (guess)
+	}
+	
+	.close();
+}

@@ -1,0 +1,44 @@
+package catchme;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class GamePanel extends JPanel{
+	private JPanel controlPanel = new JPanel();
+	private JPanel gamePanel = new JPanel();
+	private JButton startButton = new JButton("Start");
+	private JButton stopButton = new JButton("Stop");
+	private JButton resetButton = new JButton("Reset");
+	private ButtonListener listener = new ButtonListener();
+	
+	/** constructor method */
+	public GamePanel(){
+		// frame settings
+		controlPanel.setPreferredSize(new Dimension(80, 600));
+		gamePanel.setBackground(Color.black);
+		gamePanel.setPreferredSize(new Dimension(820, 600));
+		
+		// add listeners
+		
+		// add components
+		controlPanel.add(startButton);
+		controlPanel.add(stopButton);
+		controlPanel.add(resetButton);
+		
+		// add to main frame
+		add(controlPanel);
+		add(gamePanel);
+	}
+	
+	public void paintComponent(Graphics g){
+		super.paintComponent(g);
+	}
+	
+	/** action listener class */
+	private class ButtonListener implements ActionListener{
+		public void actionPerformed(ActionEvent e){
+			
+		}
+	}
+}

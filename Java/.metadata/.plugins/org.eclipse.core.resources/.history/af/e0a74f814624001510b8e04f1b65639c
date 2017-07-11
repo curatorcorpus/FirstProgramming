@@ -1,0 +1,15 @@
+
+public class Strings {
+	public static void main(String args[]){
+		String firstName, middleName, lastName;
+		char firstInitial, middleInitial, lastInitial;
+		
+		firstName = "Noel";
+		middleName = "Jung Woo";
+		lastName = "Park";
+		
+		firstInitial = "N";
+		middleInitial = "J.W";
+		lastInitial = "P";
+	}
+}

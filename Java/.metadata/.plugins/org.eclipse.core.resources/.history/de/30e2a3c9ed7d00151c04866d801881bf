@@ -1,0 +1,7 @@
+package Sample2;
+
+private interface Stats{
+    public static int DIMENSIONS = 2;
+    public double getArea();
+    public double getPerimeter();
+}

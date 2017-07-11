@@ -1,0 +1,9 @@
+
+public class Printf {
+	public static void main(String){
+		int id = 1162424;
+		String name = "Jung Woo Park";
+		
+		System.out.printf("ID: %5\tName: %s", id, name);
+	}
+}

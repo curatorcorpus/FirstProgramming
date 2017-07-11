@@ -1,0 +1,125 @@
+// import gui library
+import javax.swing.*;
+import javax.swing.event.*;
+import java.awt.*;
+import java.awt.event.*;
+
+// import date libraries
+import java.text.DateFormat;
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.TimeZone;
+import java.util.Calendar;
+
+public class AlarmPanel extends JPanel{
+    // components
+    private JLabel timeDisplay = new JLabel("", SwingConstants.CENTER);
+    private JLabel dateDisplay = new JLabel("", SwingConstants.CENTER);
+    
+    private JTextField setHour = new JTextField(2);
+    private JTextField setMin = new JTextField(2);
+    private JTextField setSec =  new JTextField(2);
+    private JTextField setHourOfDay
+    
+    private JButton setAlarm = new JButton("Set Alarm");
+    private JButton stopAlarm = new JButton("Stop Alarm");
+    
+    
+    // listener
+    private Listener listen = new Listener();
+    
+    private Timer run = new Timer(0, listen);
+    
+    // date and time components
+    private Calendar cal = Calendar.getInstance();
+    
+    private DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+    private DateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
+    
+    private DecimalFormat timeLayout = new DecimalFormat("00");
+    private int fontSize = 20;
+    /** constructor */
+    public AlarmPanel(){
+	JPanel controlPanel = new JPanel();
+	
+	// panel layout
+	
+	
+	// set layout
+	
+	
+	// set size
+	setPreferredSize(new Dimension(300, 300));
+	
+	// component settings 
+	timeDisplay.setFont(new Font("san-serif", Font.PLAIN, fontSize));
+	dateDisplay.setFont(new Font("san-serif", Font.PLAIN, fontSize));
+	
+	// start time
+	run.start();
+
+	// control panel settings
+	controlPanel.setPreferredSize(new Dimension(120, 100));
+	
+	// add components to control panel
+	controlPanel.add(setHour);
+	controlPanel.add(setMin);
+	controlPanel.add(setSec);
+	
+	controlPanel.add(setAlarm);
+	controlPanel.add(stopAlarm);
+	
+	// add to main window
+	add(dateDisplay);
+	add(timeDisplay);
+	add(controlPanel);
+    }
+    
+    private class Listener implements ActionListener{
+	/** method updates current time */
+	public void currentTime(){
+	    // current time components
+	    int seconds = cal.get(Calendar.SECOND);
+	    int minutes = cal.get(Calendar.MINUTE);
+	    int hours = cal.get(Calendar.HOUR_OF_DAY);
+	    String twelveHourClock = "am";
+		
+	    // if time has passed mid day
+	    if(hours > 12){
+		hours -= 12;
+		twelveHourClock = "pm";
+		}
+		
+	    // if time has not passed mid day
+	    else{
+		twelveHourClock = "am";
+	    }
+		
+	    // display current time
+	    timeDisplay.setText(timeLayout.format(hours)+":"+
+				timeLayout.format(minutes)+":"+		
+				timeLayout.format(seconds)+" "+				
+				twelveHourClock);
+		
+	    // update time object
+	    cal = Calendar.getInstance();
+	}
+	
+	public void currentDate(){
+	    dateDisplay.setText(dateFormat.format(cal.getTime()));
+	}
+	
+	public void actionPerformed(ActionEvent e){
+	    // set current time zone
+	    timeFormat.setTimeZone(TimeZone.getTimeZone("NZDT"));
+	    
+	    // keep time running
+	    if(e.getSource() == run){
+
+		// update 
+		currentTime();
+		currentDate();
+	    }
+	}
+    }
+}

@@ -1,0 +1,118 @@
+/** 
+ * Calculator.java
+ * 
+ * Lab 19, COMP160,  2015
+ * 
+ * A calculator class that calculates both negative
+ * and position numbers, is able to do multiple calculations
+ * sequentially 
+ */
+
+
+public class Calculator {  
+  
+  private long currentInput = 0;          //current input
+  private long previousInput;         // previous input
+  private long result;            // result of calculation
+  private String lastOperator = "";  // keeps track of the last operator entered
+  
+  
+  /** New digit entered as integer value i - moves currentInput 1 decimal place to the left and adds i in "one's column" */
+  public void inDigit(long i) {
+	  // if user entered minus at the start
+	  if(currentInput == -1){
+		  currentInput = currentInput * i;
+	  }
+	  
+	  // else proceed normally
+	  else{
+		  currentInput = (currentInput * 10) + i;
+	  }
+  } // method ends
+  
+  
+  /** Operator entered  + - or *   */
+  public void inOperator(String op) {
+	  // when user enters minus at the start
+	  if(previousInput == currentInput){
+		  currentInput = -1;
+		  previousInput = 0;
+		  lastOperator = op;
+	  }
+	  
+	  // if user wants to continue with calculation from answer
+	  else if(result < 0 || result > 0){
+		  previousInput = result;
+		  currentInput = 0;
+		  lastOperator = op;
+		  result = 0;
+	  }
+	  
+	  else if(currentInput < 0 || currentInput > 0 || 
+			  	previousInput < 0 || previousInput > 0){
+		  
+	  }
+	
+	  // else do normal simple calculations
+	  else{
+		  previousInput = currentInput;      // save the new input as previous to get ready for next input
+		  currentInput = 0;
+		  lastOperator = op;  // remember which operator was entered
+	  }
+  	} // method ends
+  
+  
+   /** Equals operation sets result to previousInput + - or * currentInput (depending on lastOperator) */
+  public void inEquals() {
+    if (lastOperator.equals("+")) {
+      result = previousInput + currentInput;
+    } else if (lastOperator.equals("-")) { 
+      result = previousInput - currentInput;
+    } else if (lastOperator.equals("*"))  {
+      result = previousInput * currentInput;
+    } 
+    else if(previousInput == 0){
+    	result = currentInput;
+    }
+  } // method ends
+  
+  /** Clear operation */
+  public void inClear() {
+    currentInput = 0;
+    previousInput = 0;
+    result = 0;
+    lastOperator = "";
+  }  // method ends
+  
+  /** returns the current result */
+  public String getResult() {  
+	lastOperator = "";       // reset last operator to "nothing"
+    return Long.toString(result);  //converts int to String
+  } // method ends
+  
+  /** returns the latest operator value */
+  public String getLastOperator() {
+	  if(currentInput < -1){
+		  return "";
+	  }
+	  else{
+		  return lastOperator;
+	  }
+  } // method ends
+  
+  /** returns the previous input value */
+  public String getPreviousInput() {
+	  if(previousInput == 0){
+		  return "";
+	  }
+	  else{
+		  return Long.toString(previousInput);
+	  }
+  } // method ends
+  
+  /** returns the current input value */
+  public String getCurrentInput() {
+    return Long.toString(currentInput);
+  } // method ends
+  
+}  

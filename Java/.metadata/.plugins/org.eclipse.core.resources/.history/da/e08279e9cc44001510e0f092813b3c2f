@@ -1,0 +1,316 @@
+/**
+ * CreateBoid.java
+ * Started: 11th August 2015, Time: 2329
+ * @author Jung Woo Park
+ * Finished:
+ * 
+ * creates boid objects
+ */
+
+/** import standard java class object libraries */
+import javax.swing.*;
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.Random;
+import java.awt.geom.*; // for 2D Graphics
+
+public class CreateBoid {
+  /** data field stores current position */
+  private double x, y;
+  
+  /** data field stores current center points */
+  private double centerX = 0, centerY = 0;
+  
+  /** data field sets size of boid particles */
+  private final double WIDTH_HEIGHT = 10.0;
+  
+  /** monitor size */
+  private final int monitorX = 1920, monitorY = 1080;
+  
+  /** data field that stores color */
+  private Color color;
+  
+  /** data field stores desired velocity */
+  private double velocity = 5.0;
+  private final double minVelocity = 3.0;
+  private final double maxVelocity = 10.0;
+  
+  /** data field that stores generated angle */
+  private double angle, latestAngle;
+  
+  /** generates random number */
+  private Random randomNumGen = new Random();
+  
+  /** data field that stores direction */
+  private boolean north, south, east, west, nEast, nWest, sEast, sWest;
+  
+  /** check whether to start flocking or not */
+  private boolean flock;
+  
+  /** set true if choosen to be alpha */
+  private boolean alpha = false;
+  
+  /** boid constructor */
+  public CreateBoid(){
+    // pi
+    double pi = Math.PI;
+      
+    // coordinates of boid initial position
+    x = randomNumGen.nextDouble() * monitorX;
+    y = randomNumGen.nextDouble() * monitorY;
+    
+    // center point of boid circle
+    centerX = x + WIDTH_HEIGHT/2.0;
+    centerY = y + WIDTH_HEIGHT/2.0;
+    
+    // generate random angle
+    angle = randomNumGen.nextDouble() * 2 * pi;
+    latestAngle = angle;
+    
+    // check which direction boid object is headed
+    setDirection(angle, pi);
+    
+    // generate random color
+    color = new Color(randomNumGen.nextInt(246)+10,
+	    		randomNumGen.nextInt(246)+10, 
+	    		randomNumGen.nextInt(246)+10);
+    
+  } // constructor ends
+  
+  public void display(Graphics shape){
+    // create 2D graphics instance object
+    Graphics2D boid = (Graphics2D) shape;
+    
+    // set boid color
+    boid.setColor(color);
+    
+    // eliminates aliasing of pixels
+    boid.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+                          RenderingHints.VALUE_ANTIALIAS_ON);
+    // draw boids
+    boid.fill(new Ellipse2D.Double(x, y, WIDTH_HEIGHT, WIDTH_HEIGHT)); // creates boid body
+  } // method ends
+  
+  public void move(boolean flockOrNot){
+//    angle += 0.01;
+	    
+    /** set flock setting */
+    flock = flockOrNot;
+      
+    // move
+    x += velocity * Math.sin(angle);
+    y += velocity * Math.cos(angle);
+    
+    // move center
+    centerX += velocity * Math.sin(angle);
+    centerY += velocity * Math.cos(angle);
+    
+    // if boid reaches left side of the window
+    if(x < -WIDTH_HEIGHT){
+      x = monitorX;
+      centerX = monitorX + WIDTH_HEIGHT/2.0;
+    }
+    
+    // if boid reaches right side of the window
+    if(x > monitorX){
+      x = 0;
+      centerX = -WIDTH_HEIGHT/2.0;
+    }
+    
+    // if boid reaches top side of the window
+    if(y < -WIDTH_HEIGHT){
+      y = monitorY;
+      centerY = monitorY + WIDTH_HEIGHT/2.0;
+    }
+    
+    // if boid reaches bottom side of the window
+    if(y > monitorY){
+      y = 0;
+      centerY = -WIDTH_HEIGHT/2.0;
+    }
+  }
+  
+  /** checks for possible collision threats */
+  public void possibleCollisionThreats(int scanSize, ArrayList<CreateBoid> instancesOfBoid){
+      for(int index = 0; index < scanSize; index++){
+	  // declare local variables for use in distance calculation
+	  double distance;
+	
+	  // if center point to compare has same index
+	  if(centerX == instancesOfBoid.get(index).getCenterPointX()){
+	      continue;
+	  }
+	  
+	  distance = getSeperation(instancesOfBoid.get(index));
+	  
+	  // if flocking behaviour was turned on
+	  if(flock){
+	      double distanceFromAlpha = getDistanceFromAlpha(instancesOfBoid.get(0), instancesOfBoid.get(index));
+	      // catch up to alpha
+	      if(distanceFromAlpha >= WIDTH_HEIGHT*3){
+		  accelerate();
+	      }
+	      
+	      else if(distanceFromAlpha <= WIDTH_HEIGHT*3){
+		  decelerate();
+	      }
+	      
+	      // set same direction as alpha
+	      align(instancesOfBoid.get(0));
+	      
+	      
+	  }
+	  
+	  // if flocking behaviour turned off
+	  else{
+	      // if recently flocking behaviour was turned on
+	      resetAngle();
+		  
+	      // if threat inbound
+	      if(distance <= WIDTH_HEIGHT*4){
+		  decelerate();
+		  swapDirection();
+	      }
+	  
+	      else if(WIDTH_HEIGHT*4 <= distance && distance <= WIDTH_HEIGHT*8){
+		  accelerate();
+	      }
+	  }
+      }
+  } // method ends
+  
+  public void matchAlphaVelocity(){
+      
+  }
+  
+  public double getDistanceFromAlpha(CreateBoid instanceAlpha, CreateBoid instance){
+      double dx, dy;
+      dx = Math.pow((getAlphaTailingCenterX(instanceAlpha)-instance.getCenterPointX()), 2);
+      dy = Math.pow((getAlphaTailingCenterY(instanceAlpha)-instance.getCenterPointY()), 2);
+     
+      return Math.sqrt(dx+dy);
+  }
+  
+  public double getAlphaTailingCenterX(CreateBoid instanceAlpha){
+     return instanceAlpha.getCenterPointX();
+  }
+  
+  public double getAlphaTailingCenterY(CreateBoid instanceAlpha){
+      return instanceAlpha.getCenterPointY();
+  }
+  
+  public void followAlpha(){
+      
+  }
+
+  public double getSeperation(CreateBoid instance){
+      double dx, dy;
+      dx = Math.pow((centerX-instance.getCenterPointX()), 2);
+      dy = Math.pow((centerY-instance.getCenterPointY()), 2);
+     
+      return Math.sqrt(dx+dy);
+  }
+  
+  private void resetAngle(){
+      angle = latestAngle;
+      latestAngle = angle;
+  }
+  
+  /** method that returns angle of instance */
+  public double getAngle(){
+      return angle;
+  } // method ends
+
+  /** sets the angle 0 to 2PI */
+  public void setAngle(double alphaAngle){
+      angle = alphaAngle;
+  }
+  
+  /** method that sets which direction boid object is traveling */
+  private void setDirection(double angle, double pi){
+      if(angle == 0 || angle == pi){
+	  south = true;
+      }
+	    
+      else if(angle == pi/2){
+	  east = true;	
+      }
+	    
+      else if(angle == pi){
+	  north = true;
+      }
+	    
+      else if(angle == 3*pi/2){
+	  west = true;
+      }
+	    
+      else if(0 < angle && angle < pi /2){
+	  sEast = true;
+      }
+	    
+      else if(pi/2 < angle && angle < pi){
+	  nEast = true;
+      }
+	    
+      else if(pi < angle && angle < 3*pi/2){
+	  nWest = true;
+      }
+	    
+      else if(3*pi/2 < angle && angle < 2*pi){
+	  sWest = true;
+      }
+  } // method ends
+  
+  /** returns double value of current center X */
+  private double getCenterPointX(){
+     return centerX;  
+  } // method ends
+ 
+  /** returns double value of current center Y */
+  private double getCenterPointY(){
+     return centerY;
+  } // method ends 
+ 
+  /** method that swaps the angles of between two instances */
+  public void swapDirection(){
+      angle = -angle;
+  }
+  
+  /** method that aligns with nearest object */
+  public void align(CreateBoid instance){
+      setAngle(instance.getAngle());
+  } // method ends
+  
+  /** method that decelerates object instance if about to collide */
+  private void decelerate(){
+      double multiplier = 0.85;
+      
+      // if velocity goes below min velocity
+      if( velocity <= minVelocity){
+	  multiplier = 1;
+	  steerAwayFromThreat();
+      }
+      
+      // decelerate
+      velocity *= multiplier;
+    
+  } // method ends
+  
+  /** method that accelerates object instance if moving away from collision */
+  private void accelerate(){
+      double multiplier = 1.2;
+
+      if(velocity >= maxVelocity){
+	  multiplier = 1;
+      }
+      
+      // accelerate
+      velocity *= multiplier;
+  } // method ends
+  
+  /** method that if threat comes to close, steers away */
+  private void steerAwayFromThreat(){
+      
+  } // method ends
+}
+

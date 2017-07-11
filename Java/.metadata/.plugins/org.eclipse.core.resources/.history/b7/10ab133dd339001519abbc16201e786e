@@ -1,0 +1,4 @@
+package Hospital;
+
+abstract public class Hosptial {
+}

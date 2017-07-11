@@ -1,0 +1,19 @@
+package Sample2;
+
+import javax.swing.*;
+import java.awt.*;
+
+public class Practice extends JPanel{
+    
+    public void paint(Graphics g){
+	int top = 50, left = 50, width = 10, height = 200;
+	
+	for(int i = 1; i <= 4; i++){
+	    g.drawRect(top, left, width, height);
+	    g.drawRect(top+20, left+20, width, height);
+	}
+    }
+    
+    public static void main(String[] args){
+    }
+}

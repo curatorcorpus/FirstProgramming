@@ -1,0 +1,9 @@
+True or False
+True and False
+not(False) and True
+not(False or True)
+not(False and True)
+False or not(True)
+True and True
+True or True
+False or False

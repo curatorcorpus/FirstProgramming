@@ -1,0 +1,175 @@
+/**
+ * CreateBoid.java
+ * Started: 11th August 2015, Time: 2329
+ * @author Jung Woo Park
+ * Finished:
+ * 
+ * creates boid objects
+ */
+
+/** import standard java class object libraries */
+import javax.swing.*;
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.Random;
+import java.awt.geom.*; // for 2D Graphics
+
+public class CreateBoid {
+  /** data field stores current position */
+  private double x, y;
+  
+  /** data field stores current center points */
+  private double centerX = 0, centerY = 0;
+  
+  /** data field sets size of boid particles */
+  private final double WIDTH_HEIGHT = 10.0;
+  
+  /** monitor size */
+  private final int monitorX = 1920, monitorY = 1080;
+  
+  /** data field that stores color */
+  private Color color;
+  
+  /** data field stores desired velocity */
+  private double velocity = 5.0;
+  
+  /** data field that stores generated angle */
+  private double angle;
+  
+  /** generates random number */
+  private Random randomNumGen = new Random();
+  
+  /** data field that stores direction */
+  private boolean north, south, east, west, nEast, nWest, sEast, sWest;
+  
+  /** boid constructor */
+  public CreateBoid(){
+    // pi
+    double pi = Math.PI;
+      
+    // coordinates of boid initial position
+    x = randomNumGen.nextDouble() * monitorX;
+    y = randomNumGen.nextDouble() * monitorY;
+    
+    // center point of boid circle
+    centerX = x + WIDTH_HEIGHT/2.0;
+    centerY = y + WIDTH_HEIGHT/2.0;
+    
+    // generate random angle
+    angle = randomNumGen.nextDouble() * 2 * Math.PI;
+    System.out.println(angle);
+    
+    // check which direction it is headed
+    if(angle == 0 || angle == Math.PI){
+	south = true;
+    }
+    
+    else if(angle == Math.Pi/2)
+    
+    // generate random color
+    color = new Color(randomNumGen.nextInt(246)+10,
+	    		randomNumGen.nextInt(246)+10, 
+	    		randomNumGen.nextInt(246)+10);
+    
+  } // constructor ends
+  
+  public void display(Graphics shape){
+    // create 2D graphics instance object
+    Graphics2D boid = (Graphics2D) shape;
+    
+    // set boid color
+    boid.setColor(color);
+    
+    // eliminates aliasing of pixels
+    boid.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+                          RenderingHints.VALUE_ANTIALIAS_ON);
+    // draw boids
+    boid.fill(new Ellipse2D.Double(x, y, WIDTH_HEIGHT, WIDTH_HEIGHT)); // creates boid body
+  } // method ends
+  
+  public void move(){
+    // move
+    x += velocity * Math.sin(angle);
+    y += velocity * Math.cos(angle);
+    
+    // if boid reaches left side of the window
+    if(x < -WIDTH_HEIGHT){
+      x = monitorX;
+      centerX = monitorX + WIDTH_HEIGHT/2.0;
+    }
+    
+    // if boid reaches right side of the window
+    if(x > monitorX){
+      x = 0;
+      centerX = -WIDTH_HEIGHT/2.0;
+    }
+    
+    // if boid reaches top side of the window
+    if(y < -WIDTH_HEIGHT){
+      y = monitorY;
+      centerY = monitorY + WIDTH_HEIGHT/2.0;
+    }
+    
+    // if boid reaches bottom side of the window
+    if(y > monitorY){
+      y = 0;
+      centerY = -WIDTH_HEIGHT/2.0;
+    }
+  }
+  
+  /** checks for possible collision threats */
+  public void possibleCollisionThreats(int scanSize, ArrayList<CreateBoid> instancesOfBoid){
+      for(int index = 0; index < scanSize; index++){
+	  // declare local variables for use in distance calculation
+	  double dx, dy, distance;
+	 
+	  // if center point to compare has same index
+	  if(centerX == instancesOfBoid.get(index).getCenterPointX()){
+	      continue;
+	  }
+		
+	  dx = Math.pow((centerX-instancesOfBoid.get(index).getCenterPointX()), 2);
+	  dy = Math.pow((centerY-instancesOfBoid.get(index).getCenterPointY()), 2);
+	  distance = Math.sqrt(dx+dy);
+	  
+	  // if threat inbound
+	  if(distance <= (WIDTH_HEIGHT + WIDTH_HEIGHT/2)){
+	      steerAwayFromThreat();
+	  }
+      }
+  } // method ends
+  
+  /** method that aligns with nearest object */
+  public void align(){
+      
+  } // method ends
+  
+  /** returns double value of current center X */
+  private double getCenterPointX(){
+     return centerX;  
+  } // method ends
+ 
+  /** returns double value of current center Y */
+  private double getCenterPointY(){
+     return centerY;
+  } // method ends 
+  
+  /** method that if threat comes to close, steers away */
+  private void steerAwayFromThreat(){
+      
+  } // method ends
+  
+  /** method called if objects have collided */
+  private void collided(){
+      velocity = 0;
+  } // method ends
+  
+  /** method that decelerates object instance if about to collide */
+  private void decelerate(){
+  } // method ends
+  
+  /** method that accelerates object instance if moving away from collision */
+  private void accelerate(){
+  } // method ends
+}
+

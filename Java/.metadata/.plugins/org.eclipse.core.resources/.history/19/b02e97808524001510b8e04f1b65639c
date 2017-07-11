@@ -1,0 +1,8 @@
+
+public class xRounded {
+	public static void main(String args[]){
+		int n = 1610, xrounded;
+		xrounded = n / 100 *100;
+		System.out.println(xrounded);
+	}
+}

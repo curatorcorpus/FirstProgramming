@@ -1,0 +1,127 @@
+/**
+ * CreateBoid.java
+ * Started: 11th August 2015, Time: 2329
+ * @author Jung Woo Park
+ * Finished:
+ * 
+ * creates boid objects
+ */
+
+/** import standard java class object libraries */
+import javax.swing.*;
+import java.awt.*;
+import java.util.Random;
+import java.awt.geom.*; // for 2D Graphics
+
+public class CreateBoid {
+	private double x, y, x1, y1, x2, y2;
+	private final double WIDTH = 10, HEIGHT = 10;
+	private final int monitorX = 1920, monitorY = 1080;
+	private Color color;
+	private double velocity = 10.0;
+	private Random xyGenerator = new Random();
+	private int instances;
+	
+	/** boid constructor */
+	public CreateBoid(int randMoveNum){
+		// for random colors
+	    	Random colorGenerator = new Random();
+	    	
+		// set random movement number
+	    	instances = randMoveNum;
+	    
+		// coordinates of boid initial position
+		x = xyGenerator.nextDouble() * monitorX;
+		y = xyGenerator.nextDouble() * monitorY;
+		
+		// center point of boid circle
+		x1 = x + WIDTH/2;
+		y1 = y + HEIGHT/2;
+		
+		// end point of line
+		x2 = x1;
+		y2 = y - HEIGHT;
+		
+		// generate random color
+		color = new Color(colorGenerator.nextInt(256),
+				colorGenerator.nextInt(256), 
+				colorGenerator.nextInt(256));
+	} // constructor ends
+	
+	public void display(Graphics shape){
+		// create 2D graphics instance object
+		Graphics2D boid = (Graphics2D) shape;
+		
+		// set boid color
+		boid.setColor(color);
+		
+		// eliminates aliasing of pixels
+		boid.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+									RenderingHints.VALUE_ANTIALIAS_ON);
+		// draw boids
+		boid.fill(new Ellipse2D.Double(x, y, WIDTH, HEIGHT)); // creates boid body
+	} // method ends
+	
+	public void move(){
+	    double moveX = velocity;
+	    double moveY = velocity;
+		
+	    // sets different movement
+	    switch(instances){
+	    case 0:
+		x += moveX;	    
+		y += moveY;
+		break;
+	    case 1:
+		x -= moveX;
+		y += moveY;
+		break;
+	    case 2:
+		x -= moveX;
+		y -= moveY;
+		break;
+	    case 3:
+		x += moveX;
+		y -= moveY;
+		break;
+	    case 4:
+		x += moveX * 2;
+		y += moveY;
+		break;
+	    case 5:
+		moveX = 0;
+		x += moveX;
+		y += moveY;
+	    case 6:
+		moveY = 0;
+		x += moveX;
+		y += moveY;
+		break;
+	    case 7:
+		x += moveX * 3;
+		y += moveY * 3;
+		break;
+	    
+	    }
+		
+	    // if boid reaches left side of the window
+	    if(x < 0){
+		x = monitorX + WIDTH;
+	    }
+		
+	    // if boid reaches right side of the window
+	    else if(x > monitorX){
+		x = -WIDTH;
+	    }
+		
+	    // if boid reaches top side of the window
+	    if(y < 0){
+		y = monitorY + HEIGHT;
+	    }
+		
+	    // if boid reaches bottom side of the window
+	    else if(y > monitorY){
+		y = -HEIGHT;
+	    }
+	}
+}

@@ -1,0 +1,23 @@
+
+public class StringMethods {
+	public static void main(String args[]){
+		// variable declaration
+		String phrase = "Change is inevitable";
+		String mutation1, mutation2, mutation3, mutation4;
+		
+		System.out.println("Original Phrase: " + phrase);
+		System.out.println("String Length: " + phrase.length());
+		
+		mutation1 = phrase.concat(", except from vending machines.");
+		mutation2 = phrase.toUpperCase();
+		mutation3 = phrase.replace('E', 'X');
+		mutation4 = phrase.substring(3, 30);
+		
+		System.out.println("M1: " + mutation1);
+		System.out.println("M2: " + mutation2);
+		System.out.println("M3: " + mutation3);
+		System.out.println("M4: " + mutation4);
+		
+		
+	}
+}

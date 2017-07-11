@@ -1,0 +1,20 @@
+package catchme;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class GamePanel {
+	private JPanel controlPanel = new JPanel();
+	private JPanel gamePanel = new JPanel();
+	private JButton startButton = new JButton("Start");
+	private JButton stopButton = new JButton("Stop");
+	private JButton resetButton = new JButton("Reset");
+	
+	/** constructor method */
+	public GamePanel(){
+		// frame settings
+		setSize(900,600);
+		controlPanel.setPreferredSize(new Dimension());
+	}
+}

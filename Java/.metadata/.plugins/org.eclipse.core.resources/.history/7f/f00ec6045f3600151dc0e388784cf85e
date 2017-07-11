@@ -1,0 +1,84 @@
+/**	FahrConverter.java
+ * 
+ * 29th July 2015
+ * @author Jung Woo Park
+ * creates panel for converting temperatures
+ */
+import java.awt.*;
+import javax.swing.*;
+import java.awt.event.*;
+import java.awt.DecimalFormat();
+
+public class FahrConverter extends JPanel {
+	/** Decimal Format data field */
+	DecimalFormat format = new DecimalFormat("0.00");
+	
+	/** instantiation of components */
+	private JPanel appPanel = new JPanel(); // panel 
+	private GridLayout grid = new GridLayout(3,2); // grid layout
+	private JLabel currentFahrTemp = new JLabel("Enter Fahrenheit Temperature");
+	private JLabel tempInCel = new JLabel("Temperature in Celsius: ");
+	private JLabel result = new JLabel("");
+	private JTextField input = new JTextField(5);
+	private JButton convertButton = new JButton("Convert");
+	private JButton quitButton = new JButton("Quit");
+		
+	public FahrConverter(){
+	// JPanel settings
+	appPanel.setPreferredSize(new Dimension(350, 80));
+	appPanel.setLayout(grid);
+	
+	// add listeners to button and key binding event listener
+	convertButton.addActionListener(new ButtonListener());
+	quitButton.addActionListener(new ButtonListener());
+	
+	// add key listeners for buttons
+	input.addKeyListener(new KeyboardListener());
+	
+	// add components to panel
+	appPanel.add(currentFahrTemp);
+	appPanel.add(input);
+	appPanel.add(tempInCel);
+	appPanel.add(result);
+	appPanel.add(convertButton);
+	appPanel.add(quitButton);
+	
+	// add to main panel
+	add(appPanel);
+	}
+	
+	/** method that converts fahr to celc and returns double value */
+	private double convertDouble(String input){
+		return (Double.parseDouble(input) - 32) * 5/9;
+	} // method ends
+	
+	/** class for key event listener */
+	private class KeyboardListener implements KeyListener{
+		public void keyPressed(KeyEvent event){
+			switch (event.getKeyCode()){
+			case KeyEvent.VK_ENTER:
+				result.setText(Double.toString(convertDouble(input.getText())));
+				break;
+				
+			case KeyEvent.VK_ESCAPE:
+				System.exit(0);
+				break;
+			}
+		}
+		public void keyTyped(KeyEvent event){}
+		public void keyReleased(KeyEvent event){}
+	}
+
+	/** class for button action listener */
+	private class ButtonListener implements ActionListener{
+		/** detects event for conversion or quitting program */
+		public void actionPerformed(ActionEvent event){
+			if(event.getSource().equals(convertButton)){
+				String stringVal = input.getText();
+				result.setText(Double.toString(convertDouble(stringVal)));
+			}
+		} // method ends
+	}
+}
+
+

@@ -1,0 +1,38 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class AlarmPanel extends JPanel{
+    // listener
+    private Listener listen = new Listener();
+    
+    private Timer run = new Timer(0, listen);
+    
+    /** constructor */
+    public AlarmPanel(){
+	JLabel timeDisplay = new JLabel();
+	
+	DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+	DateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
+	 
+	//get current date time with Date()
+	Date date = new Date();
+	System.out.println(dateFormat.format(date));
+	
+	// set display
+	timeDisplay.setText(timeFormat.format(date));
+	
+	// start time
+	run.start();
+    }
+    
+    private class Listener implements ActionListener{
+	public void actionPerformed(ActionEvent e){
+	    
+	}
+    }
+}

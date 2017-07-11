@@ -1,0 +1,17 @@
+import java.util.Random;
+
+public class RandomNumber {
+	public static void main(String args[]){
+		// random object instantiated
+		Random generator = new Random();
+		
+		// variable declaration
+		int num1;
+		float num2;
+		
+		num1 = generator.nextInt();
+		System.out.print("A random integer: ");
+		
+		
+	}
+}

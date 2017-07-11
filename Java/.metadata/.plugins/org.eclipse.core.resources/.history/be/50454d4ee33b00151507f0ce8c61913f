@@ -1,0 +1,17 @@
+public class Nanotime{
+  public static void main(String args[]){
+    int seconds = 0, secs, mins, hrs, microsecs;
+    long start, stop, estimate, milsec;
+    
+    start = System.nanoTime();
+    
+    while(true){
+    	stop = System.nanoTime();
+    	microsecs = (stop - start/1000*1000)/1000
+    	milsec = stop - start;
+    	secs = (int)((stop - start/100*100)/100);
+    	seconds++;
+    	System.out.println(microsecs);
+    }
+  }
+}

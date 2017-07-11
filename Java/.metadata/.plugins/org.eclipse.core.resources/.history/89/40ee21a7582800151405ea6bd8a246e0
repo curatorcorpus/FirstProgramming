@@ -1,0 +1,41 @@
+import java.util.Scanner;
+
+public class GradeReport {
+	public static void main(String args[]){
+		// variable declaration
+		int grade, category;
+		
+		// new object instantiation
+		Scanner scan = new Scanner(System.in);
+		
+		// grade input
+		System.out.println("Enter a numeric grade (0 to 100): ");
+		
+		grade = scan.nextInt();
+		
+		// switch boolean data
+		category = grade/10;
+		
+		// result
+		System.out.println("That grade is: ");
+		
+		// cases
+		switch (category){
+			case 10:
+				System.out.println("A perfect score. Well Done.");
+				break;
+			case 9:
+				System.out.println("Well above average. Excellent.");
+				break;
+			case 8:
+				System.out.println("Above average. Nice job.");
+				break;
+			case 7:
+				System.out.println("Below average. Please see the "
+						+ "\n instructor for assitance.");
+				break;
+			default: 
+				System.out.println("Not passing.");
+		}
+	}
+}

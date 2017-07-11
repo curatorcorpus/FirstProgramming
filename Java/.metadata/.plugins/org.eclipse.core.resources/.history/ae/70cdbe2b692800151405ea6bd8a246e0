@@ -1,0 +1,9 @@
+
+public class ForLoop {
+
+	public static void main(String args[]){
+		String s ="Hello World";
+		for (int c = 1; c < 6; c++)
+			System.out.println("Hello World");
+	}
+}

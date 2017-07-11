@@ -1,0 +1,20 @@
+import javax.swing.*;
+import java.awt.*;
+
+
+public class LayeredPanel {
+    public LayeredPanel(){ 
+	JLayeredPane layeredPane = new JLayeredPane();
+	
+	layeredPane.setBounds(0,0,600,400);
+	
+    }
+    
+    
+    private class DrawPanel(){
+	public DrawPanel(){
+	    
+	}
+    }
+    
+}

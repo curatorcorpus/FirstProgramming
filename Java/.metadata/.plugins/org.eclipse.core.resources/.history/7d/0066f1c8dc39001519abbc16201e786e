@@ -1,0 +1,12 @@
+package catchme;
+import javax.swing.*;
+
+public class MonsterApp {
+	/** main method */
+	public static void main(String arg[]){
+		// instantiation of jframe
+		JFrame frame = new JFrame("Catch The Monster Game");
+		
+		
+	}
+}

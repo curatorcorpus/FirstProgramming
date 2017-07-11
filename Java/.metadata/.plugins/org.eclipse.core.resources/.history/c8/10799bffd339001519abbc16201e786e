@@ -1,0 +1,5 @@
+package Hospital;
+
+abstract public class Hospital {
+	protected String profession;
+}

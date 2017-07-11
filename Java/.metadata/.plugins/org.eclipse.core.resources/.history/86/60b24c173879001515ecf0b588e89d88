@@ -1,0 +1,15 @@
+
+public class MainMethod {
+    public static void main(String[] args){
+	
+    }
+    
+    public class Book{
+	private String title;
+	private int pages;
+	
+	public Book(String title, int pages){
+	    
+	}
+    }
+}

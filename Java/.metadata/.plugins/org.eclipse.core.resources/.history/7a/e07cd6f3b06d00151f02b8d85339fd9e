@@ -1,0 +1,16 @@
+import java.util.ArrayList;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.util.Random;
+public class SimpleSortApp {
+    public static void main(String[] args){
+	JFrame mainWindow = new JFrame("Simple Sort App");
+	
+	// main window settings
+	mainWindow.getContentPane().add(new SimpleSortPanel());
+	mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	mainWindow.pack();
+	mainWindow.setVisible(true);
+    }
+}

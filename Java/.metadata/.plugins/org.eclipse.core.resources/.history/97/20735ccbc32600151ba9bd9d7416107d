@@ -1,0 +1,33 @@
+import java.util.Scanner;
+import java.util.Random;
+
+public class PProject1 {
+	
+	public static void main(String args[]){
+		//variable declaration
+		String a, b;
+		int ranNum;
+		
+		// New Objects
+		Scanner inputFirstName = new Scanner(System.in);
+		Scanner inputLastName = new Scanner(System.in);
+		Random rand = new Random();
+		
+		System.out.println("Enter Your First Name: ");
+		a = inputFirstName.nextLine();
+		
+		System.out.println("Enter Your Last Name: ");
+		b = inputLastName.nextLine();
+		
+		ranNum = rand.nextInt(90) + 1;
+		
+		System.out.println(a.charAt(0) + b.substring(0, 3) + ranNum);
+		
+		
+		
+		inputFirstName.close();
+		inputLastName.close();
+		
+	}
+	
+}

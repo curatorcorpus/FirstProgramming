@@ -1,0 +1,14 @@
+
+public class Testing {
+	public static void main(String args[]){
+		MyClass a = new MyClass();
+		System.out.println(a);
+	}
+	
+	public class MyClass{
+		public MyClass(){
+			
+		}
+		
+	}
+}

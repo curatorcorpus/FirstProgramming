@@ -1,0 +1,15 @@
+
+public class Enumerate {
+    enum Flowers {daffodil, rose, tulips, daisy;
+	public String message(){
+	    return " is a flower";
+	}
+    };
+    
+    /** main method */
+    public static void main(String[] args){
+	for(Flowers f : Flowers.values()){
+	    System.out.println(f.message());
+	}
+    }
+}

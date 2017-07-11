@@ -1,0 +1,7 @@
+import javax.swing.*;
+import java.awt.*;
+import javaw.swing.*;
+
+public class TablePanel extends JPanel {
+	private Diner d1 = new Diner(170, 130, "David", 1, Color.)
+}

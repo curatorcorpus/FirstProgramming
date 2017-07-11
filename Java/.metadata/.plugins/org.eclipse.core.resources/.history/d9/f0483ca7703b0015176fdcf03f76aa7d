@@ -1,0 +1,115 @@
+package StopWatch;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+import java.text.DecimalFormat;
+
+public class StopWatchPanel extends JPanel{
+	private JPanel userPanel = new JPanel();
+	private JLabel timeDisplay = new JLabel("00:00:00:00", SwingConstants.CENTER);
+	private JButton startButton = new JButton("Start");
+	private JButton stopButton = new JButton("Stop");
+	private JButton resetButton = new JButton("Reset");
+	private Timer refreshRate = new Timer(0, new ActionListen());
+	private int milliseconds, seconds, minutes, hours;
+	private DecimalFormat format = new DecimalFormat("00");
+	private long start, end;
+
+	public StopWatchPanel(){
+		refreshRate.setInitialDelay(0);
+		
+		// user panel settings
+		userPanel.setPreferredSize(new Dimension(300, 120));
+		userPanel.setBackground(new Color(136, 203, 254));
+		
+		// timer settings
+//		refreshRate.setInitialDelay(0);
+		
+		// add listeners
+		startButton.addActionListener(new ActionListen());
+		stopButton.addActionListener(new ActionListen());
+		resetButton.addActionListener(new ActionListen());
+		
+		// component setting
+		startButton.setBackground(new Color(186, 221, 247));
+		stopButton.setBackground(new Color(186, 221, 247));
+		resetButton.setBackground(new Color(186, 221, 247));
+		
+		timeDisplay.setBackground(Color.white);
+		timeDisplay.setPreferredSize(new Dimension(300, 70));
+		timeDisplay.setFont(new Font("Serif", Font.BOLD , 50));
+		
+		// add components
+		userPanel.add(timeDisplay);
+		userPanel.add(startButton);
+		userPanel.add(stopButton);
+		userPanel.add(resetButton);
+		// add to main frame
+		add(userPanel);
+	}
+	private int milsec(){
+		if(milliseconds > 99){
+			milliseconds = 0;
+			seconds++;
+		}
+		return milliseconds++;
+	}
+	
+	private int sec(){
+		start = System.currentTimeMillis();
+		if(seconds > 59){
+			seconds = 0;
+			minutes++;
+		}
+		return seconds;
+	}
+	
+	private int min(){
+		if(minutes > 59){
+			minutes = 0;
+			hours++;
+		}
+		return minutes;
+	}
+		
+	private int hrs(){
+		if(hours > 23){
+			hours = 0;
+		}
+		return hours;
+	}
+
+	
+	private class ActionListen implements ActionListener{
+		start = System.currentTimeMillis();
+		public void actionPerformed(ActionEvent e){
+			
+			if(e.getSource().equals(startButton)){
+				refreshRate.start();
+			}
+			
+			else if(e.getSource().equals(refreshRate)){
+				timeDisplay.setText(format.format(hrs())+":"
+							+format.format(min())+":"
+							+format.format(sec())+":"
+							+format.format(milsec()));
+				end = System.currentTimeMillis();
+				System.out.println(end - start);
+			}
+			
+			else if(e.getSource().equals(stopButton)){
+				refreshRate.stop();
+
+			}
+			
+			else if(e.getSource().equals(resetButton)){
+				refreshRate.stop();
+				timeDisplay.setText("00:00:00:00");
+				milliseconds = 0;
+				seconds = 0;
+				minutes = 0;
+				hours = 0;
+			}
+		}
+	}
+}

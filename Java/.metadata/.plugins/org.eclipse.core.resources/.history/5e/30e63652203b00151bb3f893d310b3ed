@@ -1,0 +1,13 @@
+public class Nanotime{
+  public static void main(String args[]){
+    int total = 0;
+    long start, stop, estimate;
+    
+    start = System.nanoTime();
+    
+    while(total < 1000){
+      stop = System.nanoTime() - start;
+      if(stop
+    }
+  }
+}

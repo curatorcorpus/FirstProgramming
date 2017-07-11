@@ -1,0 +1,11 @@
+
+public class Recursion {
+	public static void main(String argsp[]){
+		
+	}
+	
+	public static void print(){
+		System.out.println("Hello");
+		print();
+	}
+}

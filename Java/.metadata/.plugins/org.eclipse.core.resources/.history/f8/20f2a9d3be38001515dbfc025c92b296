@@ -1,0 +1,7 @@
+
+public class Testing {
+	public static void main(String args[]){
+		String s = "Catherine";
+		System.out.println(s.substring(3));
+	}
+}

@@ -1,0 +1,18 @@
+import java.lang.Math;
+import java.util.Scanner;
+
+public class PProject2 {
+	
+	public static void main(String args[]){
+		
+		// Scanner object
+		Scanner input = new Scanner(System.in);
+		
+		System.out.println("Enter length of cube 1: ");
+		input.nextInt();
+		
+		System.out.println("Enter length of cube 2: ");
+		input.nextInt();
+		
+	}
+}

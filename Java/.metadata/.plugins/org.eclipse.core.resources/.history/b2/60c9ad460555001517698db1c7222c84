@@ -1,0 +1,106 @@
+package Books;
+
+public class Books {
+    /** general data fields for books */
+    protected String textType;
+    protected String title;
+    protected String author;
+    protected String publisher;
+    protected String dateOfPublication;
+    protected int pageNum;
+    
+    // constructor method
+    public Books(String textType, String title, String author,
+	    	String publisher, String dateOfPublication, int pageNum){
+	this.textType = textType;
+	this.title = title;
+	this.author = author;
+	this.publisher = publisher;
+	this.dateOfPublication = dateOfPublication;
+	this.pageNum = pageNum;
+    } // constructor ends
+    
+    // constructor method
+    public Books(String textType, String title, String publisher, String dateOfPublication,
+	    					int pageNum){
+	this.textType = textType;
+	this.title = title;
+	this.publisher = publisher;
+	this.dateOfPublication = dateOfPublication;
+	this.pageNum = pageNum;l
+    }
+    
+    //MUTATORS================================================================
+    // method manually sets text type
+    public void setTextType(String textType){
+	this.textType = textType;
+    } // method ends
+    
+    //method manually sets title
+    public void setTitle(String title){
+	this.title = title;
+    } // method ends
+    
+    // method manually sets author
+    public void setAuthor(String author){
+	this.author = author;
+    } // method end
+    
+    // method manually sets publisher
+    public void setPublisher(String publisher){
+	this.publisher = publisher;
+    } // method ends
+    
+    // method manually sets date of publication
+    public void setPublicationDate(String date){
+	dateOfPublication = date;
+    } // method ends
+    
+    // method manually sets page numbers
+    public void setPageNum(int num){
+	pageNum = num;
+    } // method ends
+    
+    //ACCESSORS===============================================================
+    // method returns text type as a string
+    public String getTextType(){
+	return textType;
+    } // method ends
+    
+    // method returns title as a string
+    public String getTitle(){
+	return title;
+    } // method ends
+    
+    // method returns author as a string
+    public String getAuthor(){
+	return author;
+    } // method ends
+    
+    // method returns publisher as a string
+    public String getPublisher(){
+	return publisher;
+    } // method ends
+    
+    // method returns publication date as a string
+    public String getPublicationDate(){
+	return dateOfPublication;
+    } // method ends
+    
+    // method returns number of pages as an int
+    public int getPageNum(){
+	return pageNum;
+    } // method ends
+    
+    // method returns output of all data values as a string
+    public String toString(){
+	String newLine = "\n";
+	return "Text Type: " + textType + newLine +
+		"Title: " + title + newLine + 
+		"Author: " + author + newLine + 
+		"Publisher: " + publisher + newLine + 
+		"Publication Date: " + dateOfPublication + newLine + 
+		"Total Page Numbers:  " + pageNum +
+		newLine;
+    }
+}

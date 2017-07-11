@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Student: Jupark, Filename:  join_us.html -->
+	<meta charset=utf-8>
+	<title>Join Us</title>
+	<link rel="stylesheet" type="text/css" href="../stylesheet_hockeyclub.css">
+	<script src="../underwater_hockey_JS.js"></script>
+</head>
+<body>
+	<div id="header1">
+		<h1>Welcome To The Mosgiel Underwater Hockey Club</h1>
+		<img src="../headers/header1_new.jpg" alt="header" width="980" height="190">
+	</div>
+	<nav id="navigation_bar">
+		<ul>
+			<li><a href="../index.html"><img src="../headers/home.jpg" alt="home_button" width="160" height="40"></a>
+			</li>
+			<li><a href="./how_is_it_played.html">
+				<img src="../headers/how_is_it_played.jpg" alt="how_is_it_played_current_button" width="160" height="40">
+			</a>
+		</li>
+		<li><a href="./rules.html"><img src="../headers/rules.jpg" alt="rules_button" width="160" height="40"></a>
+		</li>
+		<li><a href="./equipment.html"><img src="../headers/equipment.jpg" alt="equipment_button" width="160" height="40"></a>
+		</li>
+		<li>
+			<a href="./south_island_league.html"><img src="../headers/south_island_league.jpg" alt="south_island_league_button" width="160" height="40"></a>
+		</li>
+	</ul>
+</nav>
+<div id="right_column">
+	<div id="playing_times_and_venue">
+		<table>
+			<tr>
+				<th colspan="2">Playing Times and Venue</th>
+			</tr>
+			<tr>
+				<th>Day</th>
+				<th>Times:</th>
+			</tr>
+			<tr>
+				<td>Thursday:</td>
+				<td>8pm - 10pm</td>
+			</tr>
+			<tr>
+				<td>Sunday:</td>
+				<td>5:30pm - 7pm(schools/beginners 4:30pm - 5:30pm)</td>
+			</tr>
+		</table>
+	</div>
+	<div id="contact_us">
+		<table>
+			<tr>
+				<th colspan="2">Contact Us</th>
+			</tr>
+			<tr>
+				<td id="contact_us_column" colspan="2">If you have any question about the Mosgiel Underwater Hockey Club, please contact us at:</td>
+			</tr>
+			<tr>
+				<th>Email:</th>
+				<td id="email_column">enquiries@mosgielhockey.co.nz</td>
+			</tr>
+			<tr>
+				<th rowspan="4">Address:</th>
+				<td id="address_row1">1233 Gordon Road</td>
+			</tr>
+			<tr>
+				<td id="address_row2">Mosgiel</td>
+			</tr>
+			<tr>
+				<td id="address_row3">Dunedin</td>
+			</tr>
+			<tr>
+				<td id="address_row4">New Zealand</td>
+			</tr>
+		</table>
+	</div>
+</div>
+<div id="page_first_join_us_html">
+	<h2>Join Us</h2>
+	<img src="../headers/header2.jpg" alt="header" width="600" height="40">
+	<p>Please enter your contact details so we can call you to help you get started.</p>
+</div>
+<form method="get" enctype="application/x-www-form-urlencoded" action="http://web112.otago.ac.nz/112bin/112formslab.cgi" id="join_us_page">
+	<input type="hidden" name="recipient" value="parju458@student.otago.ac.nz">
+	<input type="hidden" name="followup-page" value="http://www.cs.otago.ac.nz/comp112/followup.html">
+	<fieldset id="contact_details">
+		<legend>Contact Details</legend>
+		<ul>
+			<li>
+				<label>First Name:</label>
+				<input type="text" name="Firstname" id="firstname" placeholder="Please enter your first name" required>
+			</li>
+			<li>
+				<label>Last Name:</label>
+				<input type="text" name="Surname" id="surname" placeholder="Please enter your first name" required>
+			</li>
+			<li>
+				<label>Email Address:</label>
+				<input type="text" name="email_address" id="email_address" placeholder="Enter Email: example@host.com" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]">
+			</li>
+			<li>
+				<label>Phone Number(Land Line):</label>
+				<input type="text" name="land_line" id="land_line" 
+			</li>
+			<li>
+				<label>Mobile Phone:</label>
+				<div id="options">
+					<select>
+						<option value="_">---</option>
+						<option value="vodafone(021)">021</option>
+						<option value="2degrees(022)">022</option>
+						<option value="spark(027)">027</option>
+					</select>
+					<input type="text" name="network number" id="network_number" required>
+				</div>
+			</li>
+		</ul>
+	</fieldset>
+	<fieldset>
+		<legend>Experience Level</legend>
+		<ul>
+			<li><input type="radio" name="experience:beginner" value="beginner" id="beginner" <label for="beginner">Beginner</label></li>
+
+			<li><input type="radio" name="experience:intermediate" value="intermediate" id="intermediate" <label for="intermediate">Intermediate</label></li>
+
+			<li><input type="radio" name="experience:advanced" value="advanced" id="advanced" <label for="advanced">Advanced</label></li>
+			
+			<li><input type="radio" name="experience:expert" value="expert" id="expert" ><label for="expert">Expert</label></li>
+		</ul>
+	</fieldset>
+	<fieldset>
+		<legend>Available Play Times:</legend>
+		<ul>
+			<li><input type="checkbox" name="Available Play Times" value="thurs" id="thurs" >
+				<label for="thurs">Thursday (8pm - 10pm)</label></li>
+
+				<li><input type="checkbox" name="Available Play Times" value="sunday_beginners" id="sunday_beginnners" >
+					<label for="sunday_beginnners">Sunday (schools/beginners: 4.30pm - 5.30pm)</label></li>
+
+					<li><input type="checkbox" name="Available Play Times" value="sunday" id="sunday" >
+						<label for="sunday">Sunday (5.30pm - 7pm)</label></li>
+					</ul>
+				</fieldset id="comments">
+				<fieldset>
+					<legend>Comments</legend>
+					<textarea cols="40" rows="4" id="comments" placeholder="Enter Comments" ></textarea>
+				</fieldset>
+				<fieldset id="submission_buttons">
+					<legend>Proceed</legend>
+					<input type="reset" >
+					<input type="submit" >
+				</fieldset>
+			</form>
+			<footer id="all_footer">
+				<p><em>Disclaimer: This website was created for a Univerity project. The content is largely fictional and no services are acutally being offered.
+				</em>
+			</p>
+			<p><em>Last updated on 25th April 2015</em></p>
+			<p><em>Copyright &copy; 2015. All Rights Reserved.</em></p>
+		</footer>
+	</body>
+	</html>

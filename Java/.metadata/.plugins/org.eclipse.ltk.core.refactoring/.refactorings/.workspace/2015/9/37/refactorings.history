@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;Prioritize&apos; to &apos;Priorities&apos;" description="Rename resource &apos;Prioritize&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/Prioritize" name="Priorities" stamp="1441767658878" updateReferences="true"/>
+</session>

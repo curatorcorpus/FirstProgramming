@@ -1,0 +1,11 @@
+import java.util.Scanner;
+
+public class PP44EveryChar {
+
+	public static void main(String args[]) {
+		// variable declaration
+		String s;
+		// scanner object instantiation
+		
+	}
+}

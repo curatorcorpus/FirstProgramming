@@ -1,0 +1,8 @@
+package catchme;
+
+public class MonsterApp {
+	/** main method */
+	public static void main(String arg[]){
+		
+	}
+}

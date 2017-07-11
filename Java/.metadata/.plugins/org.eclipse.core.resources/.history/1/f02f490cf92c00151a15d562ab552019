@@ -1,0 +1,7 @@
+import javax.swing.*;
+import java.awt.*;
+
+public class TablePanel extend JPanel{
+
+	private Diner diner1;
+}

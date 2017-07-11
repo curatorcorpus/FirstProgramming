@@ -1,0 +1,35 @@
+import java.util.*;
+
+public class SelectionSortApp {
+    public static void main(String[] args){
+	int[] ordered = new int[5];
+	
+	Random numGen = new Random();
+	    
+	for(int i = 0; i < 5; i++){
+	    ordered[i] = numGen.nextInt(5);
+	}
+	
+	selectionSort(ordered);
+	
+	for(int i : ordered){
+	    System.out.print(i+" ");
+	}
+    }
+    
+    public static void selectionSort(int[] array){
+	for(int i = 0; i < array.length; i++){
+	    for(int innerIndex = i+1; innerIndex < array.length; innerIndex++){
+		int lowestNum = array[i];
+		if(array[innerIndex] < lowestNum){
+		    lowestNum = array[innerIndex];
+		    System.out.println(lowestNum);
+		}
+	    }
+	}
+    }
+    
+    public static void swap(int[] array){
+	
+    }
+}

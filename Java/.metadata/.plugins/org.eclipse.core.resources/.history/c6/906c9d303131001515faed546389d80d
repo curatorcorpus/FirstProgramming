@@ -1,0 +1,159 @@
+/** 
+ * ShapePanel.java
+ * Lab 21 Shapes 1 Building the Structure
+ * COMP160, 23rd July 2015
+ * Jung Woo Park
+ * 
+ * class that creates panel to display Shape class
+ * objects, also contains components, events, and 
+ * listener objects
+ */
+package shapes;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.util.ArrayList;
+
+public class ShapePanel extends JPanel {
+	/** data fields for JPanel Components */
+	// array declaration and instantiation
+	private DrawingPanel drawPanel = new DrawingPanel();
+	private ArrayList <Shape> shapes = new ArrayList<Shape>();
+	private JButton circle,square,oval,smiley,swirl,start,stop,remove;
+	private JTextField showRemoveIndex = new JTextField(2);
+	private JLabel removeLabel = new JLabel("Remove Which?");
+	private Timer timer;
+	private int count;
+	private final int DELAY = 7;
+	
+	/** ShapePanel constructor */
+	public ShapePanel(){
+		// JPanel for shapePanel instantiaton
+		JPanel controlPanel = new JPanel();
+		
+		// controlPanel settings
+		controlPanel.setPreferredSize(new Dimension(100, 400));
+		
+		// JButton instantiation
+		circle = new JButton("Circle");
+		square = new JButton("Square");
+		oval = new JButton("Oval");
+		smiley = new JButton("Smiley");
+		swirl = new JButton("Swirl");
+		start = new JButton("Start");
+		stop = new JButton("Stop");
+		remove = new JButton("Remove");
+		
+		// created into array
+		JButton[] buttons = {circle,square,oval,smiley,swirl,start,stop,remove};
+		
+		// event listener instantiation
+		ButtonListener eventListener = new ButtonListener();
+		
+		// assign listeners to buttons
+		for(JButton jbutton : buttons){
+			jbutton.addActionListener(eventListener);
+			controlPanel.add(jbutton);
+		}
+		
+		// assign labels and textfield
+		controlPanel.add(removeLabel);
+		controlPanel.add(showRemoveIndex);
+
+		// timer instantiation
+		timer = new Timer(DELAY, eventListener);
+
+		// add to main Panel (Shape Panel)
+		add(controlPanel);
+		add(drawPanel);
+	}
+	
+	public static void main(String args[]){
+		JFrame frame = new JFrame("Lab 21 Qwerky Objects");
+		
+		frame.setContentPane(new ShapePanel());
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.pack();
+		frame.setVisible(true);
+	}
+	
+	/** drawing panel actually draws the circles */
+	public class DrawingPanel extends JPanel {
+		public DrawingPanel(){
+			setPreferredSize(new Dimension(400, 400)); // set dimensions of drawing panel
+			setBackground(Color.pink);
+		} // constructor ends
+		
+		/** paints all the circles */
+		public void paintComponent(Graphics g){
+			super.paintComponents(g);
+			
+			// access shape object in array
+			for(int index = 0; index < count; index++){
+				shapes.get(index).display(g);
+				shapes.get(index).showIndex(g, index);
+			}
+		} // paintComponent method ends
+	}
+	
+	
+	/** action listener class */
+	private class ButtonListener implements ActionListener {
+		/** when button is pressed action listen */
+		public void actionPerformed(ActionEvent e){
+			// if button is pressed and number of objects are below
+			// array limit
+			if(e.getSource().equals(start)){
+				timer.start();
+			}
+			
+			if(e.getSource().equals(stop)){
+				timer.stop();
+			}
+			
+			if(e.getSource().equals(timer)){
+				for(int index = 0; index < shapes.size(); index++){
+					shapes.get(index).move();
+				}
+			}
+			
+			else{
+				JButton button = (JButton) e.getSource();
+				
+					if(button.getText().equals("Circle")){
+						shapes.add(new Circle());
+						count++;
+					}
+			
+					if(button.getText().equals("Square")){
+						shapes.add(new Square());
+						count++;
+					}
+					
+					if(button.getText().equals("Oval")){
+						shapes.add(new Oval());
+						count ++;
+					}
+					
+					if(button.getText().equals("Smiley")){
+						shapes.add(new Smiley());
+						count++;
+					}
+					
+					if(button.getText().equals("Swirl")){
+						shapes.add(new Swirl());
+						count ++;
+					}
+					
+					if(button.getText().equals("Remove")){
+						shapes.remove(Integer.parseInt((button.getText())));
+					}
+			}
+			// set text field
+			showRemoveIndex.setText(Integer.toString(shapes.size()-1));
+			
+			// update panel
+			repaint();
+		}
+	}
+}

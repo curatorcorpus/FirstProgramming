@@ -1,0 +1,9 @@
+
+public class Printf {
+	public static void main(String){
+		int id;
+		String;
+		
+		System.out.printf("ID: %5\tName: %s", id, name);
+	}
+}

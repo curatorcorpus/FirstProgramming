@@ -1,0 +1,42 @@
+import java.awt.*; // for color and graphics
+import java.util.Random;
+
+public class Shape {
+	/** data fields */
+	private int x;
+	private int y;
+	private int width;
+	private int height;
+	private Color color;
+	
+	// constructor
+	public Shape(){
+		// random instantiation
+		Random generator = new Random();
+		
+		// set data fields
+		width = generator.nextInt(30-10+1)+10;
+		height = width;
+		x = generator.nextInt(400-width);
+		y = generator.nextInt(400-height);
+		color = new Color(generator.nextInt(256),
+							generator.nextInt(256), generator.nextInt(256));
+	}
+	
+	// set range method
+	public int randomRange(int low, int high){
+		// random instantiation
+		Random generator = new Random();
+		
+		// return random value
+		return generator.nextInt(high-low+1) + low;
+	} // method ends
+	
+	// display method draws circle
+	public void display(Graphics page){
+		page.setColor(color);
+		page.fillOval(x, y, width, height);
+	}
+	
+	
+}

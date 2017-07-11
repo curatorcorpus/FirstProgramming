@@ -1,0 +1,33 @@
+import java.util.Scanner;
+import java.util.Random;
+
+public class GuessMyNumber {
+	public static void main(String args[]){
+		// variable declaration
+		int guess, answer;
+		
+		// object instantiation
+		Random randNum = new Random();
+		Scanner input = new Scanner(System.in);
+		
+		// random number generator
+		answer = randNum.nextInt(11);
+		
+		// input
+		System.out.println("Do you think you can guess my number?\n" + 
+						"Prove me wrong: ");
+		guess = input.nextInt();
+		
+		// conditions
+		if (guess == answer)
+			System.out.println("You a so correct!");
+		
+		else if (((2 < guess) && (guess < 5)) || ((5 < guess) && (guess < 10)))
+			System.out.println("You were so close to getting it right!");
+		
+		else
+			System.out.println("GG");
+				
+		input.close();
+	}
+}

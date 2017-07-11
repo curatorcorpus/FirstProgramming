@@ -1,0 +1,25 @@
+/* stylesheet mystyle.css */
+html {
+	color: black;
+	background-color: transparent;
+	font-family: Georgia, Serif;
+}
+table{
+	color: inherit;
+	background-color: inherit;
+	border: 2px solid black;
+	border-collapse: collapse;
+	text-align: center;
+}
+td {
+	color: inherit;
+	background-color: inherit;
+	border: 2px solid black;
+	padding: 5px;
+}
+th {
+	color: inherit;
+	background-color: inherit;
+	border: 2px solid black;
+	padding: 5px;
+}

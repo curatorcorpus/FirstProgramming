@@ -1,0 +1,50 @@
+
+public class MainMethod {
+    public static void main(String[] args){
+	int[] input = {2,1,4,0,3};
+	for(int i : calcRunningTotal(input)){
+	    System.out.print(i+" ");
+	}
+    }
+    
+    public static class Book{
+	protected String title;
+	protected int pages;
+	
+	public Book(String title, int pages){
+	    this.title = title;
+	    this.pages = pages;
+	}
+	
+	public Book(){
+	}
+    }
+    
+    public static class TextBook extends Book {
+	private double cost;
+	
+	public TextBook(String title, int pages, double cost){
+	    super(title, pages);
+	    this.cost = cost;
+	}
+	
+	public void textbookInfo(){
+	    System.out.println("Title: "+title+
+		    		"\nPages: "+pages+
+		    		"\nCost: $"+cost);
+	}
+    }
+    
+    public static int[] calcRunningTotal(int[] input){
+	int[] result = new int[input.length];
+	int currentTotal = 0;
+	
+	for(int i = 0; i < result.length; i++){
+	    currentTotal += input[i];
+	   
+	    result[i] = currentTotal;
+	}
+	
+	return result;
+    }
+}

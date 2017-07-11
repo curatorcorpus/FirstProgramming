@@ -1,0 +1,11 @@
+import java.util.Scanner;
+
+public class PProject1 {
+	
+	public static void main(String args[]){
+		Scanner inputFirstName = new Scanner(System.in);
+		Scanner inputLastName = new Scanner(System.in);
+		
+	}
+	
+}

@@ -1,0 +1,8 @@
+import java.lang.Math;
+
+public class PP46SelfMultiplicationTable {
+
+	public static void main(String args[]){
+		int a = 1, b = 12;
+	}
+}

@@ -1,0 +1,9 @@
+/** COMP160 Lab Lab2 S2 2015 FillRestaurant.java
+ * A restaurant caters for large tour groups and takes bookings 
+ * by the bus and van load each evening. This class stores the booking
+ * data and calculates the number of unallocated seats.
+ */
+
+public class FillRestaurant {
+
+}

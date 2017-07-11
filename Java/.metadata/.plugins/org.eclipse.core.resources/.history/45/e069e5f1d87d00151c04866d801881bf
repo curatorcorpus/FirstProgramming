@@ -1,0 +1,32 @@
+package Sample2;
+
+public class Practice {
+    public static void main(String[] args){
+	boolean b = false;
+	int i = 2;
+	if(i <= 5)
+	    if(i >= 0)
+		b = true;
+	System.out.println(b);
+	
+	b = i <= 5 && i >= 0;
+	System.out.println(b);
+    }
+    
+    public static int maximum(int i, int j, int k){
+	int max = 0;
+	if(i < j && k < j){
+	    max = j;
+	}
+	
+	else if(j < i && k < i){
+	    max = i;
+	}
+	
+	else if(i < k && j < k){
+	    max = k;
+	}
+	
+	return max;
+    }
+}

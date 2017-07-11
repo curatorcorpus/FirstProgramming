@@ -1,0 +1,45 @@
+/**
+ * TablePanel.java
+ * 
+ * Lab 14, COMP160 18th July 2015
+ * 
+ * @author Jung Woo Park
+ *
+ * creates diner objects
+ */
+import javax.swing.*;
+import java.awt.*;
+
+public class TablePanel extends JPanel{ // what is JPanel?
+	/** data fields object variable declaration */
+	private Diner diner1, diner2, diner3, diner4, diner5, diner6;
+	
+	/** diner objects instantiation/construction and 
+	 * graphic background color setting */
+	public TablePanel(){
+		setBackground(Color.lightGray);
+		diner1 = new Diner(115, 40, 1, "David", Color.cyan);
+		diner2 = new Diner(190, 100, 2, "Clare", Color.green);
+		diner3 = new Diner(190, 180, 3, "Michael", Color.cyan);
+		diner4 = new Diner(115, 240, 4, "Metiria", Color.green);
+		diner5 = new Diner(40, 180, 5, "Todd", Color.cyan);
+		diner6 = new Diner(40, 100, 6, "Jacqui", Color.green);
+	} // constructor ends
+	
+	/** paintComponent method 
+	 * draws the objects and creates rectangle */
+	public void paintComponent(Graphics page){
+		super.paintComponent(page); // wtf?
+		// table
+		page.setColor(Color.YELLOW);
+		page.fillRect(100, 100, 80, 130);
+		
+		// diners
+		diner1.draw(page);
+		diner2.draw(page);
+		diner3.draw(page);
+		diner4.draw(page);
+		diner5.draw(page);
+		diner6.draw(page);
+	} //  method ends
+}

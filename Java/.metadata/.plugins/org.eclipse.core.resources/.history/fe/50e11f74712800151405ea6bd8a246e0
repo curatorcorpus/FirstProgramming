@@ -1,0 +1,27 @@
+import java.lang.Math;
+import java.util.Scanner;
+
+public class Q2SAreaOfSphereAndVolume {
+	
+	public static void main(String args[]) {
+		// variable declaration
+		double radius, surfaceArea, volume;
+	
+		// ask for radius input
+		Scanner input = new Scanner(System.in);
+		System.out.println("What is the radius of sphere you " + 
+							"want to calculate: ");
+		radius = input.nextDouble();
+		
+		// surface area
+		surfaceArea = 4 * Math.PI * Math.pow(radius, 2);
+		
+		// volume
+		volume = 4/3 * (Math.pow(radius, 3));
+		
+		System.out.println("Surface Area: " + surfaceArea + "\n" 
+							+ "Volume: " + volume);
+		input.close();
+		
+	}
+}

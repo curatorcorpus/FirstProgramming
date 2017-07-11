@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset=utf-8>
+		<title>myGoogle</title>
+		<style type="text/css">
+		<!-- 
+		img{vertical-align:middle;}
+		-->
+		</style>
+	</head>
+	<body>
+		<form method="get" action="http://www.google.com/search">
+			<p>My own <img src="http://www.google.com/logos/Logo_40wht.gif" alt="Google Logo."> Search Site</p>
+			<p><input type="text" name="q" size="12" maxlength ="255" value=""></p>
+			<p>
+				<input type="submit" name="btnG" value="Go">
+				<input type="reset" value="Reset">
+			</p>
+			<p>
+				HTML
+				<input type="checkbox" name="q" value="html">
+				Web Design
+				<input type="checkbox" name="q" value="web design">
+			</p>
+			<p>
+			<select name="q" size="1">
+				<option>Resources</option>
+				<option>Free</option>
+				<option>Tutorial</option>
+			</select>
+			<p>Please add any additional search terms here:<br>
+				<textarea cols="50" name="q" rows="2"></textarea>
+			</p>
+		</form>
+	</body>
+</html>

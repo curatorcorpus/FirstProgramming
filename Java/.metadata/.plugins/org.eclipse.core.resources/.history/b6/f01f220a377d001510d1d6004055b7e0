@@ -1,0 +1,23 @@
+import javax.swing.*;
+
+public class CounterPanelApp {
+    /** main method */
+    public static void main(String[] args){
+	// main window 
+	JFrame mainWindow = new JFrame("Counter Panel App");
+	
+	// main window settings
+	mainWindow.getContentPane().add(new CounterPanel());
+	mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	mainWindow.pack();
+	mainWindow.setVisible(true);
+	
+	try{
+	    System.out.println("Hello");
+	} 
+	
+	try{
+	    
+	}
+    }
+}

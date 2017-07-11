@@ -1,0 +1,89 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class StyleOptionsPanel extends JPanel{
+   private static JLabel saying;
+   private static JCheckBox bold, italic;
+   private static JRadioButton courier, timesNewRoman, helvetica;
+   private static int style;
+   private static String typeFace;
+
+   //-----------------------------------------------------------------
+   //  Sets up a panel with a label and some check boxes that
+   //  control the style of the label's font.
+   //-----------------------------------------------------------------
+   public StyleOptionsPanel(){
+	  // grid layout instantiation
+	  setLayout(new GridLayout(6, 0));
+	   
+	  // label instantiation
+      saying = new JLabel ("Say it with style!");
+      saying.setFont (new Font (typeFace, style, 20));
+
+      // check box/radio box instantiation
+      bold = new JCheckBox ("Bold");
+      bold.setBackground (Color.cyan);
+      italic = new JCheckBox ("Italic");
+      italic.setBackground (Color.cyan);
+      courier = new JRadioButton("Courier");
+      courier.setBackground(Color.cyan);
+      timesNewRoman = new JRadioButton("Times New Roman");
+      timesNewRoman.setBackground(Color.cyan);
+      helvetica = new JRadioButton("Helvetica");
+      helvetica.setBackground(Color.cyan);
+
+      // add items to listen for events
+      StyleListener listener = new StyleListener();
+      bold.addItemListener(listener);
+      italic.addItemListener(listener);
+      
+      // add items to grid
+      add(saying);
+      add(bold);
+      add(italic);
+      add(courier);
+      add(timesNewRoman);
+      add(helvetica);
+      
+      // set grid
+      setPreferredSize(new Dimension(300, 200));
+      setBackground(Color.cyan);
+      
+   }
+
+   //*****************************************************************
+   //  Represents the listener for both check boxes.
+   //*****************************************************************
+   private class StyleListener implements ItemListener{
+      //--------------------------------------------------------------
+      //  Updates the style of the label font style.
+      //--------------------------------------------------------------
+      public void itemStateChanged (ItemEvent event)
+      {
+         style = Font.PLAIN;
+         typeFace = "Serif";
+
+         if (bold.isSelected()){
+            style = Font.BOLD;
+         }
+         
+         if (italic.isSelected()){
+            style += Font.ITALIC;
+         }
+         
+         if(courier.isSelected()){
+        	 typeFace = "Courier New";
+         }
+         
+         if(timesNewRoman.isSelected()){
+        	 typeFace = "Times New Roman";
+         }
+         
+         if(helvetica.isSelected()){
+        	 typeFace = "Helvetica";
+         }
+         saying.setFont (new Font (typeFace, style, 20));
+      }
+   }
+}

@@ -1,0 +1,14 @@
+
+public class Testing {
+	public static void main(String args[]){
+		long now = System.currentTimeMillis(), end, diff;
+		int i = 0, total = 0;
+		
+		while (i < 1000){
+			total++;
+		}
+		end = System.currentTimeMillis();
+		System.out.println(end - now);
+		System.out.println("hello World");
+	}
+}

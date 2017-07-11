@@ -1,0 +1,100 @@
+// import gui library
+import javax.swing.*;
+import javax.swing.event.*;
+import java.awt.*;
+import java.awt.event.*;
+
+// import date libraries
+import java.text.DateFormat;
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.TimeZone;
+import java.util.Calendar;
+
+public class AlarmPanel extends JPanel{
+    // components
+    private JLabel timeDisplay = new JLabel();
+    private JLabel dateDisplay = new JLabel();
+    private JTextField input = new JTextField();
+    
+    // listener
+    private Listener listen = new Listener();
+    
+    private Timer run = new Timer(0, listen);
+    
+    // date and time components
+    private Calendar cal = Calendar.getInstance();
+    
+    private DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+    private DateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
+    
+    private DecimalFormat timeLayout = new DecimalFormat("00");
+    
+    /** constructor */
+    public AlarmPanel(){
+	// panel layout
+	GridLayout gridLayout = new GridLayout(2,4);
+	
+	// set layout
+	setLayout(gridLayout);
+	
+	// set size
+	setPreferredSize(new Dimension(300, 300));
+	
+	// start time
+	run.start();
+
+	// add to main window
+	add(dateDisplay);
+	add(timeDisplay);
+
+    }
+    
+    private class Listener implements ActionListener{
+	/** method updates current time */
+	public void currentTime(){
+	    // current time components
+	    int seconds = cal.get(Calendar.SECOND);
+	    int minutes = cal.get(Calendar.MINUTE);
+	    int hours = cal.get(Calendar.HOUR_OF_DAY);
+	    String twelveHourClock = "am";
+		
+	    // if time has passed mid day
+	    if(hours > 12){
+		hours -= 12;
+		twelveHourClock = "pm";
+		}
+		
+	    // if time has not passed mid day
+	    else{
+		twelveHourClock = "am";
+	    }
+		
+	    // display current time
+	    timeDisplay.setText(timeLayout.format(hours)+":"+
+				timeLayout.format(minutes)+":"+		
+				timeLayout.format(seconds)+" "+				
+				twelveHourClock);
+		
+	    // update time object
+	    cal = Calendar.getInstance();
+	}
+	
+	public void currentDate(){
+	    dateDisplay.setText(dateFormat.format(cal.getTime()));
+	}
+	
+	public void actionPerformed(ActionEvent e){
+	    // set current time zone
+	    timeFormat.setTimeZone(TimeZone.getTimeZone("NZDT"));
+	    
+	    // keep time running
+	    if(e.getSource() == run){
+		
+		// update 
+		currentTime();
+		currentDate();
+	    }
+	}
+    }
+}

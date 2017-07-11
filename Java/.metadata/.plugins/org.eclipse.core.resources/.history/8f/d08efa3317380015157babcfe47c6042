@@ -1,0 +1,15 @@
+package StopWatch;
+import javax.swing.*;
+
+public class StopWatchApp {
+	/** main method */
+	public static void main(String args[]){
+		// instantiate JFrame 
+		JFrame frame = new JFrame("Stop Watch");
+		
+		// frame settings 
+		frame.setContentPane(new StopWatchPanel());
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.pack();l
+	}
+}

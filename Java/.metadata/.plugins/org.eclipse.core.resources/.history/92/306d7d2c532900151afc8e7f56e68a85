@@ -1,0 +1,66 @@
+/**
+ Pie.java
+ Provided for Part 2, Lab5, COMP160 2015
+ 
+ */
+
+import javax.swing.*;
+import java.awt.*;
+
+public class Pie extends JFrame{
+    
+    /**creates  an instance of Pie called chart1*/
+    public static void main(String[]args){
+        Pie chart1 = new Pie(); 
+        chart1.setSize(300,220);
+        chart1.setVisible(true);
+    }
+    
+    /**all drawing code goes in the paint method, which is called automatically*/
+    public void paint (Graphics page){
+        // variable declaration
+    	final int MIDLINE = 150;
+    	
+    	// graphic name
+    	setTitle("Pie");
+    	
+    	// canvas
+    	page.setColor(Color.white);
+        page.fillRect(0,0,300,220);
+        
+        //your pie chart code starts here\
+        // 1st arc
+        page.setColor(Color.red);
+        page.drawArc(85, 60, 125, 125, 45, 45);
+        page.fillArc(85, 60, 125, 125, 45, 45);
+        
+        // 2nd arc
+        page.setColor(Color.orange);
+        page.drawArc(85, 60, 125, 125, 90, 45);
+        
+        // 3rd arc
+        page.setColor(Color.yellow);
+        page.drawArc(85, 60, 125, 125, 135, 45);
+        
+        // 4th arc
+        page.setColor(Color.cyan);
+        page.drawArc(85, 60, 125, 125, 180, 45);
+        
+        // 5th arc
+        page.setColor(Color.blue);
+        page.drawArc(85, 60, 125, 125, 225, 45);
+        
+        // 6th arc
+        page.setColor(Color.black);
+        page.drawArc(85, 60, 125, 125, 270, 45);
+        
+        // 7th arc
+        page.setColor(Color.black);
+        page.drawArc(85, 60, 125, 125, 315, 45);
+        
+        // translated arc
+        page.setColor(Color.black);
+        page.drawArc(85, 60, 125, 125, 0, 45);
+        
+    }
+}

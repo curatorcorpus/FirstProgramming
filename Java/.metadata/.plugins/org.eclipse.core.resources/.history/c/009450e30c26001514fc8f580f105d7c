@@ -1,0 +1,8 @@
+
+public class EnumeratedClass {
+	public static void main(String args[]){
+		enum Flavor {vanilla, chocolate, strawberry, fudgeRipple, coffee,
+			rockyRoad, mintChocolateChip, cookieDough};
+			
+	}
+}

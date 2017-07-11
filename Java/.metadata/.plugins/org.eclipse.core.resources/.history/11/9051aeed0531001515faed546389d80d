@@ -1,0 +1,89 @@
+/** 
+ * ShapePanel.java
+ * Lab 21 Shapes 1 Building the Structure
+ * COMP160, 23rd July 2015
+ * Jung Woo Park
+ * 
+ * class that creates panel to display Shape class
+ * objects, also contains components, events, and 
+ * listener objects
+ */
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class ShapePanel extends JPanel {
+	/** data fields for JPanel Components */
+	// array declaration and instantiation
+	private DrawPanel drawPanel = new DrawPanel();
+	private Shape[] shapes = new Shape[20];
+	private JButton addShapeButton = new JButton("Add Shape");
+	private JTextField showNum = new JTextField(2);
+	private JLabel countLabel = new JLabel("Count");
+	private int count;
+	
+	/** ShapePanel constructor */
+	public ShapePanel(){
+		JPanel controlPanel = new JPanel();
+		ButtonListener eventListener = new ButtonListener();
+		addShapeButton.addActionListener(eventListener);
+		
+		// controlPanel settings and add components
+		controlPanel.setPreferredSize(new Dimension(100, 400));
+		controlPanel.add(addShapeButton);
+		controlPanel.add(countLabel);
+		controlPanel.add(showNum);
+
+		drawPanel.setBackground(Color.pink);
+		// add to main Panel (Shape Panel)
+		add(controlPanel);
+		add(drawPanel);
+	}
+	
+	public static void main(String args[]){
+		JFrame frame = new JFrame("Lab 21 Qwerky Objects");
+		
+		frame.setContentPane(new ShapePanel());
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.pack();
+		frame.setVisible(true);
+	}
+	
+	/** drawing panel actually draws the circles */
+	public class DrawPanel extends JPanel {
+		public DrawPanel(){
+			setBackground(Color.pink);
+			setPreferredSize(new Dimension(400, 400)); // set dimensions of drawing panel
+		}
+		
+		public void paintComponent(Graphics g){
+			super.paintComponents(g); // ?
+			
+			// access circle object in array
+			for(int index = 0; index < count; index++){
+				shapes[index].display(g);
+			}
+		}
+	}
+	
+	
+	/** action listener class */
+	private class ButtonListener implements ActionListener {
+		/** when button is pressed action listen */
+		public void actionPerformed(ActionEvent e){
+			// if button is pressed and number of objects are below
+			// array limit
+			if(e.getSource().equals(addShapeButton) &&
+								(count < shapes.length)){
+				shapes[count] = new Shape();
+				count++;
+			}
+			
+			// set text field
+			showNum.setText(Integer.toString(count));
+			
+			// update panel
+			repaint();
+		}
+	}
+}

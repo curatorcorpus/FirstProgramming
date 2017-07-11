@@ -1,0 +1,13 @@
+package Hospital;
+
+public class Administration extends Hospital{
+	protected String name;
+	
+	public Administration(String admin){
+		name = admin;
+	}
+	
+	public String getName(){
+		return "The Administrator's name is: " + name;
+	}
+}

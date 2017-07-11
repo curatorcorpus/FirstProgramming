@@ -1,0 +1,20 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class UpdateAccountPanel {
+	/** instantiate panel */
+	private JPanel updateAccountPanel = new JPanel();
+	
+	/** instantiate components */
+	private JLabel accountNumber = new JLabel("Account Number");
+	private JLabel accessNumber = new JLabel("Access Number");
+	
+	public UpdateAccountPanel(){
+	    // panel settings
+	    updateAccountPanel.setPreferredSize(new Dimension(300, 400));
+	    
+	    // add components
+	    updateAccountPanel.add(accountNumber)l
+	}
+}

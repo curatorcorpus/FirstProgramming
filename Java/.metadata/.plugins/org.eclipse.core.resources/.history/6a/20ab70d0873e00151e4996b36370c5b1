@@ -1,0 +1,12 @@
+package arrayStoring;
+
+import java.util.Scanner;
+
+public class ArrayStoring {
+	/** main method */
+	public static void main(String args[]){
+		int[] list = new int[10];
+		
+		
+	}
+}

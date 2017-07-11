@@ -1,0 +1,19 @@
+/** Move.java
+ * 30th July 2015, 1415
+ * @author Jung Woo Park
+ * using key events and key bindings
+ */
+import javax.swing.*;
+
+public class MoveApp {
+	/** main method */
+	public static void main(String args[]){
+		// instantiation of JFrame
+		JFrame frame = new JFrame("I Like to Move it Move it!");
+		
+		frame.getContentPane().add(new MovePanel()); // add jpanel
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // close normally
+		frame.pack();
+		frame.setVisible(true);
+	}
+}

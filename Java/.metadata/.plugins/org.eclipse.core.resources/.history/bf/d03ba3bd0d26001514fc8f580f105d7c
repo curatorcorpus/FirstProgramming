@@ -1,0 +1,21 @@
+
+public class EnumeratedClass {
+	enum Flavor {vanilla, chocolate, strawberry, fudgeRipple, coffee,
+		rockyRoad, mintChocolateChip, cookieDough}
+	public static void main(String args[]){
+		//Creates and uses variables of the Flavor type.
+		Flavor cone1, cone2, cone3;
+		
+		cone1 = Flavor.rockyRoad;
+		cone2 = Flavor.chocolate;
+		
+		System.out.println("Cone1 value: " + cone1);
+		System.out.println("Cone1 Ordinal: " + cone1.ordinal());
+		System.out.println("Cone1 Name: " + cone1.name());
+		
+		System.out.println("Cone2 Value: " + cone2);
+		System.out.println("Cone2 Ordinal: " + cone2.ordinal());
+		System.out.println("Cone2 Name: " + cone2.name());
+		
+	}
+}

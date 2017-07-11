@@ -1,0 +1,15 @@
+import javax.swing.*;
+import java.awt.*;
+
+public class TablePanel extends JPanel {
+	private Diner d1 = new Diner(170, 130, "David", 1, Color.cyan);
+	
+	public void paintComponent(Graphics page){
+		JPanel frame = new JPanel();
+		d1.draw(page);
+		
+		frame.setVisible(true);
+		frame.setSize(300, 300);
+		frame.setBackground(Color.TRANSLUCENT);
+	}
+}

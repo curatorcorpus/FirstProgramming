@@ -1,0 +1,11 @@
+package catchme;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class GamePanel {
+	private JPanel controlPanel = new JPanel();
+	private JPanel gamePanel = new JPanel();
+	private JButton startButton = new JButton("Start");
+}

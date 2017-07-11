@@ -1,0 +1,190 @@
+// import gui library
+import javax.swing.*;
+import javax.swing.event.*;
+import java.awt.*;
+import java.awt.event.*;
+
+// import date library
+import java.text.DateFormat;
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.TimeZone;
+import java.util.Calendar;
+
+// import sound library
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+
+public class AlarmPanel extends JPanel{
+    // combo box values
+    private final String[] hourOfDay = {"am", "pm"};
+    
+    // components
+    private JLabel timeDisplay = new JLabel("", SwingConstants.CENTER);
+    private JLabel dateDisplay = new JLabel("", SwingConstants.CENTER);
+    
+    private JTextField setHour = new JTextField("00", 2);
+    private JTextField setMin = new JTextField("00", 2);
+    private JTextField setSec =  new JTextField("00", 2);
+    
+    private JComboBox setHourOfDay = new JComboBox(hourOfDay);
+    
+    private JButton setAlarm = new JButton("Set Alarm");
+    private JButton stopAlarm = new JButton("Stop Alarm");
+    
+    
+    // listener
+    private Listener listen = new Listener();
+    
+    private Timer run = new Timer(0, listen);
+    
+    // date and time components
+    private Calendar cal = Calendar.getInstance();
+    
+    private DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+    private DateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
+    
+    private DecimalFormat timeLayout = new DecimalFormat("00");
+    private int fontSize = 20;
+    
+    // input time font settings
+    private Font f1 = new Font("SansSerif", Font.PLAIN, 20);
+    
+    /** constructor */
+    public AlarmPanel(){
+	// set current time zone
+	timeFormat.setTimeZone(TimeZone.getTimeZone("NZDT"));
+	
+	JPanel controlPanel = new JPanel();
+	
+	// panel layout
+	
+	
+	// set layout
+	
+	
+	// set size
+	setPreferredSize(new Dimension(300, 300));
+	
+	// component settings 
+	timeDisplay.setFont(new Font("san-serif", Font.PLAIN, fontSize));
+	dateDisplay.setFont(new Font("san-serif", Font.PLAIN, fontSize));
+	
+	setHourOfDay.setEditable(true);
+	setHourOfDay.setPreferredSize(new Dimension(60, 30));
+	setHourOfDay.setFont(f1);
+	
+	setHour.setHorizontalAlignment(SwingConstants.CENTER);
+	setHour.setFont(f1);
+	setMin.setHorizontalAlignment(SwingConstants.CENTER);
+	setMin.setFont(f1);
+	setSec.setHorizontalAlignment(SwingConstants.CENTER);
+	setSec.setFont(f1);
+	
+	// start time
+	run.start();
+
+	// add listeners to component
+	setAlarm.addActionListener(listen);
+	
+	// control panel settings
+	controlPanel.setPreferredSize(new Dimension(200, 150));
+	
+	// add components to control panel
+	controlPanel.add(setHour);
+	controlPanel.add(setMin);
+	controlPanel.add(setSec);
+	controlPanel.add(setHourOfDay);
+	
+	controlPanel.add(setAlarm);
+	controlPanel.add(stopAlarm);
+	
+	// add to main window
+	add(dateDisplay);
+	add(timeDisplay);
+	add(controlPanel);
+    }
+    
+    private class Listener implements ActionListener{
+	private int seconds, minutes, hours; 
+	private String hourOfDay;
+	private boolean alarmIsSet = false;
+	private int alarmHour, alarmMin;
+	private String alarmHourOfDay;
+	private int amPm;
+	
+	/** method updates current time */
+	public void currentTime(){
+	    // current time components
+	    seconds = cal.get(Calendar.SECOND);
+	    minutes = cal.get(Calendar.MINUTE);
+	    hours = cal.get(Calendar.HOUR);
+	    amPm = cal.get(Calendar.AM_PM);
+		
+	    // check if time of day is am or pm
+	    switch(amPm){
+	    case 0:
+		hourOfDay = "am";
+		break;
+		
+	    case 1:
+		hourOfDay = "pm";
+		break;
+	    }
+		
+	    // display current time
+	    timeDisplay.setText(timeLayout.format(hours)+":"+
+				timeLayout.format(minutes)+":"+		
+				timeLayout.format(seconds)+" "+				
+				hourOfDay);
+		
+	    // update time object
+	    cal = Calendar.getInstance();
+	}
+	
+	public void currentDate(){
+	    dateDisplay.setText(dateFormat.format(cal.getTime()));
+	}
+	
+	public void actionPerformed(ActionEvent e){
+	    // set alarm options
+	    if(e.getSource() == setAlarm){
+		alarmHour = Integer.parseInt(setHour.getText());
+		alarmMin = Integer.parseInt(setMin.getText());
+		alarmHourOfDay = (String)setHourOfDay.getSelectedItem();
+
+		// indicates that alarm is set
+		alarmIsSet = true;
+	    }
+	    
+	    // keep time running
+	    if(e.getSource() == run){
+	
+		// check if alarm is set
+		if(alarmIsSet){
+
+		    if(hours == alarmHour && 
+			    minutes == alarmMin && 
+			    hourOfDay.equals(alarmHourOfDay)){
+			try{
+			    AudioInputStream audioInputStream = 
+				    	AudioSystem.getAudioInputStream(
+				    		this.getClass().getResource(
+				    			"C:/Users/Jung Woo Park/Desktop/alarmMusic.mp3"));
+			    Clip clip = AudioSystem.getClip();
+			    clip.open(audioInputStream);
+			    clip.start();
+			} catch(Exception error){
+			    
+			}
+		    }
+		}
+		
+		// update 
+		currentTime();
+		currentDate();
+	    }
+	}
+    }
+}

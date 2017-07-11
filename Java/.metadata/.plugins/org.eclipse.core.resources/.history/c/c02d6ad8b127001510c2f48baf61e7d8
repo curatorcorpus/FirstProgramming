@@ -1,0 +1,40 @@
+import java.util.Scanner;
+import java.util.Random;
+
+public class GuessMyNumber {
+	public static void main(String args[]){
+		// variable declaration
+		int guess, answer;
+		
+		// object instantiation
+		Random randNum = new Random();
+		Scanner input = new Scanner(System.in);
+		
+		// random number generator
+		answer = randNum.nextInt(11);
+		
+		// challenge
+		System.out.println("Do you think you can guess my number?\n" + 
+						"Prove me wrong: ");
+		
+		// input
+		guess = input.nextInt();
+		
+		// conditions
+		if (guess == answer)
+			System.out.println("You a so correct!");
+		
+		else if (answer < guess)
+			System.out.println("Your guess is greater");
+		
+		else if (answer > guess)
+			System.out.println("Your guess is lesser");
+		
+		else
+			System.out.println("GG");
+		
+		System.out.println("The answer was: " + answer);
+				
+		input.close();
+	}
+}

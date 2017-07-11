@@ -1,0 +1,10 @@
+
+public class StringMethods {
+	public static void main(String args[]){
+		// variable declaration
+		String phrase = "Change is inevitable";
+		String mutation1, mutation2, mutation3, mutation4;
+		
+		System.out.println("Original Phrase: " + phrase);
+	}
+}

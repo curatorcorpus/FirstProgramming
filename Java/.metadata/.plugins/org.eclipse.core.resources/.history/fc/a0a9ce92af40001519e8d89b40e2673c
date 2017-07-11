@@ -1,0 +1,11 @@
+import javax.swing.*;
+import java.awt.*;
+
+
+public class LayeredPanel {
+    public LayeredPanel(){ 
+	JLayeredPane layeredPane = new JLayeredPane();
+	
+	
+    }
+}

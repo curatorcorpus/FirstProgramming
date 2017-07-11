@@ -1,0 +1,12 @@
+package Books;
+
+public class BooksApp {
+    public static void main(String[] args){
+	Books aBook = new Books("Book", "example", "me", "me", "6/09/2015", 100);
+	TextBooks anatomy = new TextBooks("TextBook", "Anatomy", "Gray's Anatomy For Students",
+		\{"Drake", "Vogl", "Mitchell"}, "Elsevier", "20/11/2015", 1000, 3);
+	anatomy.getAuthors();
+	
+//	System.out.println(aBook.toString());
+    }
+}

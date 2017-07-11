@@ -1,0 +1,36 @@
+package Books;
+
+public class Novels extends Books{
+    // data field specific for a novel
+    private String genre;
+    
+    // constructor method 
+    public Novels(String textType, String title, String author, String publisher,
+	    	String publicationDate, String genre, int pageNum){
+	super(textType, title, author, publisher, publicationDate, pageNum);
+	this.genre = genre;
+    } // constructor ends
+    
+    // method manually sets novel genre
+    public void setGenre(String newGenre){
+	genre = newGenre;
+    } // method ends
+    
+    // method returns genre as a string
+    public String getGenre(){
+	return genre;
+    } // method ends
+    
+    // method returns details information of novel as a string
+    public String toString(){
+   	String newLine = "\n";
+   	return "Text Type: " + textType + newLine +
+   		"Title: " + title + newLine + 
+   		"Author: " + author + newLine + 
+   		"Publisher: " + publisher + newLine + 
+   		"Publication Date: " + dateOfPublication + newLine + 
+   		"Total Page Numbers:  " + pageNum +
+   		newLine;
+       }
+    
+}

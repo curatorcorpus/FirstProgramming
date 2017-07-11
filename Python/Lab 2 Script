@@ -1,0 +1,10 @@
+a='jack'
+b='is'
+c='a'
+d='dull'
+e='boy'
+
+print a, b, c, d, e
+last = x%1000
+xrounded = x%1000
+print xrounded

@@ -1,0 +1,96 @@
+/** FilePanel.java
+ * Lab 20, COMP160,  2015
+ * 
+ * a JPanel which creates 2 instances of Rectangle objects, 
+ * stores them in an array, and draws them 
+ */
+
+import java.awt.*;
+import java.io.*;
+import javax.swing.*;
+import java.util.Scanner;
+
+public class FilePanel extends JPanel{
+  private Rectangle[] drawObjects = new Rectangle [10];
+  private int count = 0;
+  
+  /**constructor instantiates 6 Rectangle objects*/
+  public FilePanel(){  
+//    drawObjects[count] = new Rectangle(true,Color.red, 0, 0,30,30);
+//    count++;
+//    drawObjects[count] = new Rectangle(false,Color.blue, 50, 50,30,30);
+//    count++;
+	  // local variables
+	  Color whichColor = Color.white;
+	  int fill, colorChoice;
+	  int ptx, pty, width, height;
+	  String fileName = "Lab20data.txt"; // file name
+	  String inputLine;
+	  boolean fillOrDraw = false;
+	  
+	  try{
+		  Scanner fileScan = new Scanner(new File(fileName));
+		  
+		  // while there is input
+		  while(fileScan.hasNextLine()){
+			  // line holder
+			  inputLine = fileScan.nextLine();
+			  
+			  if(inputLine.matches("\\d+ \\d+ \\d+ \\d+ \\d+ \\d+")){
+				  Scanner approvedInput = new Scanner(new File(fileName));
+				  fill = approvedInput.nextInt(); // for first integer (Fill or Draw option)
+				  colorChoice = approvedInput.nextInt(); // for second integer input (Color option)
+				  ptx = approvedInput.nextInt(); // for third integer input
+				  pty = approvedInput.nextInt(); // for fourth integer input
+				  width = approvedInput.nextInt(); // for fifth integer input
+				  height = approvedInput.nextInt(); // for sixth integer input
+				  
+				// if fill
+				  if(fill == 1){
+					  fillOrDraw = true;
+				  }
+				  
+				  // if draw
+				  else {
+					  fillOrDraw = false;
+				  }
+				  
+				  // if colorChoice is 1 set Color.red
+				  if(colorChoice == 1){
+					  whichColor = Color.red;
+				  }
+				  
+				  // if colorChoice is 2 set Color.blue
+				  else if(colorChoice == 2){
+					  whichColor = Color.blue;
+				  }
+				  
+				  // if colorChoice is 3 set Color.green
+				  else{
+					  whichColor = Color.green;
+				  }
+				  
+				  // create rectangles
+				  drawObjects[count] = new Rectangle(fillOrDraw,whichColor, ptx,pty,width,height);
+				  count++;
+			  }
+			  
+		  }
+	  }
+	 
+	  catch (FileNotFoundException e) {
+		  System.out.println("File not found. Check file name and location.");
+		  System.exit(1); // exit from program if no file to read
+	  } // catch
+    setPreferredSize(new Dimension(300,300));
+    setBackground(Color.yellow);
+  }
+  
+  /**each Rectangle will draw itself*/
+  public void paintComponent(Graphics g){
+    super.paintComponent(g);
+    for(int i = 0; i < count; i++){
+      drawObjects[i].draw(g);
+    } 
+  }
+}

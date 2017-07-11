@@ -1,0 +1,24 @@
+import java.lang.Math;
+import java.util.Scanner;
+
+public class PProject2 {
+	
+	public static void main(String args[]){
+		int a, b total;
+		
+		// Scanner object
+		Scanner input = new Scanner(System.in);
+		
+		System.out.println("Enter length of cube 1: ");
+		a = input.nextInt();
+		
+		System.out.println("Enter length of cube 2: ");
+		b = input.nextInt();
+		
+		total = Math.pow(a, 3) + Math.pow(b, 3);
+		
+		System.out.println(total);
+		
+		input.close();
+	}
+}

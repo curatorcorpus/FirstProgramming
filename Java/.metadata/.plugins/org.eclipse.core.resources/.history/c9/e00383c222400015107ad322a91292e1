@@ -1,0 +1,16 @@
+/**
+ * BoidsApp.java
+ * Started: 11th August 2015, Time: 2329
+ * @author Jung Woo Park
+ * Finished:
+ * 
+ * runs the BoidInterfacePanel application
+ */
+
+/** import standard java class object libraries */
+import javax.swing.*;
+import java.awt.*;
+
+public class BoidsApp {
+
+}

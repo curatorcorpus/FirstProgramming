@@ -1,0 +1,11 @@
+package Coin;
+
+public class MonetaryCoin extends Coin{
+	/** datafields */
+	private int coinVal;
+	
+	public int getCoinVal(){
+		return coinVal;
+	}
+
+}

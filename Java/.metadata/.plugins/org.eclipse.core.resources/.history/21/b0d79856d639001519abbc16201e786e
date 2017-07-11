@@ -1,0 +1,9 @@
+package Hospital;
+
+public class Administration extends Hospital{
+	protected String name;
+	
+	public Administration(String admin){
+		name = admin';
+	}
+}

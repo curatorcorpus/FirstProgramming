@@ -1,0 +1,63 @@
+import java.util.ArrayList;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.util.Random;
+public class SimpleSortApp {
+    public static void main(String[] args){
+	JFrame mainWindow = new JFrame("Simple Sort App");
+	Random num = new Random();
+	
+	ArrayList<Integer> ordered = new ArrayList<Integer>();
+	int i = 0;
+	while(i < 1000){
+	    ordered.add(num.nextInt(100));
+	    i++;
+	}
+	for(int n : ordered){
+		System.out.print(n+" ");
+	}
+	System.out.println();
+	
+	int repeat = 100;
+	insertSort(ordered, repeat);
+	for(int n : ordered){
+		System.out.print(n+" ");
+	}
+    }
+    
+    public static String insertSort(ArrayList<Integer> array, int multiplier){
+	for(int index = 0; index < array.size(); index++){
+	    int newIndex = index;
+	    while(0 < newIndex){
+		newIndex--;
+		if(array.get(index) <= array.get(newIndex)){
+		    int currentNum = array.get(index);
+		    
+		    array.remove(index);
+		    if(newIndex == 0){
+			array.add(0, currentNum);
+		    }
+		    else {
+			array.add(newIndex, currentNum);
+		    }
+		}
+		
+		else{
+		    continue;
+		}
+	    }
+	}
+	multiplier--;
+	
+	if(multiplier != 0){
+	    insertSort(array , multiplier);
+	}
+	
+	else{
+	    return "Terminated";
+	}
+	return "Terminated";
+	
+    }
+}

@@ -1,0 +1,36 @@
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class CounterPanel extends JPanel{
+    private JCheckBox[] boxes = {new JCheckBox("A"), new JCheckBox("B"), new JCheckBox("C"),
+	    			new JCheckBox("D"), new JCheckBox("E")};
+    private JLabel output = new JLabel("0");
+    
+    public CounterPanel(){
+	// instantiate listener
+	MyListener ml = new MyListener();
+	
+	for(JCheckBox b : boxes){
+	    b.addItemListener(ml);
+	    add(b);
+	}
+	
+	setPreferredSize(new Dimension(220, 75));
+	add(output);
+    }
+    
+    private class MyListener implements ItemListener{
+	public void itemStateChanged(ItemEvent e){
+	    int count = 0;
+	    for(JCheckBox b : boxes){
+		if(b.isSelected()){
+		    count++;
+		}
+	    }
+	    // set output
+	    output.setText(""+count);
+	}
+    }
+}

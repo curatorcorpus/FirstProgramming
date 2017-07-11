@@ -1,0 +1,40 @@
+/**
+ * Anagram.java
+ * 
+ * Lab 13 Repetition 2
+ * 
+ * COMP 160 July 17th 2015
+ * 
+ * @author Jung Woo Park
+ *
+ * class that arranges characters used in alphabetical order
+ * 
+ */
+
+public class Anagram {
+	/** data fields */
+	private String phrase;
+	
+	public Anagram(String word){
+		phrase = word;
+	}
+	
+	public String compare(String a, b){
+		if (a.equals(b));
+	}
+	
+	public String alphabetical(){
+		// local variable
+		String lowercase, captureChar = "";
+		
+		// change to lowercase
+		lowercase = phrase.toLowerCase();
+		
+		// process
+		for (char c = 'a'; c <= 'z'; c++){
+			captureChar += c;
+		}
+		
+		return captureChar;
+	}
+}

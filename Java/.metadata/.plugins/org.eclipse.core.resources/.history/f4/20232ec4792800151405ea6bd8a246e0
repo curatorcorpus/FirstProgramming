@@ -1,0 +1,26 @@
+import java.util.Scanner;
+
+public class LeapYearChecker {
+	
+	public static void main(String args[]){
+		// variable declaration
+		int year, result;
+		
+		// object instantiation
+		Scanner input = new Scanner(System.in);
+		
+		// input request
+		System.out.println("Enter a year to check: ");
+		year = input.nextInt();
+		
+		// leap year conditions
+		if (((year%4 == 0) && (year%100 == 0)) || (year%4 == 0))
+				System.out.println("Year " + year + " is a leap.");
+		
+		else if (year < 1582)
+			System.out.println("Error with input");
+		
+		
+		
+	}
+}

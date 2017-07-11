@@ -1,0 +1,83 @@
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class TrafficLightPanel extends JPanel {
+	/** JButton data fields */
+	private static JButton red, amber, green;
+	private static JLabel buttonPanelLabel, lastPressed;
+	private static JPanel buttonPanel;
+	
+	/** constructor method */
+	public TrafficLightPanel(){
+		// instantiation of buttons
+		red = new JButton("Red");
+		amber = new JButton("Amber");
+		green = new JButton("Green");
+		
+		// instantiation of labels
+		buttonPanelLabel = new JLabel("Button Panel");
+		lastPressed = new JLabel("Last Pressed");
+		
+		// event listener instantiation
+		ButtonListener listener = new ButtonListener();
+		red.addActionListener(listener);
+		amber.addActionListener(listener);
+		green.addActionListener(listener);
+		
+		// button settings
+		buttonPanel = new JPanel();
+		buttonPanel.setPreferredSize(new Dimension(80, 290)); // why not setSize?
+		buttonPanel.setBackground(Color.white);
+		buttonPanel.add(buttonPanelLabel);
+		buttonPanel.add(red);
+		buttonPanel.add(amber);
+		buttonPanel.add(green);
+		buttonPanel.add(lastPressed);
+		
+		// LightPanel instantiation
+		LightPanel lightPanel = new LightPanel();
+		
+		// settings for TrafficLightPanel
+		setPreferredSize(new Dimension(200, 300));
+		setBackground(Color.blue);
+		add(buttonPanel);
+		add(lightPanel);
+	}
+	
+	private class LightPanel extends JPanel {
+		public LightPanel(){
+			setPreferredSize(new Dimension(80, 290));
+			setBackground(Color.cyan);
+		}
+		
+		public void paintComponent(Graphics page){
+			super.paintComponent(page);
+			page.setColor(Color.black);
+			page.fillOval(20, 30, 40, 40);
+			page.fillOval(20, 80, 40, 40);
+			page.fillOval(20, 130, 40, 40);
+			
+			if(lastPressed.getText().equals("Red")){
+				page.setColor(Color.red);
+				page.fillOval(20, 30, 40, 40);
+			}
+		}
+	}
+		
+	private class ButtonListener implements ActionListener {	
+		public void actionPerformed(ActionEvent event){
+			if(event.getSource() == red){
+				lastPressed.setText("Red");
+			}
+			else if(event.getSource() == amber){
+				lastPressed.setText("Amber");
+			}
+			else{
+				lastPressed.setText("Green");
+			}
+			repaint();
+		}		
+	}
+}
+

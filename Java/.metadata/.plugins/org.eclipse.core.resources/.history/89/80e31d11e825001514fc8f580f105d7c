@@ -1,0 +1,5 @@
+import java.lang.Math;
+
+public class QuadraticFormula {
+	public static void main(String args[])
+}

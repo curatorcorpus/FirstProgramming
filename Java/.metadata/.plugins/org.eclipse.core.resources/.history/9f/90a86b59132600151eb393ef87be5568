@@ -1,0 +1,7 @@
+
+public class WrapperClasses {
+	public static void main(){
+		Integer num = new Integer(400);
+		System.out.println(num.intValue());
+	}
+}

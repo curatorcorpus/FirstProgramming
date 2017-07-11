@@ -1,0 +1,32 @@
+/** 
+ * Smiley.java
+ * Lab 23 Abstract
+ * COMP160, 23rd July 2015
+ * Jung Woo Park
+ * 
+ * class that represents oval objects
+ */
+
+package shapes;
+
+import java.awt.Graphics;
+
+public class Smiley extends Shape{
+	/** Smiley constructor */
+	public Smiley() {
+		width = randomRange(10, 30);
+		height = width;
+		x = randomRange(width, 401);
+		y = randomRange(height, 401);
+	}
+	
+	/** circle class display method */
+	public void display(Graphics page){
+		page.setColor(color);
+		page.fillOval(x, y, width, height); // face
+		page.setColor(Color.black); // facial features
+		page.fillOval(x + 7, y + 8, 4, 4); // right eye
+		page.fillOval(x + 20, y + 8, width, height); // right eye
+		
+	} // method ends
+}

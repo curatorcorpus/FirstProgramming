@@ -1,0 +1,13 @@
+// Noel Park, 8/07/2015 9:46pm
+//GuessNumber.java
+
+import java.util.Scanner;
+
+public class GuessNumber {
+	public static void main(String args[]){
+		// variable declaration
+		String answer;
+		
+		Scanner inputAnswer = new Scanner(System.in);
+	}
+}

@@ -1,0 +1,108 @@
+/** 
+ * Shape.java
+ * Lab 21 Shapes 1 Building the Structure
+ * COMP160, 23rd July 2015
+ * Jung Woo Park
+ * 
+ * class to create shapes (circles)
+ */
+
+package shapes;
+import java.awt.*; // for color and graphics
+import java.util.Random;
+import javax.swing.*;
+
+public class Shape {
+	/** data fields */
+	private int x;
+	private int y;
+	private int width;
+	private int height;
+	private Color color;
+	private int moveX = 1;
+	private int moveY = 1;
+	private int widthChange = 1;
+	private int heightChange = 1;
+	
+	// constructor
+	public Shape(){
+		// random instantiation
+		Random generator = new Random();
+		
+		// set data fields
+		width = generator.nextInt(30-10+1)+10;
+		height = width;
+		x = generator.nextInt(400-width);
+		y = generator.nextInt(400-height);
+		color = new Color(generator.nextInt(256),
+							generator.nextInt(256), generator.nextInt(256));
+	}
+	
+	/** moves circle shape objects */
+	public void move(){
+		// timer instantiation
+//		timer = new Timer(DELAY);
+		
+		// general motion
+		x += moveX;
+		y += moveY;
+		
+		width += widthChange;
+		height += heightChange;
+		
+		// collision check if circle reaches right border
+		if(x > (400 - width)){
+			moveX = -moveX;
+		}
+
+		// collision check if circle reaches left border
+		else if(x < 0){
+			moveX = -moveX;
+		}
+		
+		// collision check if circle reaches bottom border
+		if(y > (400 - height)){
+			moveY = -moveY;
+		}
+		
+		// collision check if circle reaches top border
+		else if(y < 0){
+			moveY = -moveY;
+		}
+		
+		// if size of widthChange is 31, flip
+		if(width < 50){
+			widthChange = -widthChange;
+		}
+		
+		// if size of widthChange is 10 flip
+		else if(width == 10){
+			widthChange = -widthChange;
+		}
+		
+		// if size of heightChange is 31 flip
+		if(height == 31) {
+			heightChange = -heightChange;
+		}
+		
+		// if size of heightChange is 10 flip
+		else if(height == 10){
+			heightChange = -heightChange;
+		}
+	}
+	
+	// set range method
+	public int randomRange(int low, int high){
+		// random instantiation
+		Random generator = new Random();
+		
+		// return random value
+		return generator.nextInt(high-low+1) + low;
+	} // method ends
+	
+	// display method draws circle
+	public void display(Graphics page){
+		page.setColor(color);
+		page.fillOval(x, y, width, height);
+	} // method ends	
+}

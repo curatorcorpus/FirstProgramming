@@ -1,0 +1,28 @@
+import java.util.Scanner;
+import java.util.Random;
+
+public class IntCounterApp {
+	/** main method */
+	public static void main(String args[]){
+		
+	}
+	
+	public static void makeArray(){
+		// local variable
+		int[] array;
+		int arraySize, intValues;
+		
+		// random object instantiation
+		Random sizeDecider = new Random();
+		arraySize = sizeDecider.nextInt(6) + 5; // assign size int between 5 and 10
+		
+		// random number generator instantiation
+		Random generator = new Random();
+		intValues = generator.nextInt(5); // integer between 0 and 4
+		
+		// create array
+		array = new int(arraySize);
+		
+		
+	}
+}

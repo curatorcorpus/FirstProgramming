@@ -1,0 +1,18 @@
+package Books;
+
+public class BooksApp {
+    public static void main(String[] args){
+	// essential local variables
+	String[] textbookAuthors = {"Drake", "Vogl", "Mitchell"};
+	
+	// books in general
+	Novels theHungerGames = new Novels("Novel", "Hunger Games", "Suzanne Colins", "me", "6/09/2015", 100);
+	
+	// textbooks
+	TextBooks anatomy = new TextBooks("TextBook", "Anatomy", "Gray's Anatomy For Students",
+		textbookAuthors, "Elsevier", "20/11/2015", 1000, 3);
+	System.out.println(anatomy.toString());
+	
+//	System.out.println(aBook.toString());
+    }
+}

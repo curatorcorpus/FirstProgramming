@@ -1,0 +1,6 @@
+package Coin;
+
+public class MonetaryCoin extends Coin{
+	
+
+}

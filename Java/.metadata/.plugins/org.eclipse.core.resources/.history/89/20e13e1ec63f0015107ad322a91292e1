@@ -1,0 +1,7 @@
+
+public class AlarmApp {
+	/** main method */
+	public static void main(String args[]){
+		Calender cal = new Calender();
+	}
+}

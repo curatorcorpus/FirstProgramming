@@ -1,0 +1,7 @@
+package Hospital;
+
+public class Reciptionist extends Administration{
+	public Reciptionist(String reception){
+		super(reception);
+	}
+}

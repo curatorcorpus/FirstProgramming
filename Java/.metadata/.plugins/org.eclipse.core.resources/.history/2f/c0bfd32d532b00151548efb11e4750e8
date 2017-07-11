@@ -1,0 +1,10 @@
+
+public class wat {
+	public static void main(String args []){
+		int a = 0, b = 2, c = 10;
+		
+		if(b>0) a++;
+		else if (c > 0) a++;
+		System.out.println(a >0 || a < 0);
+	}
+}

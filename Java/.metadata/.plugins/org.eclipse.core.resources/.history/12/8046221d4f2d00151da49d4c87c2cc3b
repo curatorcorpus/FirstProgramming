@@ -1,0 +1,56 @@
+import java.util.Scanner;
+import java.util.Random;
+
+public class IntCounterApp {
+	/** main method */
+	public static void main(String args[]){
+		// local variable
+		int intTarget;
+		
+		// scanner object instantiation
+		Scanner input = new Scanner(System.in);
+		
+		// 3 loops and asks for target number to print location
+		// in array
+		for(int i = 0; i < 3; i++){
+			System.out.println("Which number do you wish to find?");
+			intTarget = input.nextInt();
+			
+			// IntCounter support class instantiation
+			IntCounter counter = new IntCounter(makeArray());
+			
+			//output
+			counter.showTarget(intTarget);
+		}
+		
+		System.out.println("\tFinished");
+		
+		input.close();
+	} // main method ends
+	
+	public static int[] makeArray(){
+		// local variable
+		int[] array;
+		int arraySize, intValues;
+		
+		// random object instantiation
+		Random sizeDecider = new Random();
+		arraySize = sizeDecider.nextInt(6) + 5; // assign size int between 5 and 10
+		
+		// random number generator instantiation
+		Random generator = new Random();
+		
+		// create array
+		array = new int[arraySize];
+		
+		// fill array with values
+		for(int i = 0; i < array.length; i++){
+			intValues = generator.nextInt(5); // integer between 0 and 4
+			array[i] = intValues;
+		}
+		
+		// return
+		return array;
+		
+	}
+}

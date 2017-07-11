@@ -1,0 +1,12 @@
+import java.lang.Math;
+import java.util.Scanner;
+
+public class PP43EvenSums {
+	public static void main(String args[]) {
+		// variable declaration
+		int value;
+		
+		// scanner input instantiation
+		Scanner input = new Scanner(System.in);
+	}
+}

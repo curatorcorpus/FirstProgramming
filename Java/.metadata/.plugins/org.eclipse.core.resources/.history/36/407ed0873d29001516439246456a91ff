@@ -1,0 +1,31 @@
+/**
+ * Snowman.java       Adapted from: Lewis, DePasquale & Chase page 971 (835 2nd edition)
+ * 
+ * Demonstrates basic drawing methods and the use of color.
+ * 
+ */
+
+import javax.swing.*;
+import java.awt.*;
+
+public class Snowman extends JFrame{
+  
+  
+  /** creates  an instance of the Snowman class called frame and sets some essential parameters.
+   * You do not need to understand how this method works until later in the course*/
+  public static void main(String[]args){
+    Snowman frame = new Snowman();  
+    frame.setSize(300,220);
+    frame.setVisible(true);
+  }
+  
+  /**  Draws a snowman.*/
+  public void paint (Graphics page)
+  {
+    final int MID = 150;
+    final int TOP = 50;
+    setTitle("Snowman");
+    page.drawRect(10,15,35,70); 
+    page.fillRect (MID - 15, TOP - 20, 30, 25);        // top of hat
+  }
+}

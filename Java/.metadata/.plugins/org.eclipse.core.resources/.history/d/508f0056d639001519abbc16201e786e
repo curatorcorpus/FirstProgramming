@@ -1,0 +1,6 @@
+package Hospital;
+
+public class Administration extends Hospital{
+	protected String name;
+	
+}

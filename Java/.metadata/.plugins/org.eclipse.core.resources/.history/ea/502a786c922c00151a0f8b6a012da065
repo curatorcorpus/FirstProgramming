@@ -1,0 +1,10 @@
+import java.awt.*;
+import javax.swing.*;
+
+public class TableDrawApp {
+
+	public static void main(String args[]){
+		TablePanel table = new TablePanel();
+
+	}
+}

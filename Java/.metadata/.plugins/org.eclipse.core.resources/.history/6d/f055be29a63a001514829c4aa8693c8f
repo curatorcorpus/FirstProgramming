@@ -1,0 +1,68 @@
+package Example;
+import java.awt.*;
+import javax.swing.*;
+import java.awt.event.*;
+
+public class Example extends JPanel{
+	private JPanel stopWatch = new JPanel();
+	private JButton start = new JButton("Start");
+	private JLabel display = new JLabel("00:00", SwingConstants.CENTER);
+	private ButtonListener listen = new ButtonListener();
+	private JButton stop = new JButton("Stop");
+	private JButton reset = new JButton("Reset");
+	private boolean isRunning = false;
+	private int milsec, sec;
+	
+	public Example(){
+		// panel settings
+		stopWatch.setPreferredSize(new Dimension(300, 100));
+		display.setPreferredSize(new Dimension(300, 50));
+		display.setFont(new Font("serif", Font.BOLD, 50));
+		
+		// add listener
+		start.addActionListener(listen);
+		stop.addActionListener(listen);
+		reset.addActionListener(listen);
+		
+		// add components
+		stopWatch.add(display);
+		stopWatch.add(start);
+		stopWatch.add(stop);
+		stopWatch.add(reset);
+		
+		// add to main panel
+		add(stopWatch);
+	} // constructor ends
+	
+	/** listener class */
+	private class ButtonListener implements ActionListener{
+		public void actionPerformed(ActionEvent event){
+			if(event.getSource().equals(start)){
+				isRunning = true;
+				while(isRunning == true){
+					milsec++;
+					display.setText(Integer.toString(milsec));
+				}
+			}
+			
+			else if(event.getSource().equals(stop)){
+				isRunning = false;
+			}
+			
+			else if(event.getSource().equals(reset)){
+				milsec = 0;
+				sec = 0;
+			}
+		}
+	} // class ends
+	
+	/** main method */
+	public static void main(String args[]){
+		JFrame frame = new JFrame("StopWatch");
+		frame.getContentPane().add(new Example());
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		frame.pack();
+		frame.setVisible(true);
+	} // method ends
+}

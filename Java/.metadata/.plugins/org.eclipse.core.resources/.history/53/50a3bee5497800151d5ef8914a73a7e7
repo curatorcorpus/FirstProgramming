@@ -1,0 +1,10 @@
+import javax.swing.*;
+import java.awt.*;
+
+public class CounterPanelApp {
+    /** main method */
+    public static void main(String[] args){
+	// main window 
+	JFrame mainWindow = new JFrame("Counter Panel App")
+    }
+}

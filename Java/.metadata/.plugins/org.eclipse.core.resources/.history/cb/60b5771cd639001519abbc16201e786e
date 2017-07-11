@@ -1,0 +1,9 @@
+package Hospital;
+
+public class Nurse extends Hospital{
+	protected String profession;
+	
+	public Nurse(String field){
+		profession = fields
+	}
+}

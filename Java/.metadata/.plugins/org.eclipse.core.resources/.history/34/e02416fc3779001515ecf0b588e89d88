@@ -1,0 +1,15 @@
+
+public class MainMethod {
+    /** main method */
+    public static void main(String[] args){
+	System.out.println(tester(1, 3));
+    }
+    
+    public static boolean tester(int x, int y){
+	if(x+y >= 10){
+	    return true;
+	}
+	
+	return false;
+    }
+}

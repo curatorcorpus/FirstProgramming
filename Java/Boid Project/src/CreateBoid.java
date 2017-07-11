@@ -1,0 +1,283 @@
+/**
+ * CreateBoid.java
+ * Started: 11th August 2015, Time: 2329
+ * @author Jung Woo Park
+ * Finished:
+ * 
+ * creates boid objects
+ */
+
+/** import standard java class object libraries */
+import javax.swing.*;
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.Random;
+import java.awt.geom.*; // for 2D Graphics
+
+public class CreateBoid {
+  //===============================================================================================
+  // DATAFIELDS
+    
+  /** data field stores current position */
+  private double x, y;
+  
+  /** data field stores current center points */
+  private double centerX = 0, centerY = 0;
+  
+  /** data field sets size of boid particles */
+  private final double DIAMETER = 10.0;
+  
+  /** monitor size */
+  private final int monitorX = 1920, monitorY = 1080;
+  
+  /** data field that stores color */
+  private Color color;
+  
+  //GROUPED-SETTING---------------------------------------------------------------------------------
+  /** data field stores desired velocity */
+  private double velocity = 5.0;
+ 
+  /** data field that stores initial velocity */
+  private final double initialVelocity = 5.0;
+  //GROUPED-SETTING---------------------------------------------------------------------------------
+  
+  /** data field that stores generated angle */
+  private double angle, latestAngle;
+  
+  /** generates random number */
+  private Random randomNumGen = new Random();
+  
+  /** check whether to start flocking or not */
+  private boolean flock;
+  
+  /** set true if choosen to be alpha */
+  private boolean alpha = false;
+  
+  private double vectorX, vectorY, directionX, directionY;
+  
+  /** data field stores distance from neighbours */
+  private double distance;
+  
+  //===============================================================================================
+  
+  /** boid constructor method */
+  public CreateBoid(){
+    // pi
+    final double pi = Math.PI;
+    
+    // coordinates of boid initial position
+    x = randomNumGen.nextDouble() * monitorX;
+    y = randomNumGen.nextDouble() * monitorY;
+    
+    // center point of boid circle
+    centerX = x + DIAMETER/2.0;
+    centerY = y + DIAMETER/2.0;
+    
+    // generate random angle
+    angle = randomNumGen.nextDouble() * 2 * pi;
+    latestAngle = angle;
+    
+    // generate random color
+    color = new Color(randomNumGen.nextInt(246)+10,
+                      randomNumGen.nextInt(246)+10, 
+                      randomNumGen.nextInt(246)+10);
+    
+  } // constructor ends
+  
+  public void display(Graphics shape){
+    // create 2D graphics instance object
+    Graphics2D boid = (Graphics2D) shape;
+    
+    // set boid color
+    boid.setColor(color);
+    
+    // eliminates aliasing of graphics
+    boid.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+                          RenderingHints.VALUE_ANTIALIAS_ON);
+    // draw boids
+    boid.fill(new Ellipse2D.Double(x, y, DIAMETER, DIAMETER)); // creates boid body
+  } // method ends
+  
+  // default direction
+  private void initialTrajectory(){
+      directionX = velocity * Math.sin(angle); 
+      directionY = velocity * Math.cos(angle);
+  } // method ends
+  
+  private void alphasTrajectory(){
+      directionX = vectorX/500*velocity;
+      directionY = vectorY/500*velocity;
+  }
+  
+  private void noBorder(){
+    // if boid reaches left side of the window
+    if(x < -DIAMETER){
+      x = monitorX;
+      centerX = monitorX + DIAMETER/2.0;
+    }
+    
+    // if boid reaches right side of the window
+    if(x > monitorX){
+      x = 0;
+      centerX = -DIAMETER/2.0;
+    }
+    
+    // if boid reaches top side of the window
+    if(y < -DIAMETER){
+      y = monitorY;
+      centerY = monitorY + DIAMETER/2.0;
+    }
+    
+    // if boid reaches bottom side of the window
+    if(y > monitorY){
+      y = 0;
+      centerY = -DIAMETER/2.0;
+    }
+  }
+  
+  private void bordered(){
+    if(x < DIAMETER){
+	angle = randomNumGen.nextDouble() * Math.PI;
+    }
+    
+    if(x > monitorX - DIAMETER){
+	angle = randomNumGen.nextDouble() * Math.PI;
+    }
+    
+    if(y < DIAMETER){
+	angle = randomNumGen.nextDouble() * Math.PI;
+    }
+    
+    if(y > monitorY - DIAMETER){
+	angle = randomNumGen.nextDouble() * Math.PI;
+    }
+  }
+  
+  public void move(boolean flockOrNot, ArrayList<CreateBoid> boidInstances){
+    double distanceToAlpha;
+    
+    // move
+    x += directionX;
+    y += directionY;
+    
+    // move center
+    centerX += directionX;
+    centerY += directionY;
+    
+    /** set flock setting */
+    flock = flockOrNot;
+    
+    // if flock button was pressed
+    if(flock){
+      //if not alpha
+      if(alpha){
+        initialTrajectory();
+        noBorder();
+      }
+      
+      // if not alpha
+      else{
+       distanceToAlpha = Math.sqrt(Math.pow(vectorX, 2)+Math.pow(vectorY, 2));
+       
+       if(distanceToAlpha > DIAMETER*10){
+          alphasTrajectory();
+          noBorder();
+       }
+      }
+    }
+    
+    // if flock button is not pressed
+    else{
+      initialTrajectory();
+      noBorder();
+    }
+  }
+  
+  /** checks for possible collision threats */
+  public void collisionDectection(ArrayList<CreateBoid> instanceLists, CreateBoid currentInstance){
+    for(int index = 0; index < instanceLists.size(); index++){
+      // if center point to compare has same index
+      if(currentInstance.equals(instanceLists.get(index))){
+        continue;
+      }
+      
+      // calculates distance between this instance and all other instances
+      distance = getSeperation(instanceLists.get(index));
+      
+      // if flocking behaviour was turned on
+      if(flock){
+   
+        // if current instance is alpha, skip unique boid steps
+        if(alpha){
+          return;
+        }
+        
+        // recognise neighbour
+        CreateBoid alpha = instanceLists.get(0);
+        
+        // calculate distance to closest neighbour instance in terms of x and y
+        vectorX = alpha.getCenterPointX()-getCenterPointX();
+        vectorY = alpha.getCenterPointY()-getCenterPointY();
+      }
+      
+      // if flocking behaviour turned off
+      else{
+	if(distance <= Math.pow(DIAMETER, 2)){
+	    double overlap = (DIAMETER*2 - distance)/2;
+	    
+	}
+	  
+        // if recently flocking behaviour was turned on -- needs to be resolved
+//        resetAngle();
+//        resetVelocity();
+      }
+    }
+  } // method ends
+  
+  /** method that calculates distance between this instance and other instances */
+  public double getSeperation(CreateBoid instance){
+      double dx, dy;
+      dx = Math.pow((centerX-instance.getCenterPointX()), 2);
+      dy = Math.pow((centerY-instance.getCenterPointY()), 2);
+      
+      return (dx + dy);
+    } // method ends
+  
+  public void setAlpha(){
+    alpha = true;
+  }
+  
+  public boolean isAlpha(){
+    return alpha;
+  }
+ 
+  private void resetAngle(){
+    angle = latestAngle;
+    latestAngle = angle;
+  }
+  
+  private void resetVelocity(){
+      velocity = initialVelocity;
+  }
+  
+  /** method that returns angle of instance */
+  public double getAngle(){
+    return angle;
+  } // method ends
+  
+  /** sets the angle 0 to 2PI */
+  public void setAngle(double alphaAngle){
+    angle = alphaAngle;
+  }
+  
+  /** returns double value of current center X */
+  private double getCenterPointX(){
+    return centerX;  
+  } // method ends
+  
+  /** returns double value of current center Y */
+  private double getCenterPointY(){
+    return centerY;
+  } // method ends 
+}
+

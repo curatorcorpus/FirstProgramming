@@ -1,0 +1,27 @@
+import javax.swing.*;
+import java.awt.*;
+
+public class TablePanel extends JPanel{
+
+	private Diner diner1, diner2, diner3, diner4, diner5, diner6;
+	
+	public TablePanel(){
+		setBackground(Color.lightGray);
+		diner1 = new Diner(115, 40, 1, "David", Color.cyan);
+		diner2 = new Diner(190, 100, 2, "Clare", Color.green);
+		diner3 = new Diner(65, 150, 3, "Jacqui", Color.green);
+		diner4 = new Diner(115, 260, 4, "Metiria", Color.green);
+		diner6 = new Diner(190, 250, 3, "Michael", Color.cyan);
+	}
+	
+	public void paintComponent(Graphics page){
+		super.paintComponent(page);
+		page.setColor(Color.YELLOW);
+		page.fillRect(100, 100, 80, 130);
+		diner1.draw(page);
+		diner2.draw(page);
+		diner3.draw(page);
+		diner4.draw(page);
+		diner6.draw(page);
+	}
+}

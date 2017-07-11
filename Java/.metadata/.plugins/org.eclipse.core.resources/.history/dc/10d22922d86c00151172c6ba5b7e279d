@@ -1,0 +1,63 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.event.*;
+
+public class Slider extends JPanel{
+    /** create components*/
+    private JPanel sliderPanel = new JPanel();
+    private JSlider sliderOption = new JSlider();
+    private JCheckBox correct = new JCheckBox("Correct");
+    private JCheckBox incorrect = new JCheckBox("Incorrect");
+    private JRadioButton yes = new JRadioButton("Yes");
+    private JRadioButton no = new JRadioButton("No");
+    
+    private ButtonGroup yesNoGroup = new ButtonGroup()
+    
+    /** listener */
+    private Listener listen = new Listener();
+    private CheckListener cListen = new CheckListener();
+    private RadioListener aListen = new RadioListener();
+    
+    /** slider constructor */
+    public Slider(){
+	// slider panel settings
+	sliderPanel.setPreferredSize(new Dimension(300, 300));
+	
+	// add listener
+	sliderOption.addChangeListener(listen);
+	correct.addItemListener(cListen);
+	incorrect.addItemListener(cListen);
+	yes.addActionListener(aListen);
+	no.addActionListener(aListen);
+	
+	// add components
+	sliderPanel.add(sliderOption);
+	sliderPanel.add(correct);
+	sliderPanel.add(incorrect);
+	sliderPanel.add(yes);
+	sliderPanel.add(no);
+	
+	// add to main window
+	add(sliderPanel);
+    }
+    
+    private class Listener implements ChangeListener{
+	public void stateChanged(ChangeEvent e){
+	    System.out.println(sliderOption.getValue());
+	}
+    }
+    
+    private class CheckListener implements ItemListener{
+	public void itemStateChanged(ItemEvent e){
+	    System.out.println("Correct CheckBox: "+correct.isSelected()+
+		    "\n"+"Incorrect CheckBox: "+incorrect.isSelected());
+	}
+    }
+    
+    private class RadioListener implements ActionListener{
+	public void actionPerformed(ActionEvent e){
+	    System.out.println("Yes: "+yes.isSelected()+"\n No: "+no.isSelected());	
+	}
+    }
+}

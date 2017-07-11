@@ -1,0 +1,12 @@
+import java.lang.Math;
+import java.util.Scanner;
+
+public class Q2SAreaOfSphereAndVolume {
+	
+	public static void main(String args[]) {
+		// variable declaration
+		double radius;
+	
+		// ask for radius input
+	}
+}

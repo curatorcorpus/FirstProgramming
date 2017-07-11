@@ -1,0 +1,9 @@
+
+public class CountLength {
+	public static void main(String args[]){
+		String myName = "Robert Mulldoon";
+		int length;
+		length = myName.length();
+		System.out.println(length);
+	}
+}

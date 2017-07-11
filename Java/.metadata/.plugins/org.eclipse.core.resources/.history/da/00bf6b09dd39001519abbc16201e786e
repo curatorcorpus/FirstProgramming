@@ -1,0 +1,7 @@
+package catchme;
+import java.awt.*;
+import java.util.Random;
+
+public class Monster extends JPanel {
+	private x, y, width, height;
+}

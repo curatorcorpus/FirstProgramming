@@ -1,0 +1,18 @@
+public class Nanotime{
+  public static void main(String args[]){
+    int total = 0, second = 0, min = 0, hr = 0,count = 0, 
+    		start, stop, estimate;;
+  
+    
+    start = (int)System.nanoTime()/10000;
+    
+    while(true){
+    	stop = System.nanoTime()/10000;
+    	estimate = stop - start;
+//    	if((estimate - estimate/1000*1000)/10 >= 99){
+//    		System.out.println(estimate - (estimate/1000*1000)/10);
+//    	
+    	System.out.println(estimate);
+    }
+  }
+}

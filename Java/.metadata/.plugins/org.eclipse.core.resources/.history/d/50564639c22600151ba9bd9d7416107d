@@ -1,0 +1,17 @@
+import java.util.Scanner;
+
+public class PProject1 {
+	
+	public static void main(String args[]){
+		//variable declaration
+		String a, b;
+		
+		Scanner inputFirstName = new Scanner(System.in);
+		Scanner inputLastName = new Scanner(System.in);
+		
+		System.out.println("Enter Your First Name: ");
+		a = inputFirstName.nextLine();
+		
+	}
+	
+}

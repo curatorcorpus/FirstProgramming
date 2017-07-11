@@ -1,0 +1,27 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class Slider extends JPanel{
+    /** create components*/
+    private JPanel sliderPanel = new JPanel();
+    private JSlider sliderOption = new JSlider();
+    
+    /** listener */
+    
+    /** slider constructor */
+    public Slider(){
+	// slider panel settings
+	sliderPanel.setPreferredSize(new Dimension(300, 300));
+	
+	// add components
+	sliderPanel.add(sliderOption);
+	
+	// add to main window
+	add(sliderPanel);
+    }
+    
+    private class Listener implements ItemListener{
+	
+    }
+}

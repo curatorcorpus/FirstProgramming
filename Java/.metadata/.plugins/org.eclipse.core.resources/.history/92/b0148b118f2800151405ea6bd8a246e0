@@ -1,0 +1,11 @@
+
+public class Casting {
+	public static void main(String args[]) {
+		int a = 1 , b = 2, c = 3;
+		char d, e, f;
+		
+		d = Character.forDigit(a, 1);
+		
+		System.out.println(d);
+	}
+}

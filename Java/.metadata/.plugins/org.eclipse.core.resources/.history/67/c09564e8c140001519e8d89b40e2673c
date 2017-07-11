@@ -1,0 +1,113 @@
+/**
+ * BoidInterfacePanel.java
+ * Started: 11th August 2015, Time: 2329
+ * @author Jung Woo Park
+ * Finished:
+ * 
+ * main interface panel for flocking simulation
+ */
+
+/** import standard java class object libraries */
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.util.ArrayList;
+
+public class BoidInterfacePanel extends JPanel{
+    	/** create boid array list */
+	private ArrayList <CreateBoid> boids = new ArrayList<CreateBoid>();
+	
+	/** create listener instance */
+	private ButtonListener actionListener  = new ButtonListener();
+	
+	// create buttons
+	private JButton startButton = new JButton("Start");
+	private JButton stopButton = new JButton("Stop");
+	
+	// timer to recall events
+	private Timer run = new Timer(0, actionListener);
+	
+	/** location of draw panel */
+	private int origin = 0;
+	
+	/** size of display */
+	private final int MONITORWIDTH = 1920, MONITORHEIGHT = 1080;
+	
+	/** size of control panel */
+	private final int PANELWIDTH = 100, PANELHEIGHT = 1080;
+	
+	/** constructor method */
+	public BoidInterfacePanel(){
+	    // create main panel
+	    JPanel mainPanel = new JPanel();
+	    
+	    // main panel settings
+	    mainPanel.setPreferredSize(new Dimension(1920, 1080));
+	    mainPanel.setLayout(new GridBagLayout());
+	    
+	    // create panel
+	    JPanel controlPanel = new JPanel();
+
+	    // grid bag constraints
+	    GridBagConstraints gbc = new GridBagConstraints();
+	    gbc.gridx = 0;
+	    gbc.gridy = 0;
+	    
+	    // control Panel settings
+	    controlPanel.setPreferredSize(new Dimension(PANELWIDTH, PANELHEIGHT));
+	    controlPanel.setBackground(new Color(20, 20, 20));
+	    
+	    // add listeners 
+	    startButton.addActionListener(actionListener);
+	    stopButton.addActionListener(actionListener);
+	    
+	    // add control components
+	    controlPanel.add(startButton);
+	    controlPanel.add(stopButton);
+		
+	    // add to main panel
+	    mainPanel.add(new DrawPanel(), gbc);
+	    gbc.gridx = MONITORWIDTH - PANELWIDTH;
+	    mainPanel.add(controlPanel, gbc);
+	    
+	    // add to main window
+	    add(mainPanel);
+	 }
+	
+	private class DrawPanel extends JPanel{
+		/** drawPanel constructor */
+		public DrawPanel(){
+		    // draw panel settings
+		    setPreferredSize(new Dimension(MONITORWIDTH - PANELWIDTH, MONITORHEIGHT));
+		}
+		
+		public void paintComponent(Graphics g){
+		     // refers to inherited constructor
+		     super.paintComponent(g);
+		     setBackground(Color.black);
+		     
+		     // display boid
+		     
+		     
+		} // constructor ends 
+	}
+	
+	private class ButtonListener implements ActionListener{
+		public void actionPerformed(ActionEvent e){
+		    if(e.getSource().equals(startButton)){
+    			run.start();
+		    }
+		    
+		    if(e.getSource().equals(run)){
+			
+		    }
+		    
+		    if(e.getSource().equals(stopButton)){
+			run.stop();
+		    }
+		    
+		    repaint();
+		}
+	}
+}
+

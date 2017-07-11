@@ -1,0 +1,31 @@
+import java.util.Random;
+
+public class PProject3 {
+	
+	public static void main(String args[]){
+		// variable declaration
+		int a, b, c;
+		int d, e, f;
+		int g, h, i, j;
+		
+		// object instantiation
+		Random numGen = new Random();
+		
+		// phone number values
+		num0 = numGen.nextInt(8);
+		num1 = numGen.nextInt(8);
+		num2 = numGen.nextInt(8);
+		
+		num3 = numGen.nextInt(8);
+		num4 = numGen.nextInt(5);
+		num5 = numGen.nextInt(3);
+		
+		num6 = numGen.nextInt(10);
+		num7 = numGen.nextInt(10);
+		num8 = numGen.nextInt(10);
+		num9 = numGen.nextInt(10);
+
+		System.out.println("")
+		
+	}
+}

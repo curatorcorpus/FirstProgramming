@@ -1,0 +1,21 @@
+import java.util.Scanner;
+
+public class InputBoolean {
+	public static void main(String args[]){
+		
+		boolean answer;
+		
+		System.out.println("True or false: Is the heart closer to the left side of the body?");
+		Scanner inputBoolean = new Scanner(System.in);
+		
+		answer = inputBoolean.nextLine();
+		
+		if (answer == "true" || answer == "True"){
+			System.out.println("You are correct!");
+		}
+		else{
+			System.out.println("You are wrong!");
+		}
+		inputBoolean.close();
+	}
+}

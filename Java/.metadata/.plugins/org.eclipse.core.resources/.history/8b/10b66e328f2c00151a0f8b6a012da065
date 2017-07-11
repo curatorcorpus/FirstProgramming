@@ -1,0 +1,35 @@
+/**
+ * Diner.java
+ * Lab 14,
+ * COMP160, 18th July 2015
+ * 
+ * class for creating diners
+ */
+
+import javax.swing.*;
+import java.awt.*;
+
+public class Diner {
+	/** data fields */
+	private int x, y;
+	private String name;
+	private int seatNum;
+	private Color color;
+	private final int DIAMETER = 50;
+
+	/** constructor */
+	public Diner(int ptx, int pty, String identity, int seatNumber, Color clr){
+		x = ptx;
+		y = pty;
+		name = identity;
+		seatNum = seatNumber;
+		color = clr;
+	}
+	
+	/** draw method */
+	public void draw(Graphics page){
+		page.setColor(color);
+		page.drawOval(x, y, DIAMETER, DIAMETER);
+		page.setFont(Arial);
+	}
+}

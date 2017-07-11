@@ -1,0 +1,30 @@
+
+public class IntCounter {
+	/** data field */
+	private int array[], counter;
+	
+	/** constructs IntCounter object parameter as int[] array 
+	 *  prints out all values in the array*/
+	public IntCounter(int[] array){
+		this.array = array;
+		for(int list : array){
+			System.out.print(list + " ");
+		}
+		System.out.print("Array is of length " + array.length + "\n");
+	} // constructor ends
+	
+	/** shows all positions of the targeted integer by the user */
+	public void showTarget(int target){
+		for(int i = 0; i < array.length; i++) { // foreach loop
+			if(array[i] == target) {
+				System.out.println("\t There is a " + target +
+								" in position " + i);
+				counter++;
+			}
+		if(counter == 0)	
+			System.out.println("There are no " + target + "'s"
+										+ "in this array");
+		}
+		System.out.println(); // for structure
+	} // method ends
+}

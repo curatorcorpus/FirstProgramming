@@ -1,0 +1,13 @@
+package Hospital;
+
+public class Surgeon extends Doctor{
+	protected String specialistProfession;
+	
+	public Surgeon(String field){
+		super(field); 
+	}
+	
+	public getSpecialisation(){
+		return "This surgeon is a " + speicalProfession + " surgeon."
+	}
+}

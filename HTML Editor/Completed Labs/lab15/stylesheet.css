@@ -1,0 +1,104 @@
+/* stylesheet */
+
+/* color scheme:
+based from: #FF7600
+#FFCEA4
+#FFB270
+#FF7600
+#D96400
+#A74D00
+*/
+
+html {
+	color: black;
+	background-color: white;
+	font-size: 14px;
+	font-family: arial, sans-serif;
+	height: 800px;
+	width: 600px;
+	margin: auto;
+}
+
+
+fieldset {
+	color: black;
+	background-color: #FFCEA4;
+	width: 410px;
+	margin: 10px auto;
+}
+
+fieldset li{
+	list-style-type: none;
+}
+
+fieldset textarea {
+	width: 300px;
+}
+
+legend {
+	color: black;
+	background-color: #FFB270;
+	border: 1px solid black;
+	border-radius: 8px;
+	padding: 0 5px;
+}
+
+#pref_contact_meth li {
+	float: left;
+	margin-right: 70px;
+}
+
+#cat_requirement li {
+	float: left;
+	width: 80px;
+	margin-right: 30px;
+}
+
+#proceed legend {
+	display: none;
+}
+
+#proceed input {
+	float: right;
+	margin-left: 10px;
+}
+
+
+form {
+	color: black;
+	background-color: #FF7600;
+	width: 450px;
+	border: 1px solid black;
+}
+
+.textInputs label {
+	float: left;
+	width: 120px;
+}
+
+.textInputs input {
+	float: left;
+	width: 230px;
+}
+
+.textInputs ul {
+	margin: auto;
+}
+
+.textInputs li {
+	clear: both;
+	height: 1.5em;
+	margin-bottom: 5px;
+}
+
+figure {
+	color: inherit;
+	background-color: black;
+	height: 388px;
+	width: 122px;
+	float: right;
+	margin: auto;
+	padding-top: 120px;
+}
+
+

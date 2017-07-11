@@ -1,0 +1,72 @@
+// import gui library
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+// import date libraries
+import java.text.DateFormat;
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.TimeZone;
+
+public class AlarmPanel extends JPanel{
+    // components
+    private JLabel timeDisplay = new JLabel();
+    
+    // listener
+    private Listener listen = new Listener();
+    
+    private Timer run = new Timer(0, listen);
+    
+    // date and time components
+    private Date date = new Date();
+    
+    private DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+    private DateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
+    
+    private DecimalFormat timeLayout = new DecimalFormat("00");
+    
+    /** constructor */
+    public AlarmPanel(){
+	timeFormat.setTimeZone(TimeZone.getTimeZone("NZST"));
+	// set display
+	timeDisplay.setText(timeFormat.format(date));
+	
+	// start time
+	run.start();
+
+	// add to main window
+	add(timeDisplay);
+    }
+    
+    private class Listener implements ActionListener{
+	public void actionPerformed(ActionEvent e){
+	    // current time components
+	    long time = System.currentTimeMillis()/1000;
+	    int seconds = (int)time%60;
+	    int minutes = (int)time/60%60;
+	    int hours = (int)time/3600%60;
+	    String twelveHourClock = "am";
+	    
+	    // keep time running
+	    if(e.getSource() == run){
+		// if time has passed mid day
+		if(hours > 12){
+		    hours -= 12;
+		    twelveHourClock = "pm";
+		}
+		
+		// if time has not passed mid day
+		else{
+		    twelveHourClock = "am";
+		}
+		
+		timeDisplay.setText(timeLayout.format(hours)+":"+
+					timeLayout.format(minutes)+":"+
+					timeLayout.format(seconds)+" "+
+					twelveHourClock);
+	    }
+	}
+    }
+}

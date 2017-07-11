@@ -1,0 +1,25 @@
+import java.util.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+
+import javax.swing.*;
+
+public class AlarmApp {
+	/** main method */
+	public static void main(String args[]){
+	    JFrame mainWindow = new JFrame("Alarm App");
+	    
+	    mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	    mainWindow.setLocationRelativeTo(null);
+	    mainWindow.pack();
+	    mainWindow.setVisible(true);
+	    
+		 DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		 DateFormat dateTime = new SimpleDateFormat("HH:mm:ss");
+		 
+		 //get current date time with Date()
+		 Date date = new Date();
+		 System.out.println(dateFormat.format(date));
+		 System.out.println(dateTime.format(date));
+	}
+}

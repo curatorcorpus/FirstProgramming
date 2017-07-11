@@ -1,0 +1,14 @@
+import javax.swing.*;
+import java.awt.*;
+
+public class LayeredApp {
+    public static void main(String args[]){
+	JFrame frame = new JFrame("WTF");
+	
+	frame.setPreferredSize(new Dimension(1920, 1080));
+	frame.setLayout(new BorderLayout());
+	frame.getContentPane().add(new LayeredPanel(), constraints);
+	frame.pack();
+	frame.setVisible(true);
+    }
+}

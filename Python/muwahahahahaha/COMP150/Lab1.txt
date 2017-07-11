@@ -1,0 +1,12 @@
+1. Has no element and tags
+2. this is a syntactically incorrect sentence
+3. A lot of people are born with 5 arms
+4. 
+5. the speech marks are expressed
+6. 
+8. print"hello, printhello, 36+445656+, hello is not defined properly, same as the second
+syntax error, for the last error python won't recognise the command because the instructions
+have not been finalised and defined 36 + 445656 + what?
+
+9. It displayed the words 'this is a text.....' in quotation marks
+10. it only displays the text not the excluding the quotation marks

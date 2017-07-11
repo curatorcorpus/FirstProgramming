@@ -1,0 +1,68 @@
+/**
+ Pie.java
+ Provided for Part 2, Lab5, COMP160 2015
+ 
+ */
+
+import javax.swing.*;
+import java.awt.*;
+
+public class Pie extends JFrame{
+    
+    /**creates  an instance of Pie called chart1*/
+    public static void main(String[]args){
+        Pie chart1 = new Pie(); 
+        chart1.setSize(300,220);
+        chart1.setVisible(true);
+    }
+    
+    /**all drawing code goes in the paint method, which is called automatically*/
+    public void paint (Graphics page){
+        // variable declaration
+    	final int X_POSITION = 85;
+    	final int Y_POSITION = 60;
+    	final int WIT_HGT = 125;
+    	final int ARC_ANGLE = 45;
+    	
+    	// graphic name
+    	setTitle("Pie");
+    	
+    	// canvas
+    	page.setColor(Color.white);
+        page.fillRect(0,0,300,220);
+        
+        //your pie chart code starts here\
+        // 1st arc
+        page.setColor(Color.red);
+        page.fillArc(X_POSITION, Y_POSITION, WIT_HGT, WIT_HGT, ARC_ANGLE, ARC_ANGLE);
+        
+        // 2nd arc
+        page.setColor(Color.orange);
+        page.fillArc(X_POSITION, Y_POSITION, WIT_HGT, WIT_HGT, ARC_ANGLE * 2, ARC_ANGLE);
+        
+        // 3rd arc
+        page.setColor(Color.yellow);
+        page.fillArc(X_POSITION, Y_POSITION, WIT_HGT, WIT_HGT, ARC_ANGLE * 3, ARC_ANGLE);
+        
+        // 4th arc
+        page.setColor(Color.cyan);
+        page.fillArc(X_POSITION, Y_POSITION, WIT_HGT, WIT_HGT, ARC_ANGLE * 4, ARC_ANGLE);
+        
+        // 5th arc
+        page.setColor(Color.blue);
+        page.fillArc(X_POSITION, Y_POSITION, WIT_HGT, WIT_HGT, ARC_ANGLE * 5, ARC_ANGLE);
+        
+        // 6th arc
+        page.setColor(Color.green);
+        page.fillArc(X_POSITION, Y_POSITION, WIT_HGT, WIT_HGT, ARC_ANGLE * 6, ARC_ANGLE);
+        
+        // 7th arc
+        page.setColor(Color.magenta);
+        page.fillArc(X_POSITION, Y_POSITION, WIT_HGT, WIT_HGT, 315, ARC_ANGLE);
+        
+        // translated arc
+        page.setColor(Color.black);
+        page.fillArc(X_POSITION + 5, Y_POSITION - 2, WIT_HGT, WIT_HGT, 0, ARC_ANGLE);
+        
+    }
+}

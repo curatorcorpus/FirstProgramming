@@ -1,0 +1,6 @@
+
+public class PrintFMethod {
+	public static void main(String args[]){
+		int id = 1162424;
+	}
+}

@@ -1,0 +1,60 @@
+import javax.swing.*;
+import java.awt.*;
+import javax.swing.event.*;
+
+public class Slider extends JPanel{
+    // instantiate red value control
+    private JLabel redLabel = new JLabel("Red:");
+    private JSlider r = new JSlider(0, 255);
+    private JTextField redValue = new JTextField(5);
+    
+    // instantiate green value control
+    private JLabel greenLabel = new JLabel("Green:");
+    private JSlider g = new JSlider(0, 255);
+    private JTextField greenValue = new JTextField(5);
+    
+    // instantiate blue value control
+    private JLabel blueLabel = new JLabel("Blue:");
+    private JSlider b = new JSlider(0, 255);
+    private JTextField blueValue = new JTextField(5);
+    
+    // instantiate listener 
+    private Listener listen = new Listener();
+    
+    // constructor 
+    public Slider(){
+	// panel settings
+	setPreferredSize(new Dimension(320, 300));
+
+	// component settings
+	redValue.setText(""+r.getValue());
+	greenValue.setText(""+g.getValue());
+	blueValue.setText(""+b.getValue());
+	
+	// add listener
+	r.addChangeListener(listen);
+	g.addChangeListener(listen);
+	b.addChangeListener(listen);
+	
+	// add to panel
+	add(redLabel);
+	add(r);
+	add(redValue);
+	
+	add(greenLabel);
+	add(g);
+	add(greenValue);
+	
+	add(blueLabel);
+	add(b);
+	add(blueValue);
+    }
+    
+    private class Listener implements ChangeListener{
+	public void stateChanged(ChangeEvent e){
+	    setBackground(new Color(r.getValue(), g.getValue(), b.getValue()));
+	    redValue.setText(""+r.getValue());
+	    greenValue.setText(""+g.getValue()));
+	}
+    }
+}

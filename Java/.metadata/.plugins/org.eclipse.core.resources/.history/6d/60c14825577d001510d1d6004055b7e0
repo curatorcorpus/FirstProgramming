@@ -1,0 +1,21 @@
+package Sample2;
+
+public class Practice {
+    public static void main(String[] args){
+	System.out.println(maximum(1,2,4));
+    }
+    
+    public static int maximum(int i, int j, int k){
+	int max = i;
+	if(i < j){
+	    max = j;
+	}
+	
+	else if(j < k){
+	    System.out.println("Wat "+ j);
+	    max = k;
+	}
+	
+	return max;
+    }
+}

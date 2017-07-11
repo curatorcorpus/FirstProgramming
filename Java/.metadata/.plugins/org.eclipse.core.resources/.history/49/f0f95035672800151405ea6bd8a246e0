@@ -1,0 +1,13 @@
+
+public class DoLoop {
+
+	public static void main(String args[]){
+		int c = 0;
+		
+		do{
+			System.out.println("Hello World");
+			c++
+		}
+		while (c < 50);
+	}
+}

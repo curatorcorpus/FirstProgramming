@@ -1,0 +1,62 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class AccountMainPanel extends JPanel{
+	// JPanel instantiation
+	private JPanel panel = new JPanel();
+	
+	// instantiate components
+	private JLabel mainMenu = new JLabel("Main Menu of", SwingConstants.RIGHT);
+	private JLabel company = new JLabel(" DNA Bank Limited", SwingConstants.LEFT);
+	private JButton createAccount = new JButton("Create Account");
+	private JButton updateAccount = new JButton("Update Account");
+	private ButtonListener eventListener = new ButtonListener();
+	
+	// main panel settings
+	public AccountMainPanel(){
+		// panel settings
+		panel.setPreferredSize(new Dimension(300, 100));
+		panel.setLayout(new GridLayout(2, 2));
+		
+		// add listeners
+		createAccount.addActionListener(eventListener);
+		updateAccount.addActionListener(eventListener);
+		
+		// add components to panel
+		panel.add(mainMenu);
+		panel.add(company);
+		panel.add(createAccount);
+		panel.add(updateAccount);
+		
+		// adds to main panel
+		setLocation(600, 500);
+		add(panel);
+	}
+	
+	private class ButtonListener implements ActionListener{
+		/** instantiate JFrame */
+		private JFrame newAccountFrame = new JFrame("Create Account");
+		private JFrame updateAccountFrame = new JFrame("Update Accoutn")
+		
+		/** compiler automatically calls this method */
+		public void actionPerformed(ActionEvent e){
+			
+			// if we want to create a new account 
+			if(e.getSource().equals(createAccount)){
+				newFrame.getContentPane().add(new CreateAccountPanel());
+				newFrame.pack();
+				newFrame.setLocation(600, 300);
+				newFrame.setVisible(true);
+			}
+			
+			// if we want to update an existing account
+			if(e.getSource().equals(updateAccount)){
+				newFrame.getContentPane().add(new UpdateAccountPanel());
+				newFrame.pack();
+				newFrame.setLocation(600, 300);
+				newFrame.setVisible(true);
+			}
+		}
+	}
+}

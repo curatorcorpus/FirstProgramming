@@ -1,0 +1,78 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class UpdateAccountPanel extends JPanel{
+	/** instantiation of update panel */
+	private JPanel updatePanel = new JPanel();
+	
+	/** layout instantiation */
+	private GridLayout grid = new GridLayout(4,2);
+	
+	/** instantiate components */
+	private JLabel login = new JLabel("Administrator", SwingConstants.RIGHT);
+	private JLabel placeholder = new JLabel(" Login");
+	private JLabel user = new JLabel("Username:", SwingConstants.CENTER);
+	private JLabel pass = new JLabel("Password:", SwingConstants.CENTER);
+	private JButton adminLogin = new JButton("Login");
+	private JButton reset = new JButton("Reset");
+	
+	/** instantiate listeners */
+	private ButtonListener listener = new ButtonListener();
+	
+	/** instantiate text fields */
+	private TextField username = new TextField();
+	private JPasswordField password = new JPasswordField();	
+	
+	public UpdateAccountPanel(){
+		// JPanel Settings
+		updatePanel.setPreferredSize(new Dimension(300,100));
+		updatePanel.setLayout(grid);
+		
+		// component settings
+		login.setPreferredSize(new Dimension(300, 50));
+		
+		// add listeners to components
+		adminLogin.addActionListener(listener);
+		reset.addActionListener(listener);
+		
+		// add components
+		updatePanel.add(login);
+		updatePanel.add(placeholder);
+		updatePanel.add(user);
+		updatePanel.add(username);
+		updatePanel.add(pass);
+		updatePanel.add(password);
+		updatePanel.add(adminLogin);
+		updatePanel.add(reset);
+		
+		// add to main frame
+		add(updatePanel);
+	}
+	
+	private class ButtonListener implements KeyListener, ActionListener{
+		
+		/** automatically called if event occurs */
+		public void actionPerformed(ActionEvent e){
+			if(e.getSource().equals(adminLogin)){
+				if(username.getText() == "admin" && 
+						password.getText() == "admin"){
+					System.out.println("correct");
+				}
+				else{
+					JOptionPane.showMessageDialog(null, "Incorrect Password! "
+							+ "Please Try Again.");
+				}
+			}
+		}
+		
+		public void keyPressed(KeyEvent e){
+			if(e.getKeyCode().equals(KeyEvent.VK_ENTER)){
+				
+			}
+		}
+		
+		public void keyTyped(KeyEvent e){}
+		public void keyReleased(KeyEvent e){}
+	}
+}

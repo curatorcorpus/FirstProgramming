@@ -1,0 +1,170 @@
+package bsns106Lectures;
+
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+
+public class Lecture17 extends JPanel{
+    // create listener object
+    private Listener listen = new Listener();
+    
+    // create components
+    private JButton back = new JButton("Back");
+    private JButton next = new JButton("Next");
+    private JTextArea textArea = new JTextArea("", 26, 40);
+    private JLabel lectureTitle;
+    private JScrollPane scroll = new JScrollPane(textArea);
+    
+    /** constructor method */
+    public Lecture17(String lectureName, int lectureNum){
+	lectureTitle = new JLabel("Lecture "+lectureNum+": "+lectureName);
+	
+	// main panel settings
+	setPreferredSize(new Dimension(500, 500));
+	
+	// add listener objects
+	back.addActionListener(listen);
+	next.addActionListener(listen);
+	
+	// component settings
+	textArea.setEditable(false);
+	textArea.setText(point1());
+		
+	lectureTitle.setFont(new Font("SansSerif", Font.BOLD,16));
+	
+	// add components
+	add(lectureTitle);
+	add(scroll);
+	add(back);
+	add(next);
+    }
+    
+    /** method that returns main point 1 */
+    private String point1(){
+	return "00. Summary\n\n"+
+		"> [No. 1]: Business need to continually optimise their operations in order\n"+
+		" to survive";
+    }	
+    
+    /** method that returns main point 2 */
+    private String point2(){
+	return "01. Why do we need different data types [No. 1]:\n\n"+
+		"> Tells computer exactly how much memory is needed\n\n"+
+		"> They tell computer how much memory should be processed\n\n"+
+		"> Informs developer how the variable should be manipulated\n\n";
+    }
+    
+    /** method that returns main point 3 */
+    private String point3(){
+	return "02. What is an algorithm? [No. 2]\n\n"+
+		"> Sequence of steps that achieves a specifc goal\n\n"+
+		"> Key properties of algorithm: Correctness and efficiency\n"+
+		" 	- Correctness: Algorithm must produce correct results, bugs are\n"+
+		"	 always possible because programs are complex and detailed\n\n"+
+		"	- Efficiency: execution time, memory requirements\n\n";
+    }
+    
+    /** method that returns main point 4 */
+    private String point4(){
+	return "03. Programming language [No. 3]:\n\n"+
+		"> Formal notations for defining algorithms via communicating with computer\n"+
+		" hardware\n\n";
+    }
+    
+    /** method that returns main point 5 */
+    private String point5(){
+	return "04. Computing Model [No. 4]:\n\n"+
+		"> A computer model is a computer program that is designed to simulate\n"+
+		"what might or what did happen in a situation. They are used in many ways\n"+
+		"including in astronomy, economics and sciences such as physics and biology\n"+
+		"ie) calculator model\n\n"+
+		"Turing Equivalent - two computers are equivalent when computer A simulates\n"+
+		" computer B, then computer B can simulate computer A\n\n";
+    }
+    
+    /** method that returns main point 6 */
+    private String point6(){
+	return "05. Computer [No. 5]:\n\n"+
+		"> Implements a limited form of a primitive computational model\n\n";
+    }
+    
+    /** method that return point 7 */
+    private String point7(){
+	return "06. Programming Process [No. 6]:\n\n"+
+		"> 1. Program requirements\n\n"+
+		"> 2. Solution outline\n\n"+
+		"> 3. Encode solution\n\n"+
+		"> 4. Test\n\n";
+    }
+    
+    /** method that return point 8 */
+    private String point8(){
+	return "08. Programming requirements [No. 7]:\n\n"+
+		"> Devising a strategy - create a solution to the problem\n\n"+
+		"> Plan and consider each aspect of the solution to prevent bugs from occuring\n\n";
+    }
+    
+    /** method that return point 9 */
+    private String point9(){
+	return "09. Outline Solution [No. 7]:\n\n"+
+		"> Formalize a strategy: after all requirements have been established,\n"+
+		" outline how the algorithm will be structured - pseudocode and flowcharts\n\n";
+    }
+    
+    /** method that return point 9 */
+    private String point10(){
+	return "10. Test For Correctness [No. 7]:\n\n"+
+		"> Reasonably straightforward - check for quality of algorithm so it can\n"+
+		"> produce accurate and reliable results\n\n";
+    }
+    
+    /** method that return point 10 */
+    private String point11(){
+	return "11. Implementation [No. 7]:\n\n"+
+		"> Write and implement code\n\n";
+    }
+    
+    private class Listener implements ActionListener{
+	// array of points
+	private String[] mainPoints = {point1(), point2(), point3(), point4(), point5(), point6(),
+					point7(), point8(), point9(), point10(), point11()};
+	
+	// index
+	private int index = 0;
+	
+	public void actionPerformed(ActionEvent e){
+	    // if back button is pressed then move back to previous point
+	    if(e.getSource() == back){
+		// if index is zero then stay zero
+		if(index == 0){
+		    index = 0;
+		}
+		
+		// if index is not zero
+		else{
+		    index--; 
+		}
+		
+		// update text area
+		textArea.setText(mainPoints[index]);
+	    }
+	    
+	    // if forward button is pressed then move forward to next point
+	    if(e.getSource() == next){
+		// if index reached max size of mainpoint array
+		if(index == (mainPoints.length-1)){
+		    index = mainPoints.length-1;
+		}
+		
+		// if index is not max index
+		else{
+		    index++;
+		}
+		
+		// update text area
+		textArea.setText(mainPoints[index]);
+	    }
+	}
+    }
+}

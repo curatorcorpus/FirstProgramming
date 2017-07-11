@@ -1,0 +1,6 @@
+
+public class CountLength {
+	public static void main(String args[]){
+		String myName = "Robert Mulldoon";
+	}
+}

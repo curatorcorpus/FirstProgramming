@@ -1,0 +1,42 @@
+import java.util.*;
+
+public class SortingAlgorithmApps {
+    public static void main(String[] args){
+	ArrayList<Integer> ordered = new ArrayList<Integer>();
+	
+	Random numGen = new Random();
+	
+	for(int i = 0; i < 5; i++){
+	    ordered.add(numGen.nextInt(10));
+	}
+	
+	for(int i : ordered){
+	    System.out.print(i+" ");
+	}
+	System.out.println();
+	
+	for(int outerIndex = 0; outerIndex < ordered.size(); outerIndex++){
+	    for(int innerIndex = outerIndex; innerIndex >= 0; innerIndex--){
+		System.out.println(innerIndex);
+		if(outerIndex == 0){
+		    continue;
+		}
+		
+		else if(ordered.get(innerIndex) == ordered.get(outerIndex)){
+		    continue;
+		}
+		
+		else if(ordered.get(innerIndex) > ordered.get(outerIndex)){
+		    int currentNum = ordered.get(outerIndex);
+		    
+		    ordered.remove(outerIndex);
+		    ordered.add(innerIndex, currentNum);
+		}
+	    }
+	}
+	
+	for(int i : ordered){
+	    System.out.print(i+" ");
+	}
+    }
+}
